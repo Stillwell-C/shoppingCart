@@ -1,0 +1,265 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home matches snapshot 1`] = `
+<div>
+  <div
+    class="home-container"
+  >
+    <div
+      class="top-home-text"
+    >
+      <h1>
+        Revolutionary Designs
+      </h1>
+      <h2>
+        Find your new aesthetic today
+      </h2>
+      <a
+        href="/shop"
+      >
+        <button>
+          Shop now
+        </button>
+      </a>
+    </div>
+    <div
+      class="home-bottom"
+    >
+      <div
+        class="home-shop-links"
+      >
+        <h1>
+          Featured Collections
+        </h1>
+        <div
+          class="home-shop-navlinks"
+        >
+          <a
+            href="/shop"
+          >
+            <img
+              alt="link to full collection"
+              src="/img/front-shop.jpg"
+            />
+            <h3>
+              Full Collection
+            </h3>
+          </a>
+          <a
+            href="/shop/clothing"
+          >
+            <img
+              alt="link to clothing"
+              src="/img/front-clothing.jpg"
+            />
+            <h3>
+              Clothing
+            </h3>
+          </a>
+          <a
+            href="/shop/accessories"
+          >
+            <img
+              alt="link to accessories"
+              src="/img/front-accessories.jpg"
+            />
+            <h3>
+              Accessories
+            </h3>
+          </a>
+          <a
+            href="/shop/interior"
+          >
+            <img
+              alt="link to interior products"
+              src="/img/front-interior.jpg"
+            />
+            <h3>
+              Interior
+            </h3>
+          </a>
+        </div>
+      </div>
+      <div
+        class="home-bottom-middle"
+      >
+        <div
+          class="home-bm-top"
+        >
+          <img
+            alt="link to clothing"
+            src="/img/person-front.jpg"
+          />
+          <div>
+            <h2>
+              Find Your New Self
+            </h2>
+            <p>
+              It's time for the new you. Our timeless pieces help you define yourself and show the world what you're truely made of.
+            </p>
+            <a
+              href="/shop"
+            >
+              <button>
+                Shop Now
+              </button>
+            </a>
+          </div>
+        </div>
+        <div
+          class="home-bm-bottom"
+        >
+          <div>
+            <h2>
+              New Interior. New You.
+            </h2>
+            <p>
+              Interior design should be a top priority. Our unique interior designs help bring the room together so you can work, sleep, and rest easier.
+            </p>
+            <a
+              href="/shop/interior"
+            >
+              <button>
+                Shop Interior
+              </button>
+            </a>
+          </div>
+          <img
+            alt="link to interior"
+            src="/img/interior-front.jpg"
+          />
+        </div>
+      </div>
+      <div
+        class="home-bottom-bottom"
+      >
+        <h2>
+          Why in hands?
+        </h2>
+        <div
+          class="why-hands"
+        >
+          <div>
+            <img
+              alt="hand crafted products"
+              src="/img/front-crafted.jpg"
+            />
+            <h2>
+              Hand Crafted
+            </h2>
+            <p>
+              Each and every one of our pieces is handcrafted by a team of local artisans that is personally trained and supervised by our founder.
+            </p>
+          </div>
+          <div>
+            <img
+              alt="sustainable production methods"
+              src="/img/front-sustain.jpg"
+            />
+            <h2>
+              Sustainable Production
+            </h2>
+            <p>
+              We ship all products in 100% biodegradable packaging and our small size allows us to minimize waste in the production process.
+            </p>
+          </div>
+          <div>
+            <img
+              alt="made with passion"
+              src="/img/front-passion.jpg"
+            />
+            <h2>
+              Built with Passion
+            </h2>
+            <p>
+              Our brand was started by a small team who share your enthusiasm for fashion. We offer a generous return policy if you are not fully satisfied with your order.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div
+        class="footer-container"
+      >
+        <div
+          class="footer-top"
+        >
+          <div
+            class="footer-header"
+          >
+            <h1>
+              Get Updates from in hands
+            </h1>
+            <p>
+              Get information on discounts and sales delivered straight to your inbox
+            </p>
+            <form
+              novalidate=""
+            >
+              <input
+                aria-label="Sign up for updates"
+                autocomplete="false"
+                placeholder="Enter your email address"
+                type="email"
+                value=""
+              />
+              <button
+                type="submit"
+              >
+                Sign Up
+              </button>
+            </form>
+          </div>
+          <div>
+            <h1>
+              in hands
+            </h1>
+            <a
+              href="/about"
+            >
+              About us
+            </a>
+          </div>
+          <div>
+            <h1>
+              Shop
+            </h1>
+            <a
+              href="/shop"
+            >
+              Full Collection
+            </a>
+            <a
+              href="/shop/clothing"
+            >
+              Clothing
+            </a>
+            <a
+              href="/shop/accessories"
+            >
+              Accessories
+            </a>
+            <a
+              href="/shop/interior"
+            >
+              Interior
+            </a>
+          </div>
+          <div>
+            <h1>
+              Contact Us
+            </h1>
+            <p>
+              customersupport@inhands.com.md
+            </p>
+          </div>
+        </div>
+        <div
+          class="footer-bottom"
+        />
+      </div>
+    </footer>
+  </div>
+</div>
+`;

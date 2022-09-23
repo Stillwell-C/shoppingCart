@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly and matches snapshot 1`] = `
+<div>
+  <footer>
+    <div
+      class="footer-container"
+    >
+      <div
+        class="footer-top"
+      >
+        <div
+          class="footer-header"
+        >
+          <h1>
+            Get Updates from in hands
+          </h1>
+          <p>
+            Get information on discounts and sales delivered straight to your inbox
+          </p>
+          <form
+            novalidate=""
+          >
+            <input
+              aria-label="Sign up for updates"
+              autocomplete="false"
+              placeholder="Enter your email address"
+              type="email"
+              value=""
+            />
+            <button
+              type="submit"
+            >
+              Sign Up
+            </button>
+          </form>
+        </div>
+        <div>
+          <h1>
+            in hands
+          </h1>
+          <a
+            href="/about"
+          >
+            About us
+          </a>
+        </div>
+        <div>
+          <h1>
+            Shop
+          </h1>
+          <a
+            href="/shop"
+          >
+            Full Collection
+          </a>
+          <a
+            href="/shop/clothing"
+          >
+            Clothing
+          </a>
+          <a
+            href="/shop/accessories"
+          >
+            Accessories
+          </a>
+          <a
+            href="/shop/interior"
+          >
+            Interior
+          </a>
+        </div>
+        <div>
+          <h1>
+            Contact Us
+          </h1>
+          <p>
+            customersupport@inhands.com.md
+          </p>
+        </div>
+      </div>
+      <div
+        class="footer-bottom"
+      />
+    </div>
+  </footer>
+</div>
+`;
