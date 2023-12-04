@@ -12,11 +12,8 @@
   --light-grey-button: #f1f1f1;
 }
 
-body {
-  position: relative;
-}
 
-nav {
+header {
   height: 100px;
   padding: 20px;
   z-index: 10;
@@ -24,7 +21,6 @@ nav {
   width: 100%;
   top: 0;
   left: 0;
-  bottom: 0;
   background-color: #fff;
   border-bottom: 1px solid #f1f1f1;
 }
@@ -41,16 +37,21 @@ nav {
 .nav-title {
   color: black;
   transition: all .1s ease-in-out;
+  text-decoration: none;
+  
 }
 
 .nav-title-top {
   font-weight: 300;
   font-size: 3rem;
   letter-spacing: .5rem;
+  text-decoration: underline;
 }
 
 .nav-title-bottom {
   font-size: 1rem;
+  
+  
 }
 
 .nav-title:hover {
