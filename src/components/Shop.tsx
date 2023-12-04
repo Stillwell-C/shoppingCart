@@ -1,31 +1,82 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Item from "./Item";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
-import fullItemList from "../../Data/FullItemList";
+import fullItemList from "../Data/FullItemList";
+
+type ItemType = {
+  name: string;
+  price: number;
+  description: string;
+  dept: string;
+  img: string;
+  imgSmall: string;
+  id: string;
+};
+
+type PropsType = {
+  items: ItemType[];
+};
 
 const Shop = () => {
-  const items = fullItemList;
+  const { collectionName } = useParams();
+  const navigate = useNavigate();
+
+  const [collectionTitle, setCollectionTitle] = useState<string>("");
+
+  const items = !collectionName
+    ? fullItemList
+    : fullItemList.filter((item) => item.dept === collectionName);
+
+  const capitalizeFirstLetter = (text: string): string => {
+    return text.slice(0, 1).toUpperCase() + text.slice(1);
+  };
+
+  useEffect(() => {
+    console.log(collectionName);
+    if (!collectionName) {
+      setCollectionTitle("Full Collection");
+      return;
+    }
+    setCollectionTitle(capitalizeFirstLetter(collectionName));
+  }, [collectionName]);
+
+  useEffect(() => {
+    if (collectionName && !items.length) navigate("/notfound");
+  }, [collectionName]);
+
+  const collectionsList = [
+    "Full Collection",
+    "Clothing",
+    "Accessories",
+    "Interior",
+  ];
+  const displayButtons = collectionsList.filter(
+    (collection) => collection !== collectionTitle
+  );
 
   return (
     <div className='shop-page'>
       <div className='shop-container'>
         <div className='shop-top'>
-          <h1>Full Collection</h1>
+          <h1>{collectionTitle}</h1>
           <div className='shop-navbar'>
-            <Link to='clothing' aria-label='link to clothing page'>
-              <button>Clothing</button>
-            </Link>
-            <Link to='accessories' aria-label='link to accessories page'>
-              <button>Accessories</button>
-            </Link>
-            <Link to='interior' aria-label='link to interior page'>
-              <button>Interior</button>
-            </Link>
+            {displayButtons.map((collection) => (
+              <Link
+                key={collection}
+                to={
+                  collection === "Full Collection"
+                    ? "/shop"
+                    : `${collection.toLowerCase()}`
+                }
+              >
+                <button>{collection}</button>
+              </Link>
+            ))}
           </div>
         </div>
         <div className='shop-items'>
-          {items.map((item) => (
+          {items?.map((item) => (
             <Item item={item} />
           ))}
         </div>
