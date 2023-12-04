@@ -7,7 +7,6 @@ import About from "./components/About";
 import Shop from "./components/Shop";
 import Checkout from "./components/Checkout";
 import ItemFullPage from "./components/ItemFullPage";
-import ShopFiltered from "./components/ShopFiltered";
 import OrderConfirmation from "./components/OrderConfirmation";
 import NotFound from "./components/NotFound";
 
@@ -87,26 +86,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/shop'>
-            <Route
-              index
-              element={
-                <Shop
-                  itemList={itemList}
-                  setShoppingCart={setShoppingCart}
-                  shoppingCart={shoppingCart}
-                />
-              }
-            />
-            <Route
-              path=':collectionName'
-              element={
-                <ShopFiltered
-                  itemList={itemList}
-                  setShoppingCart={setShoppingCart}
-                  shoppingCart={shoppingCart}
-                />
-              }
-            />
+            <Route index element={<Shop />} />
+            <Route path=':collectionName' element={<Shop />} />
             <Route
               path='fullcollection/:itemName'
               element={
@@ -124,6 +105,7 @@ function App() {
             element={<Checkout shoppingCart={shoppingCart} />}
           />
           <Route path='/orderconfirmation' element={<OrderConfirmation />} />
+          <Route path='/notfound' element={<NotFound />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
