@@ -2,9 +2,10 @@ import React from "react";
 import Item from "./Item";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import fullItemList from "../../Data/FullItemList";
 
-const Shop = ({ itemList, setShoppingCart, shoppingCart }) => {
-  const items = itemList;
+const Shop = () => {
+  const items = fullItemList;
 
   return (
     <div className='shop-page'>
@@ -25,16 +26,7 @@ const Shop = ({ itemList, setShoppingCart, shoppingCart }) => {
         </div>
         <div className='shop-items'>
           {items.map((item) => (
-            <Item
-              itemName={item.name}
-              itemImg={item.img}
-              itemImgSmall={item.imgSmall}
-              itemPrice={item.price}
-              itemDescription={item.description}
-              key={item.serial}
-              setShoppingCart={setShoppingCart}
-              shoppingCart={shoppingCart}
-            />
+            <Item item={item} />
           ))}
         </div>
       </div>
