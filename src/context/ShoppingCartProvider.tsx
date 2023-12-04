@@ -159,7 +159,9 @@ export const CartContext = createContext<UseCartContextType>(
 
 type ChildrenType = { children?: ReactElement | ReactElement[] };
 
-export const CartProvider = ({ children }: ChildrenType): ReactElement => {
+export const ShoppingCartProvider = ({
+  children,
+}: ChildrenType): ReactElement => {
   return (
     <CartContext.Provider value={useCartContext(initialState)}>
       {children}
