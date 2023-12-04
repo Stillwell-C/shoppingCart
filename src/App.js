@@ -21,7 +21,7 @@ function App() {
       type: "clothing",
       img: "/img/shirt.jpg",
       imgSmall: "/img/shirt-small.jpg",
-      serial: 1,
+      id: "item00001",
     },
     {
       name: "Jacket",
@@ -30,7 +30,7 @@ function App() {
       type: "clothing",
       img: "/img/jacket.jpg",
       imgSmall: "/img/jacket-small.jpg",
-      serial: 2,
+      id: "item00002",
     },
     {
       name: "Handbag",
@@ -39,7 +39,7 @@ function App() {
       description: "black handbag made with full grain leather",
       img: "/img/handbag.jpg",
       imgSmall: "/img/handbag-small.jpg",
-      serial: 3,
+      id: "item00003",
     },
     {
       name: "Backpack",
@@ -48,7 +48,7 @@ function App() {
       description: "hand-stiched small black backpack.",
       img: "/img/backpack.jpg",
       imgSmall: "/img/backpack-small.jpg",
-      serial: 4,
+      id: "item00004",
     },
     {
       name: "Tote",
@@ -57,7 +57,7 @@ function App() {
       description: "a black tote bag",
       img: "/img/totebag.jpg",
       imgSmall: "/img/totebag-small.jpg",
-      serial: 5,
+      id: "item00005",
     },
     {
       name: "Decorative Stick",
@@ -66,7 +66,7 @@ function App() {
       description: "liven up your room with this stick",
       img: "/img/decorative-stick.jpg",
       imgSmall: "/img/decorative-stick-small.jpg",
-      serial: 6,
+      id: "item00006",
     },
     {
       name: "Houseplant",
@@ -75,7 +75,7 @@ function App() {
       description: "a plant",
       img: "/img/houseplant.jpg",
       imgSmall: "/img/houseplant-small.jpg",
-      serial: 7,
+      id: "item00007",
     },
   ]);
 
