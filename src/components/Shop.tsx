@@ -67,7 +67,7 @@ const Shop = () => {
                 to={
                   collection === "Full Collection"
                     ? "/shop"
-                    : `${collection.toLowerCase()}`
+                    : `/shop/${collection.toLowerCase()}`
                 }
               >
                 <button>{collection}</button>
