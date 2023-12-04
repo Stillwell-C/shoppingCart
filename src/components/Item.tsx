@@ -19,12 +19,10 @@ type PropsType = {
 const Item = ({ item }: PropsType) => {
   const itemPrice = useFormatPrice(item.price);
 
-  console.log(itemPrice);
-
   return (
     <Link
       className='item-container'
-      to={`/shop/fullcollection/${item.name}`}
+      to={`/shop/fullcollection/${item.id.slice(-5)}`}
       key={item.id}
     >
       <img className='item-img' src={item.imgSmall} alt={item.name} />
