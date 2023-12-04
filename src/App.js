@@ -89,7 +89,7 @@ function App() {
             <Route index element={<Shop />} />
             <Route path=':collectionName' element={<Shop />} />
             <Route
-              path='fullcollection/:itemName'
+              path='fullcollection/:itemID'
               element={
                 <ItemFullPage
                   itemList={itemList}
