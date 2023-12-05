@@ -9,6 +9,7 @@ import Checkout from "./components/Checkout";
 import ItemFullPage from "./components/ItemFullPage";
 import OrderConfirmation from "./components/OrderConfirmation";
 import NotFound from "./components/NotFound";
+import CartFullPage from "./components/CartFullPage";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -99,7 +100,7 @@ function App() {
               }
             />
           </Route>
-
+          <Route path='/cart' element={<CartFullPage />} />
           <Route
             path='/checkout'
             element={<Checkout shoppingCart={shoppingCart} />}
