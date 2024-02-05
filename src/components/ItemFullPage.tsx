@@ -4,6 +4,20 @@ import Footer from "./Footer";
 import fullItemList from "../Data/FullItemList";
 import useFormatPrice from "../hooks/useFormatPrice";
 import useCartContext from "../hooks/useCartContext";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_ITEMS = gql`
+  query GetProductBySearchName($searchName: String!) {
+    getProductBySearchName(searchName: $searchName) {
+      SKU
+      name
+      price
+      description
+      dept
+      img_id
+    }
+  }
+`;
 
 const ItemFullPage = () => {
   const { itemID } = useParams();
@@ -14,18 +28,25 @@ const ItemFullPage = () => {
     (item) => item.id === `item${itemID}`
   );
 
-  const itemInCart = cart.find((item) => item.id === `item${itemID}`);
+  const { loading, error, data } = useQuery(GET_ITEMS, {
+    variables: { searchName: itemID },
+  });
 
-  const itemPrice = useFormatPrice(currentItem?.price);
+  const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_500,c_fill/${data?.getProductBySearchName?.img_id}`;
+
+  const itemInCart = cart.find((item) => item.id === `item${itemID}`);
+  const itemQtyExceeded = itemInCart && itemInCart.qty >= 25;
+
+  const itemPrice = useFormatPrice(data?.getProductBySearchName?.price);
 
   useEffect(() => {
-    if (!currentItem) {
+    if (!loading && !data.getProductBySearchName) {
       navigate("/notfound");
     }
   }, []);
 
   const handleAddToCart = () => {
-    if (itemInCart && itemInCart.qty >= 25) return;
+    if (itemQtyExceeded) return;
     dispatch({
       type: REDUCER_ACTIONS.ADD,
       payload: { ...currentItem, qty: 1 },
@@ -35,14 +56,16 @@ const ItemFullPage = () => {
   return (
     <div className='item-full-page'>
       <div className='item-full-container'>
-        <h1 className='item-full-title'>{currentItem?.name}</h1>
+        <h1 className='item-full-title'>
+          {data?.getProductBySearchName?.name}
+        </h1>
         <img
           className='item-img-medium'
-          src={currentItem?.img}
-          alt={currentItem?.name}
+          src={itemURL}
+          alt={data?.getProductBySearchName?.name}
         />
         <div>
-          <p>{currentItem?.description}</p>
+          <p>{data?.getProductBySearchName?.description}</p>
           <p>{itemPrice}</p>
         </div>
         <div>
@@ -52,7 +75,9 @@ const ItemFullPage = () => {
             </p>
           )}
         </div>
-        <button onClick={handleAddToCart}>Add to cart</button>
+        <button disabled={itemQtyExceeded} onClick={handleAddToCart}>
+          Add to cart
+        </button>
       </div>
       <Footer />
     </div>

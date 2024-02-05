@@ -3,15 +3,29 @@ import Item from "./Item";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
 import fullItemList from "../Data/FullItemList";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_ITEMS = gql`
+  query GetProductsByDept($dept: AllowedDepartments) {
+    getProductsByDept(dept: $dept) {
+      SKU
+      searchName
+      price
+      description
+      dept
+      img_id
+    }
+  }
+`;
 
 type ItemType = {
   name: string;
+  searchName: string;
   price: number;
   description: string;
   dept: string;
-  img: string;
-  imgSmall: string;
-  id: string;
+  img_id: string;
+  SKU: string;
 };
 
 type PropsType = {
@@ -21,6 +35,14 @@ type PropsType = {
 const Shop = () => {
   const { collectionName } = useParams();
   const navigate = useNavigate();
+
+  const { loading, error, data } = useQuery(GET_ITEMS, {
+    variables: { dept: collectionName?.toUpperCase() },
+  });
+
+  // useEffect(() => {
+  //   if (!loading) console.log(data);
+  // }, [data]);
 
   const [collectionTitle, setCollectionTitle] = useState<string>("");
 
@@ -76,9 +98,11 @@ const Shop = () => {
           </div>
         </div>
         <div className='shop-items'>
-          {items?.map((item) => (
-            <Item item={item} />
-          ))}
+          {!loading &&
+            !error &&
+            data.getProductsByDept?.map((item: ItemType) => (
+              <Item item={item} key={item.SKU} />
+            ))}
         </div>
       </div>
       <Footer />

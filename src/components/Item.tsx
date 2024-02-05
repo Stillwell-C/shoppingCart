@@ -4,12 +4,12 @@ import useFormatPrice from "../hooks/useFormatPrice";
 
 type ItemType = {
   name: string;
+  searchName: string;
   price: number;
   description: string;
   dept: string;
-  img: string;
-  imgSmall: string;
-  id: string;
+  img_id: string;
+  SKU: string;
 };
 
 type PropsType = {
@@ -19,13 +19,15 @@ type PropsType = {
 const Item = ({ item }: PropsType) => {
   const itemPrice = useFormatPrice(item.price);
 
+  const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_500,c_fill/${item?.img_id}`;
+
   return (
     <Link
       className='item-container'
-      to={`/shop/fullcollection/${item.id.slice(-5)}`}
-      key={item.id}
+      to={`/shop/fullcollection/${item.searchName}`}
+      key={item.SKU}
     >
-      <img className='item-img' src={item.imgSmall} alt={item.name} />
+      <img className='item-img' src={itemURL} alt={item.name} />
       <div className='item-info-container'>
         <p>{item.name}</p>
         <p aria-label='item price'>{itemPrice}</p>
