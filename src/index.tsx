@@ -4,14 +4,22 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ShoppingCartProvider } from "./context/ShoppingCartProvider";
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:3500/graphql",
+  cache: new InMemoryCache(),
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ShoppingCartProvider>
-        <App />
-      </ShoppingCartProvider>
+      <ApolloProvider client={client}>
+        <ShoppingCartProvider>
+          <App />
+        </ShoppingCartProvider>
+      </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
