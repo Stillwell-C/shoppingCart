@@ -34,10 +34,10 @@ const ItemFullPage = () => {
   const itemPrice = useFormatPrice(data?.getProductBySearchName?.price);
 
   useEffect(() => {
-    if (!loading && !data.getProductBySearchName.SKU) {
+    if (!loading && !data?.getProductBySearchName?.SKU) {
       navigate("/notfound");
     }
-  }, []);
+  }, [data, loading]);
 
   const handleAddToCart = () => {
     if (itemQtyExceeded) return;
