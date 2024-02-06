@@ -11,28 +11,23 @@ const About = () => {
           <p>
             in hands had its humble beginnings as a creative outlet for Elena
             Cojocaru's university side projects. She soon began to peddle unique
-            design pieces at school events and on the streets of Chișinău with
-            some success. It further materialized into its current incarnation
-            in 2018 as part of her university capstone project.
+            design pieces on the streets of Chișinău with some success. It
+            further materialized into its current incarnation in 2018.
           </p>
           <p>
             Over time, Elena grew her side project into a small fashion house
             and then into a budding powerhouse in the Moldovan design scene.
             Word soon spread that in hands was the nation's premier house for
             all things fashion and lifestyle. With overwhelming customer support
-            and many media appearances including 'Mornings With Gheorghe and the
-            Village Dunce', Elena has rapidly scaled the business to meet the
-            unprecidented foreign and domestic demand while maintaining strict
-            creative and quality control.{" "}
+            and numerous media appearances, Elena has rapidly scaled the
+            business to meet the unprecidented foreign and domestic demand while
+            maintaining strict creative and quality control.
           </p>
           <p>
             Contrary to the defamitory claims of another Moldovan fashion house
-            which will not be named, we do not now nor have we ever operated an
-            "illegal sweat shop" that employs "abusive and exploitative" labor
-            practices including but not limited to "intimidation," "coercion,"
-            and "threats of violence." We assure you that our factory meets the
-            minimum requirements set by the Ministry of Labour and Social
-            Protection.
+            that will not be named, we are proud to say that our factory has met
+            the minimum requirements set by the Ministry of Labour and Social
+            Protection since 2021.
           </p>
         </div>
         <div className='about-creator'>
@@ -41,7 +36,7 @@ const About = () => {
             <img src='/img/creator.jpg' alt='Elena Cojocaru' />
             <p>
               Hi, My name is Elena. In addition to my work at in hands I enjoy
-              crocheting and worshiping Satan.
+              crocheting.
             </p>
           </div>
         </div>
