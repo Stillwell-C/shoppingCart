@@ -2,10 +2,10 @@ import { useMemo, useReducer, createContext, ReactElement } from "react";
 
 export type CartItemType = {
   name: string;
+  searchName: string;
   price: number;
-  description: string;
-  imgSmall: string;
-  id: string;
+  img_id: string;
+  SKU: string;
   qty: number;
 };
 
@@ -37,22 +37,19 @@ const reducer = (
         throw new Error("ADD requires action.payload");
       }
 
-      const { id, name, price, description, imgSmall } = action.payload;
+      const { name, searchName, price, img_id, SKU } = action.payload;
 
       const itemInCart: CartItemType | undefined = state.cart.find(
-        (item) => (item.id = id)
+        (item) => (item.searchName = searchName)
       );
       const filteredCart: CartItemType[] = !itemInCart
         ? state.cart
-        : state.cart.filter((item) => item.id !== id);
+        : state.cart.filter((item) => item.searchName !== searchName);
       const qty: number = itemInCart ? itemInCart.qty + 1 : 1;
 
       return {
         ...state,
-        cart: [
-          ...filteredCart,
-          { id, name, price, description, imgSmall, qty },
-        ],
+        cart: [...filteredCart, { name, searchName, price, img_id, SKU, qty }],
       };
     }
 
@@ -61,10 +58,10 @@ const reducer = (
         throw new Error("DELETE requires action.payload");
       }
 
-      const { id } = action.payload;
+      const { searchName } = action.payload;
 
       const filteredCart: CartItemType[] = state.cart.filter(
-        (item) => item.id !== id
+        (item) => item.searchName !== searchName
       );
 
       return { ...state, cart: [...filteredCart] };
@@ -75,10 +72,10 @@ const reducer = (
         throw new Error("QUANTITY requires action.payload");
       }
 
-      const { id, qty } = action.payload;
+      const { searchName, qty } = action.payload;
 
       const itemInCart: CartItemType | undefined = state.cart.find(
-        (item) => (item.id = id)
+        (item) => (item.searchName = searchName)
       );
 
       if (!itemInCart) {
@@ -90,7 +87,7 @@ const reducer = (
       const updatedItem: CartItemType = { ...itemInCart, qty };
 
       const filteredCart: CartItemType[] = state.cart.filter(
-        (item) => item.id !== id
+        (item) => item.searchName !== searchName
       );
 
       return { ...state, cart: [...filteredCart, updatedItem] };
