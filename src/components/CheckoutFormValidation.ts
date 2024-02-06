@@ -2,6 +2,7 @@ import {
   PropertyName,
   REDUCER_ACTION_TYPE,
   ReducerActionType,
+  StateType,
 } from "./CheckoutFormReducer";
 
 const basicTextInputReg = /^[A-Z]{1,30}$/i;
@@ -186,4 +187,37 @@ export const validateInput = (
     type: REDUCER_ACTION_TYPE.UPDATE,
     payload: { propertyName, value, hasError, error },
   });
+};
+
+export const validateForm = (formState: StateType) => {
+  for (const key in formState) {
+    if (formState[key as keyof StateType].hasError) return false;
+  }
+  return true;
+};
+
+export const formCompletionCheck = (
+  formState: StateType,
+  sameBillingAddress: boolean
+) => {
+  for (const key in formState) {
+    const inputValue = formState[key as keyof StateType].value;
+    const requiredField =
+      !key.endsWith("CompanyName") && !key.endsWith("AddressNumber");
+    if (
+      //Field is required & no input value provided
+      requiredField &&
+      !inputValue.length
+    ) {
+      if (
+        //Field is not a billing Field
+        !key.startsWith("billing") ||
+        //Billing field & different billing address selected
+        (key.startsWith("billing") && !sameBillingAddress)
+      ) {
+        return false;
+      }
+    }
+  }
+  return true;
 };
