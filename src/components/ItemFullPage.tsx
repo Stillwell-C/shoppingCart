@@ -7,14 +7,18 @@ import useCartContext from "../hooks/useCartContext";
 import { useQuery } from "@apollo/client";
 import { GET_ITEMS_BY_SEARCHNAME } from "../queries/productQueries";
 
+type ItemType = {
+  name: string;
+  searchName: string;
+  price: number;
+  img_id: string;
+  SKU: string;
+};
+
 const ItemFullPage = () => {
   const { itemID } = useParams();
   const navigate = useNavigate();
   const { REDUCER_ACTIONS, dispatch, cart } = useCartContext();
-
-  const [currentItem] = fullItemList.filter(
-    (item) => item.id === `item${itemID}`
-  );
 
   const { loading, error, data } = useQuery(GET_ITEMS_BY_SEARCHNAME, {
     variables: { searchName: itemID },
@@ -22,22 +26,34 @@ const ItemFullPage = () => {
 
   const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_500,c_fill/${data?.getProductBySearchName?.img_id}`;
 
-  const itemInCart = cart.find((item) => item.id === `item${itemID}`);
+  const itemInCart = cart.find(
+    (item) => item.searchName === data?.getProductBySearchName?.searchName
+  );
   const itemQtyExceeded = itemInCart && itemInCart.qty >= 25;
 
   const itemPrice = useFormatPrice(data?.getProductBySearchName?.price);
 
   useEffect(() => {
-    if (!loading && !data.getProductBySearchName) {
+    if (!loading && !data.getProductBySearchName.SKU) {
       navigate("/notfound");
     }
   }, []);
 
   const handleAddToCart = () => {
     if (itemQtyExceeded) return;
+    if (loading || error || !data.getProductBySearchName.SKU) return;
+
+    const cartItemData: ItemType = {
+      name: data.getProductBySearchName.name,
+      searchName: data.getProductBySearchName.searchName,
+      price: data.getProductBySearchName.price,
+      img_id: data.getProductBySearchName.img_id,
+      SKU: data.getProductBySearchName.SKU,
+    };
+
     dispatch({
       type: REDUCER_ACTIONS.ADD,
-      payload: { ...currentItem, qty: 1 },
+      payload: { ...cartItemData, qty: 1 },
     });
   };
 
