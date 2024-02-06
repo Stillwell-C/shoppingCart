@@ -11,7 +11,9 @@ export type CartItemType = {
 
 type CartStateType = { cart: CartItemType[] };
 
-const initialState: CartStateType = { cart: [] };
+const initialState: CartStateType = {
+  cart: JSON.parse(localStorage.getItem("mycart") || "[]"),
+};
 
 const REDUCER_ACTION_TYPE = {
   ADD: "ADD",
@@ -47,10 +49,15 @@ const reducer = (
         : state.cart.filter((item) => item.searchName !== searchName);
       const qty: number = itemInCart ? itemInCart.qty + 1 : 1;
 
-      return {
+      const updatedCart = {
         ...state,
         cart: [...filteredCart, { name, searchName, price, img_id, SKU, qty }],
       };
+
+      //Set updated cart in local storage
+      localStorage.setItem("mycart", JSON.stringify(updatedCart.cart));
+      //Return updated cart
+      return updatedCart;
     }
 
     case REDUCER_ACTION_TYPE.DELETE: {
@@ -63,8 +70,12 @@ const reducer = (
       const filteredCart: CartItemType[] = state.cart.filter(
         (item) => item.searchName !== searchName
       );
+      const updatedCart = { ...state, cart: [...filteredCart] };
 
-      return { ...state, cart: [...filteredCart] };
+      //Set updated cart in local storage
+      localStorage.setItem("mycart", JSON.stringify(updatedCart.cart));
+      //Return updated cart
+      return updatedCart;
     }
 
     case REDUCER_ACTION_TYPE.QUANTITY: {
@@ -90,7 +101,12 @@ const reducer = (
         (item) => item.searchName !== searchName
       );
 
-      return { ...state, cart: [...filteredCart, updatedItem] };
+      const updatedCart = { ...state, cart: [...filteredCart, updatedItem] };
+
+      //Set updated cart in local storage
+      localStorage.setItem("mycart", JSON.stringify(updatedCart.cart));
+      //Return updated cart
+      return updatedCart;
     }
 
     case REDUCER_ACTION_TYPE.SUBMIT: {
