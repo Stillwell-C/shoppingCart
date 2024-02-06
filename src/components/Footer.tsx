@@ -11,7 +11,7 @@ const Footer = () => {
     setFormMessage("none");
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const valid = emailRegex.test(email);
     if (valid) {
@@ -22,7 +22,7 @@ const Footer = () => {
     setFormMessage("failure");
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
