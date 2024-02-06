@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ShoppingCartProvider } from "./context/ShoppingCartProvider";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const client = new ApolloClient({
   uri: "http://localhost:3500/graphql",
@@ -17,6 +18,7 @@ root.render(
     <BrowserRouter>
       <ApolloProvider client={client}>
         <ShoppingCartProvider>
+          <ScrollToTop />
           <App />
         </ShoppingCartProvider>
       </ApolloProvider>
