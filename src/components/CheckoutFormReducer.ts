@@ -20,7 +20,6 @@ export const initialState = {
   creditCardNumber: { value: "", hasError: false, error: "" },
   creditCardExpiry: { value: "", hasError: false, error: "" },
   creditCardCVC: { value: "", hasError: false, error: "" },
-  billingAddressDuplicate: true,
 };
 
 export const REDUCER_ACTION_TYPE = {
@@ -60,7 +59,7 @@ export type ReducerActionType = {
   };
 };
 
-type StateType = typeof initialState;
+export type StateType = typeof initialState;
 
 export const CheckoutReducer = (
   state: StateType,
