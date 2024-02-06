@@ -9,6 +9,8 @@ type PropsType = {
 const CartDropDownItem = ({ item }: PropsType) => {
   const { REDUCER_ACTIONS, dispatch } = useCartContext();
 
+  const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_150,c_fill/${item.img_id}`;
+
   const handleReduceQuantity = () => {
     if (item.qty <= 1) return;
     dispatch({
@@ -33,11 +35,11 @@ const CartDropDownItem = ({ item }: PropsType) => {
   };
 
   return (
-    <li key={item.id}>
+    <li>
       <p className='dropdown-name' aria-label='item name'>
         {item.name}
       </p>
-      <img src={item.imgSmall} alt={item.name} />
+      <img src={itemURL} alt={item.name} />
       <div className='dropdown-quantity'>
         <button
           onClick={handleReduceQuantity}
