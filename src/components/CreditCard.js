@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { validateInput } from "./CheckoutFormValidation";
 
-const CreditCard = ({
-  creditCardNumber,
-  setCreditCardNumber,
-  creditCardNumberValid,
-  creditCardExpiry,
-  setCreditCardExpiry,
-  creditCardExpiryValid,
-  creditCardCVC,
-  setCreditCardCVC,
-  creditCardCVCValid,
-}) => {
-  const handleCreditCardNum = (e) => {
+const CreditCard = ({ dispatch, formState }) => {
+  const numberErrorRef = useRef();
+  const expiryErrorRef = useRef();
+  const cvcErrorRef = useRef();
+
+  const handleCreditCardNum = (input) => {
     const regex = /^[0-9]+$/;
-    const input = e.target.value.replace(/[\s]/g, "");
-    if (input === "" || regex.test(input)) {
-      const spacedNumber = spaceCCNum(input);
-      setCreditCardNumber(spacedNumber);
+    const parsedInput = input.replace(/[\s]/g, "");
+    if (regex.test(parsedInput) || input === "") {
+      validateInput("creditCardNumber", parsedInput, dispatch);
     }
   };
 
@@ -29,12 +23,12 @@ const CreditCard = ({
     return ccNum;
   };
 
-  const handleCreditCardExpiry = (e) => {
+  const handleCreditCardExpiry = (input) => {
     const regex = /^[0-9]+$/;
-    const input = e.target.value.replace(/[/]/g, "");
-    if (input === "" || regex.test(input)) {
-      const formattedExpiry = formatExpiry(input);
-      setCreditCardExpiry(formattedExpiry);
+    const parsedInput = input.replace(/[/]/g, "");
+    if (parsedInput === "" || regex.test(parsedInput)) {
+      const formattedExpiry = formatExpiry(parsedInput);
+      validateInput("creditCardExpiry", formattedExpiry, dispatch);
     }
   };
 
@@ -47,12 +41,24 @@ const CreditCard = ({
     return expiry;
   };
 
-  const handleCreditCardCVC = (e) => {
+  const handleCreditCardCVC = (input) => {
     const regex = /^[0-9]+$/;
-    if (e.target.value === "" || regex.test(e.target.value)) {
-      setCreditCardCVC(e.target.value);
+    if (input === "" || regex.test(input)) {
+      validateInput("creditCardCVC", input, dispatch);
     }
   };
+
+  useEffect(() => {
+    if (formState.creditCardNumber.hasError) numberErrorRef?.current?.focus();
+  }, [formState.creditCardNumber.hasError]);
+
+  useEffect(() => {
+    if (formState.creditCardExpiry.hasError) expiryErrorRef?.current?.focus();
+  }, [formState.creditCardExpiry.hasError]);
+
+  useEffect(() => {
+    if (formState.creditCardCVC.hasError) cvcErrorRef?.current?.focus();
+  }, [formState.creditCardCVC.hasError]);
 
   return (
     <div className='credit-card-input'>
@@ -62,12 +68,13 @@ const CreditCard = ({
             type='text'
             name='creditCardNumber'
             autoComplete='off'
-            value={creditCardNumber}
-            onChange={(e) => handleCreditCardNum(e)}
+            value={spaceCCNum(formState.creditCardNumber.value)}
+            onChange={(e) => handleCreditCardNum(e.target.value)}
             maxLength='19'
-            aria-invalid={creditCardNumberValid ? "false" : "true"}
+            aria-invalid={formState.creditCardNumber.hasError}
             aria-describedby='creditcard-number-note'
             aria-label='credit card number'
+            ref={numberErrorRef}
             required
           />
           <label className='label-name' htmlFor='creditCardNumber'>
@@ -79,12 +86,12 @@ const CreditCard = ({
         <span
           id='creditcard-number-note'
           className={
-            creditCardNumberValid === false && creditCardNumber
+            formState.creditCardNumber.hasError
               ? "error-msg"
               : "error-msg offscreen"
           }
         >
-          Must input valid credit card number
+          {formState.creditCardNumber.error}
         </span>
       </div>
       <div className='checkout-form-line'>
@@ -93,12 +100,13 @@ const CreditCard = ({
             type='text'
             name='creditCardExpiry'
             autoComplete='off'
-            value={creditCardExpiry}
-            onChange={(e) => handleCreditCardExpiry(e)}
+            value={formState.creditCardExpiry.value}
+            onChange={(e) => handleCreditCardExpiry(e.target.value)}
             maxLength='5'
-            aria-invalid={creditCardExpiryValid ? "false" : "true"}
+            aria-invalid={formState.creditCardExpiry.hasError}
             aria-describedby='creditcard-expiry-note'
             aria-label='credit card expiry'
+            ref={expiryErrorRef}
             required
           />
           <label className='label-name' htmlFor='creditCardExpiry'>
@@ -110,12 +118,13 @@ const CreditCard = ({
             type='text'
             name='creditCardCVC'
             autoComplete='off'
-            value={creditCardCVC}
-            onChange={(e) => handleCreditCardCVC(e)}
+            value={formState.creditCardCVC.value}
+            onChange={(e) => handleCreditCardCVC(e.target.value)}
             maxLength='4'
-            aria-invalid={creditCardCVCValid ? "false" : "true"}
+            aria-invalid={formState.creditCardCVC.hasError}
             aria-describedby='creditcard-cvc-note'
             aria-label='credit card cvc'
+            ref={cvcErrorRef}
             required
           />
           <label className='label-name' htmlFor='creditCardCVC'>
@@ -128,23 +137,23 @@ const CreditCard = ({
           <span
             id='creditcard-expiry-note'
             className={
-              creditCardExpiryValid === false && creditCardExpiry
+              formState.creditCardExpiry.hasError
                 ? "error-msg"
                 : "error-msg offscreen"
             }
           >
-            Must input valid expiry date
+            {formState.creditCardExpiry.error}
           </span>
         </div>
         <span
           id='creditcard-cvc-note'
           className={
-            creditCardCVCValid === false && creditCardCVC
+            formState.creditCardCVC.hasError
               ? "error-msg"
               : "error-msg offscreen"
           }
         >
-          Must input valid CVC
+          {formState.creditCardCVC.error}
         </span>
       </div>
     </div>
