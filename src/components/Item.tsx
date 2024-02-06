@@ -6,10 +6,7 @@ type ItemType = {
   name: string;
   searchName: string;
   price: number;
-  description: string;
-  dept: string;
   img_id: string;
-  SKU: string;
 };
 
 type PropsType = {
@@ -25,7 +22,6 @@ const Item = ({ item }: PropsType) => {
     <Link
       className='item-container'
       to={`/shop/fullcollection/${item.searchName}`}
-      key={item.SKU}
     >
       <img className='item-img' src={itemURL} alt={item.name} />
       <div className='item-info-container'>

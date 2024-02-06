@@ -10,14 +10,7 @@ type ItemType = {
   name: string;
   searchName: string;
   price: number;
-  description: string;
-  dept: string;
   img_id: string;
-  SKU: string;
-};
-
-type PropsType = {
-  items: ItemType[];
 };
 
 const Shop = () => {
@@ -28,9 +21,9 @@ const Shop = () => {
     variables: { dept: collectionName?.toUpperCase() },
   });
 
-  // useEffect(() => {
-  //   if (!loading) console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    if (!loading) console.log(data);
+  }, [data]);
 
   const [collectionTitle, setCollectionTitle] = useState<string>("");
 
@@ -43,7 +36,6 @@ const Shop = () => {
   };
 
   useEffect(() => {
-    console.log(collectionName);
     if (!collectionName) {
       setCollectionTitle("Full Collection");
       return;
@@ -89,7 +81,7 @@ const Shop = () => {
           {!loading &&
             !error &&
             data.getProductsByDept?.map((item: ItemType) => (
-              <Item item={item} key={item.SKU} />
+              <Item item={item} key={item.searchName} />
             ))}
         </div>
       </div>
