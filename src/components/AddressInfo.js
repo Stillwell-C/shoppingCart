@@ -1,7 +1,16 @@
-import React from "react";
+import { useEffect, useRef } from "react";
 import { validateInput } from "./CheckoutFormValidation";
 
 const AddressInfo = ({ formState, dispatch, addressType }) => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const companyNameRef = useRef();
+  const addressRef = useRef();
+  const cityRef = useRef();
+  const countryRef = useRef();
+  const zipRef = useRef();
+  const phoneRef = useRef();
+
   const handleFirstName = (input) => {
     const name = `${addressType}FirstName`;
     validateInput(name, input, dispatch);
@@ -46,6 +55,42 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
       validateInput(name, input, dispatch);
     }
   };
+
+  useEffect(() => {
+    if (formState[`${addressType}FirstName`].hasError) {
+      firstNameRef?.current?.focus();
+    }
+    if (formState[`${addressType}LastName`].hasError) {
+      lastNameRef?.current?.focus();
+    }
+    if (formState[`${addressType}CompanyName`].hasError) {
+      companyNameRef?.current?.focus();
+    }
+    if (formState[`${addressType}Address`].hasError) {
+      addressRef?.current?.focus();
+    }
+    if (formState[`${addressType}City`].hasError) {
+      cityRef?.current?.focus();
+    }
+    if (formState[`${addressType}Country`].hasError) {
+      countryRef?.current?.focus();
+    }
+    if (formState[`${addressType}Zip`].hasError) {
+      zipRef?.current?.focus();
+    }
+    if (formState[`${addressType}Phone`].hasError) {
+      phoneRef?.current?.focus();
+    }
+  }, [
+    formState[`${addressType}FirstName`].hasError,
+    formState[`${addressType}LastName`].hasError,
+    formState[`${addressType}CompanyName`].hasError,
+    formState[`${addressType}Address`].hasError,
+    formState[`${addressType}City`].hasError,
+    formState[`${addressType}Country`].hasError,
+    formState[`${addressType}Zip`].hasError,
+    formState[`${addressType}Phone`].hasError,
+  ]);
 
   return (
     <>
@@ -94,6 +139,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
                 ? "error-msg"
                 : "error-msg offscreen"
             }
+            ref={firstNameRef}
           >
             {formState[`${addressType}FirstName`].error}
           </span>
@@ -105,6 +151,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
               ? "error-msg"
               : "error-msg offscreen"
           }
+          ref={lastNameRef}
         >
           {formState[`${addressType}LastName`].error}
         </span>
@@ -137,6 +184,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
                 ? "error-msg"
                 : "error-msg offscreen"
             }
+            ref={companyNameRef}
           >
             {formState[`${addressType}CompanyName`].error}
           </span>
@@ -184,6 +232,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
               ? "error-msg form-long"
               : "error-msg offscreen form-long"
           }
+          ref={addressRef}
         >
           {formState[`${addressType}Address`].error}
         </span>
@@ -234,6 +283,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
                 ? "error-msg"
                 : "error-msg offscreen"
             }
+            ref={cityRef}
           >
             {formState[`${addressType}City`].error}
           </span>
@@ -245,6 +295,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
               ? "error-msg"
               : "error-msg offscreen"
           }
+          ref={countryRef}
         >
           {formState[`${addressType}Country`].error}
         </span>
@@ -294,6 +345,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
                 ? "error-msg form-small"
                 : "error-msg offscreen form-small"
             }
+            ref={zipRef}
           >
             {formState[`${addressType}Zip`].error}
           </span>
@@ -305,6 +357,7 @@ const AddressInfo = ({ formState, dispatch, addressType }) => {
               ? "error-msg form-medium"
               : "error-msg offscreen form-medium"
           }
+          ref={phoneRef}
         >
           {formState[`${addressType}Phone`].error}
         </span>
