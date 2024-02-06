@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Footer from "./Footer";
+import { BarLoader } from "react-spinners";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -10,10 +11,12 @@ const NotFound = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <div className='redirect-div'>
       <h1>Error. Could not find page.</h1>
       <h2>Redirecting...</h2>
+      <BarLoader height={6} />
       <Footer />
     </div>
   );
