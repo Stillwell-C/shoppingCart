@@ -1,65 +1,49 @@
 import React from "react";
+import { validateInput } from "./CheckoutFormValidation";
 
-const AddressInfo = ({
-  firstName,
-  setFirstName,
-  firstNameValid,
-  lastName,
-  setLastName,
-  lastNameValid,
-  companyName,
-  setCompanyName,
-  address,
-  setAddress,
-  addressValid,
-  addressNumber,
-  setAddressNumber,
-  city,
-  setCity,
-  cityValid,
-  state,
-  setState,
-  stateValid,
-  zip,
-  setZip,
-  zipValid,
-  phone,
-  setPhone,
-  phoneValid,
-}) => {
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
+const AddressInfo = ({ formState, dispatch, addressType }) => {
+  const handleFirstName = (input) => {
+    const name = `${addressType}FirstName`;
+    validateInput(name, input, dispatch);
   };
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
+  const handleLastName = (input) => {
+    const name = `${addressType}LastName`;
+    validateInput(name, input, dispatch);
   };
-  const handleCompanyName = (e) => {
-    setCompanyName(e.target.value);
+  const handleCompanyName = (input) => {
+    const name = `${addressType}CompanyName`;
+    validateInput(name, input, dispatch);
   };
-  const handleAddress = (e) => {
-    setAddress(e.target.value);
+  const handleAddress = (input) => {
+    const name = `${addressType}Address`;
+    validateInput(name, input, dispatch);
   };
-  const handleAddressNumber = (e) => {
-    setAddressNumber(e.target.value);
+  const handleAddressNumber = (input) => {
+    const name = `${addressType}AddressNumber`;
+    validateInput(name, input, dispatch);
   };
-  const handleCity = (e) => {
-    setCity(e.target.value);
+  const handleCity = (input) => {
+    const name = `${addressType}City`;
+    validateInput(name, input, dispatch);
   };
-  const handleState = (e) => {
-    setState(e.target.value);
+  const handleCountry = (input) => {
+    const name = `${addressType}Country`;
+    validateInput(name, input, dispatch);
   };
-  const handleZip = (e) => {
+  const handleZip = (input) => {
     const regex = /^[0-9]+$/;
+    const name = `${addressType}Zip`;
 
-    if (e.target.value === "" || regex.test(e.target.value)) {
-      setZip(e.target.value);
+    if (input === "" || regex.test(input)) {
+      validateInput(name, input, dispatch);
     }
   };
-  const handlePhone = (e) => {
+  const handlePhone = (input) => {
     const regex = /^[0-9- ()+]+$/;
+    const name = `${addressType}Phone`;
 
-    if (e.target.value === "" || regex.test(e.target.value)) {
-      setPhone(e.target.value);
+    if (input === "" || regex.test(input)) {
+      validateInput(name, input, dispatch);
     }
   };
 
@@ -71,10 +55,10 @@ const AddressInfo = ({
             type='text'
             name='firstname'
             autoComplete='off'
-            value={firstName}
-            onChange={(e) => handleFirstName(e)}
+            value={formState[`${addressType}FirstName`].value}
+            onChange={(e) => handleFirstName(e.target.value)}
             maxLength='30'
-            aria-invalid={firstNameValid ? "false" : "true"}
+            aria-invalid={formState[`${addressType}FirstName`].hasError}
             aria-describedby='firstname-note'
             aria-label='first name'
             required
@@ -88,9 +72,9 @@ const AddressInfo = ({
             type='text'
             name='lastname'
             autoComplete='off'
-            value={lastName}
-            onChange={(e) => handleLastName(e)}
-            aria-invalid={lastNameValid ? "false" : "true"}
+            value={formState[`${addressType}LastName`].value}
+            onChange={(e) => handleLastName(e.target.value)}
+            aria-invalid={formState[`${addressType}LastName`].hasError}
             aria-describedby='lastname-note'
             aria-label='last name'
             maxLength='30'
@@ -106,23 +90,23 @@ const AddressInfo = ({
           <span
             id='firstname-note'
             className={
-              firstNameValid === false && firstName
+              formState[`${addressType}FirstName`].hasError
                 ? "error-msg"
                 : "error-msg offscreen"
             }
           >
-            Must input valid name between 1-30 characters
+            {formState[`${addressType}FirstName`].error}
           </span>
         </div>
         <span
           id='lastname-note'
           className={
-            lastNameValid === false && lastName
+            formState[`${addressType}LastName`].hasError
               ? "error-msg"
               : "error-msg offscreen"
           }
         >
-          Must input valid name between 1-30 characters
+          {formState[`${addressType}LastName`].error}
         </span>
       </div>
       <div className='checkout-form-line'>
@@ -131,9 +115,11 @@ const AddressInfo = ({
             type='text'
             name='company-name'
             autoComplete='off'
-            value={companyName}
-            onChange={(e) => handleCompanyName(e)}
+            value={formState[`${addressType}CompanyName`].value}
+            onChange={(e) => handleCompanyName(e.target.value)}
             aria-label='company name'
+            aria-invalid={formState[`${addressType}CompanyName`].hasError}
+            aria-describedby='companyname-note'
             maxLength='50'
             required
           />
@@ -142,16 +128,30 @@ const AddressInfo = ({
           </label>
         </div>
       </div>
+      <div className='error-msg-line'>
+        <div className='error-msg'>
+          <span
+            id='companyname-note'
+            className={
+              formState[`${addressType}CompanyName`].hasError
+                ? "error-msg"
+                : "error-msg offscreen"
+            }
+          >
+            {formState[`${addressType}CompanyName`].error}
+          </span>
+        </div>
+      </div>
       <div className='checkout-form-line'>
         <div className='input-div form-medium'>
           <input
             type='text'
             name='address'
             autoComplete='off'
-            value={address}
-            onChange={(e) => handleAddress(e)}
+            value={formState[`${addressType}Address`].value}
+            onChange={(e) => handleAddress(e.target.value)}
             maxLength='100'
-            aria-invalid={addressValid ? "false" : "true"}
+            aria-invalid={formState[`${addressType}Address`].hasError}
             aria-describedby='address-note'
             aria-label='address'
             required
@@ -165,8 +165,8 @@ const AddressInfo = ({
             type='text'
             name='address-extra-info'
             autoComplete='off'
-            value={addressNumber}
-            onChange={(e) => handleAddressNumber(e)}
+            value={formState[`${addressType}AddressNumber`].value}
+            onChange={(e) => handleAddressNumber(e.target.value)}
             aria-label='apartment or suite number'
             maxLength='20'
             required
@@ -180,12 +180,12 @@ const AddressInfo = ({
         <span
           id='address-note'
           className={
-            addressValid === false && address
+            formState[`${addressType}Address`].hasError
               ? "error-msg form-long"
               : "error-msg offscreen form-long"
           }
         >
-          Must input a valid input address
+          {formState[`${addressType}Address`].error}
         </span>
       </div>
 
@@ -195,10 +195,10 @@ const AddressInfo = ({
             type='text'
             name='city'
             autoComplete='off'
-            value={city}
-            onChange={(e) => handleCity(e)}
+            value={formState[`${addressType}City`].value}
+            onChange={(e) => handleCity(e.target.value)}
             maxLength='100'
-            aria-invalid={cityValid ? "false" : "true"}
+            aria-invalid={formState[`${addressType}City`].hasError}
             aria-describedby='city-note'
             aria-label='city'
             required
@@ -212,10 +212,10 @@ const AddressInfo = ({
             type='text'
             name='country'
             autoComplete='off'
-            value={state}
-            onChange={(e) => handleState(e)}
+            value={formState[`${addressType}Country`].value}
+            onChange={(e) => handleCountry(e.target.value)}
             maxLength='20'
-            aria-invalid={stateValid ? "false" : "true"}
+            aria-invalid={formState[`${addressType}Country`].hasError}
             aria-describedby='country-note'
             aria-label='country'
             required
@@ -230,19 +230,23 @@ const AddressInfo = ({
           <span
             id='city-note'
             className={
-              cityValid === false && city ? "error-msg" : "error-msg offscreen"
+              formState[`${addressType}City`].hasError
+                ? "error-msg"
+                : "error-msg offscreen"
             }
           >
-            Must input a valid city
+            {formState[`${addressType}City`].error}
           </span>
         </div>
         <span
           id='country-note'
           className={
-            stateValid === false && state ? "error-msg" : "error-msg offscreen"
+            formState[`${addressType}Country`].hasError
+              ? "error-msg"
+              : "error-msg offscreen"
           }
         >
-          Must input a valid country
+          {formState[`${addressType}Country`].error}
         </span>
       </div>
       <div className='checkout-form-line'>
@@ -251,10 +255,10 @@ const AddressInfo = ({
             type='text'
             name='zip-code'
             autoComplete='off'
-            value={zip}
-            onChange={(e) => handleZip(e)}
+            value={formState[`${addressType}Zip`].value}
+            onChange={(e) => handleZip(e.target.value)}
             maxLength='5'
-            aria-invalid={zipValid ? "false" : "true"}
+            aria-invalid={formState[`${addressType}Zip`].hasError}
             aria-describedby='zip-note'
             aria-label='zip code'
             required
@@ -268,10 +272,10 @@ const AddressInfo = ({
             type='text'
             name='phone-number'
             autoComplete='off'
-            value={phone}
-            onChange={(e) => handlePhone(e)}
+            value={formState[`${addressType}Phone`].value}
+            onChange={(e) => handlePhone(e.target.value)}
             maxLength='20'
-            aria-invalid={phoneValid ? "false" : "true"}
+            aria-invalid={formState[`${addressType}Phone`].hasError}
             aria-describedby='phone-note'
             aria-label='phone number'
             required
@@ -286,23 +290,23 @@ const AddressInfo = ({
           <span
             id='zip-note'
             className={
-              zipValid === false && zip
+              formState[`${addressType}Zip`].hasError
                 ? "error-msg form-small"
                 : "error-msg offscreen form-small"
             }
           >
-            Must input valid postal/zip code
+            {formState[`${addressType}Zip`].error}
           </span>
         </div>
         <span
           id='phone-note'
           className={
-            phoneValid === false && phone
+            formState[`${addressType}Phone`].hasError
               ? "error-msg form-medium"
               : "error-msg offscreen form-medium"
           }
         >
-          Must input valid phone number
+          {formState[`${addressType}Phone`].error}
         </span>
       </div>
     </>
