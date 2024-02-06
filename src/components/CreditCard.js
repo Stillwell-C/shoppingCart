@@ -74,7 +74,6 @@ const CreditCard = ({ dispatch, formState }) => {
             aria-invalid={formState.creditCardNumber.hasError}
             aria-describedby='creditcard-number-note'
             aria-label='credit card number'
-            ref={numberErrorRef}
             required
           />
           <label className='label-name' htmlFor='creditCardNumber'>
@@ -90,6 +89,7 @@ const CreditCard = ({ dispatch, formState }) => {
               ? "error-msg"
               : "error-msg offscreen"
           }
+          ref={numberErrorRef}
         >
           {formState.creditCardNumber.error}
         </span>
@@ -106,7 +106,6 @@ const CreditCard = ({ dispatch, formState }) => {
             aria-invalid={formState.creditCardExpiry.hasError}
             aria-describedby='creditcard-expiry-note'
             aria-label='credit card expiry'
-            ref={expiryErrorRef}
             required
           />
           <label className='label-name' htmlFor='creditCardExpiry'>
@@ -124,7 +123,6 @@ const CreditCard = ({ dispatch, formState }) => {
             aria-invalid={formState.creditCardCVC.hasError}
             aria-describedby='creditcard-cvc-note'
             aria-label='credit card cvc'
-            ref={cvcErrorRef}
             required
           />
           <label className='label-name' htmlFor='creditCardCVC'>
@@ -141,6 +139,7 @@ const CreditCard = ({ dispatch, formState }) => {
                 ? "error-msg"
                 : "error-msg offscreen"
             }
+            ref={expiryErrorRef}
           >
             {formState.creditCardExpiry.error}
           </span>
@@ -152,6 +151,7 @@ const CreditCard = ({ dispatch, formState }) => {
               ? "error-msg"
               : "error-msg offscreen"
           }
+          ref={cvcErrorRef}
         >
           {formState.creditCardCVC.error}
         </span>
