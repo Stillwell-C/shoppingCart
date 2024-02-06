@@ -4,20 +4,8 @@ import Footer from "./Footer";
 import fullItemList from "../Data/FullItemList";
 import useFormatPrice from "../hooks/useFormatPrice";
 import useCartContext from "../hooks/useCartContext";
-import { gql, useQuery } from "@apollo/client";
-
-const GET_ITEMS = gql`
-  query GetProductBySearchName($searchName: String!) {
-    getProductBySearchName(searchName: $searchName) {
-      SKU
-      name
-      price
-      description
-      dept
-      img_id
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { GET_ITEMS_BY_SEARCHNAME } from "../queries/productQueries";
 
 const ItemFullPage = () => {
   const { itemID } = useParams();
@@ -28,7 +16,7 @@ const ItemFullPage = () => {
     (item) => item.id === `item${itemID}`
   );
 
-  const { loading, error, data } = useQuery(GET_ITEMS, {
+  const { loading, error, data } = useQuery(GET_ITEMS_BY_SEARCHNAME, {
     variables: { searchName: itemID },
   });
 
