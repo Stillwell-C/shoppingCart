@@ -2,19 +2,29 @@ import React, { useEffect, useReducer, useState } from "react";
 import Footer from "./Footer";
 import AddressInfo from "./AddressInfo";
 import CreditCard from "./CreditCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CheckoutReducer, initialState } from "./CheckoutFormReducer";
 import { formCompletionCheck, validateForm } from "./CheckoutFormValidation";
 import useCartContext from "../hooks/useCartContext";
 import OrderPreview from "./OrderPreview";
 
 const Checkout = () => {
-  const { cart, itemTotal, priceTotal } = useCartContext();
+  const navigate = useNavigate();
+
+  const { cart, itemTotal, priceTotal, stockCheck } = useCartContext();
   const [formState, dispatch] = useReducer(CheckoutReducer, initialState);
 
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
   const [previewOrder, setPreviewOrder] = useState(false);
   const [formCompletion, setFormCompletion] = useState(false);
+
+  const outOfStockItem = stockCheck();
+
+  useEffect(() => {
+    if (outOfStockItem) {
+      navigate("/cart");
+    }
+  }, [outOfStockItem]);
 
   useEffect(() => {
     setFormCompletion(formCompletionCheck(formState, sameBillingAddress));
