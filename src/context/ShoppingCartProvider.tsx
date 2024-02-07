@@ -7,6 +7,7 @@ export type CartItemType = {
   img_id: string;
   SKU: string;
   qty: number;
+  stock_level: string;
 };
 
 type CartStateType = { cart: CartItemType[] };
@@ -39,7 +40,8 @@ const reducer = (
         throw new Error("ADD requires action.payload");
       }
 
-      const { name, searchName, price, img_id, SKU } = action.payload;
+      const { name, searchName, price, img_id, SKU, stock_level } =
+        action.payload;
 
       const itemInCart: CartItemType | undefined = state.cart.find(
         (item) => item.searchName === searchName
@@ -51,7 +53,10 @@ const reducer = (
 
       const updatedCart = {
         ...state,
-        cart: [...filteredCart, { name, searchName, price, img_id, SKU, qty }],
+        cart: [
+          ...filteredCart,
+          { name, searchName, price, img_id, SKU, qty, stock_level },
+        ],
       };
 
       //Set updated cart in local storage
@@ -140,6 +145,13 @@ const useCartContext = (initialState: CartStateType) => {
     }, 0)
   );
 
+  const stockCheck = () => {
+    for (const item in state.cart) {
+      if (state.cart[item].stock_level === "OUT") return true;
+    }
+    return false;
+  };
+
   //Alphabetize cart
   const cart = state.cart.sort((a, b) => {
     if (a.name < b.name) {
@@ -153,13 +165,14 @@ const useCartContext = (initialState: CartStateType) => {
 
   //Passing dispatch will not cause rerender
   //Memoized REDUCER_ACTIONS will also help prevent this
-  return { dispatch, REDUCER_ACTIONS, itemTotal, priceTotal, cart };
+  return { dispatch, REDUCER_ACTIONS, itemTotal, priceTotal, stockCheck, cart };
 };
 
 export type UseCartContextType = ReturnType<typeof useCartContext>;
 
 const initialCartContextState: UseCartContextType = {
   dispatch: () => {},
+  stockCheck: () => false,
   REDUCER_ACTIONS: REDUCER_ACTION_TYPE,
   itemTotal: 0,
   priceTotal: "",
