@@ -4,7 +4,7 @@ import OrderPreviewItem from "./OrderPreviewItem";
 type PropsType = {
   cart: CartItemType[];
   itemTotal: number;
-  priceTotal: number;
+  priceTotal: string;
 };
 
 const OrderPreview = ({ cart, itemTotal, priceTotal }: PropsType) => {
