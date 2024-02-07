@@ -5,13 +5,16 @@ import CreditCard from "./CreditCard";
 import { Link } from "react-router-dom";
 import { CheckoutReducer, initialState } from "./CheckoutFormReducer";
 import { formCompletionCheck, validateForm } from "./CheckoutFormValidation";
+import useCartContext from "../hooks/useCartContext";
+import OrderPreview from "./OrderPreview";
 
-const Checkout = ({ shoppingCart }) => {
+const Checkout = () => {
+  const { cart, itemTotal, priceTotal } = useCartContext();
+  const [formState, dispatch] = useReducer(CheckoutReducer, initialState);
+
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
   const [previewOrder, setPreviewOrder] = useState(false);
   const [formCompletion, setFormCompletion] = useState(false);
-
-  const [formState, dispatch] = useReducer(CheckoutReducer, initialState);
 
   useEffect(() => {
     setFormCompletion(formCompletionCheck(formState, sameBillingAddress));
@@ -20,11 +23,6 @@ const Checkout = ({ shoppingCart }) => {
   useEffect(() => {
     console.log(formState);
   }, [formState]);
-
-  const handlePreviewOrder = (e) => {
-    e.preventDefault();
-    setPreviewOrder(!previewOrder);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,37 +72,22 @@ const Checkout = ({ shoppingCart }) => {
             )}
           </div>
           <div className='order-preview'>
-            {!previewOrder && (
-              <button
-                className='preview-order-button'
-                aria-label='open preview of your order'
-                onClick={(e) => handlePreviewOrder(e)}
-              >
-                Preview your order
-              </button>
-            )}
             {previewOrder && (
-              <div className='order-preview-container'>
-                <div className='order-preview-items'>
-                  {shoppingCart.map((item) => (
-                    <div key={item.serial}>
-                      <img src={item.imgSmall} alt={item.name} />
-                      <div className='order-preview-info'>
-                        <p>{item.name}</p>
-                        <p>Quantity: {item.quantity}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  className='preview-order-close'
-                  aria-label='close preview of your order'
-                  onClick={(e) => handlePreviewOrder(e)}
-                >
-                  Close
-                </button>
-              </div>
+              <OrderPreview
+                cart={cart}
+                itemTotal={itemTotal}
+                priceTotal={priceTotal}
+              />
             )}
+            <button
+              className='preview-order-button'
+              aria-label='open preview of your order'
+              onClick={() => {
+                setPreviewOrder((prev) => !prev);
+              }}
+            >
+              {previewOrder ? "Close" : "Preview your order"}
+            </button>
           </div>
           <Link to='/orderconfirmation'>
             <button
