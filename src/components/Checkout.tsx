@@ -7,6 +7,7 @@ import { CheckoutReducer, initialState } from "./CheckoutFormReducer";
 import { formCompletionCheck, validateForm } from "./CheckoutFormValidation";
 import useCartContext from "../hooks/useCartContext";
 import OrderPreview from "./OrderPreview";
+import OrderProcessing from "./OrderProcessing";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Checkout = () => {
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
   const [previewOrder, setPreviewOrder] = useState(false);
   const [formCompletion, setFormCompletion] = useState(false);
+  const [proccessingOrder, setProccessingOrder] = useState(false);
 
   const outOfStockItem = stockCheck();
 
@@ -32,15 +34,20 @@ const Checkout = () => {
 
   useEffect(() => {
     console.log(formState);
+    console.log(cart);
   }, [formState]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validation = validateForm(formState);
-    if (!validation) return;
+    const completion = formCompletionCheck(formState, sameBillingAddress);
+    if (!validation || !completion) {
+      setProccessingOrder(false);
+      return;
+    }
   };
 
-  return (
+  const CheckoutPage = (
     <div className='checkout-page'>
       <div className='checkout-container'>
         <h1>checkout</h1>
@@ -99,20 +106,20 @@ const Checkout = () => {
               {previewOrder ? "Close" : "Preview your order"}
             </button>
           </div>
-          <Link to='/orderconfirmation'>
-            <button
-              className='place-order-button'
-              type='submit'
-              disabled={!formCompletion}
-            >
-              Place Order
-            </button>
-          </Link>
+          <button
+            className='place-order-button'
+            type='submit'
+            disabled={!formCompletion}
+          >
+            Place Order
+          </button>
         </form>
       </div>
       <Footer />
     </div>
   );
+
+  return proccessingOrder ? <OrderProcessing /> : CheckoutPage;
 };
 
 export default Checkout;
