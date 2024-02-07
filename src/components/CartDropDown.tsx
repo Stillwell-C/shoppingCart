@@ -1,4 +1,3 @@
-import React from "react";
 import useCartContext from "../hooks/useCartContext";
 import { Link } from "react-router-dom";
 import CartDropDownItem from "./CartDropDownItem";
@@ -27,7 +26,7 @@ const CartDropDown = ({ setCartOpen }: PropsType) => {
             <div className='dropdown-empty-container'>
               <p>Your cart is empty.</p>
               <Link to='/shop'>
-                <button>Shop Now</button>
+                <button onClick={() => setCartOpen(false)}>Shop Now</button>
               </Link>
             </div>
           )}
@@ -38,16 +37,30 @@ const CartDropDown = ({ setCartOpen }: PropsType) => {
           </ul>
           <div className='dropdown-footer'>
             <h3 aria-label='total price'>Total: {priceTotal}</h3>
-            {itemTotal < 1 && <button disabled>Checkout Now</button>}
-            {itemTotal >= 1 && (
-              <Link to='/checkout'>
-                <button onClick={() => setCartOpen(false)}>Checkout Now</button>
+            <div className='dropdown-footer-buttons'>
+              {itemTotal < 1 && (
+                <div>
+                  <button disabled>Checkout Now</button>
+                </div>
+              )}
+              {itemTotal >= 1 && (
+                <Link to='/checkout'>
+                  <button onClick={() => setCartOpen(false)}>
+                    Checkout Now
+                  </button>
+                </Link>
+              )}
+              <Link to='/cart'>
+                <button onClick={() => setCartOpen(false)}>View Cart</button>
               </Link>
-            )}
+            </div>
           </div>
         </div>
       </div>
-      <div className='shopping-dropdown-background'></div>
+      <div
+        className='shopping-dropdown-overlay'
+        onClick={() => setCartOpen(false)}
+      ></div>
     </>
   );
 };
