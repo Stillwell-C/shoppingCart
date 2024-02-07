@@ -5,7 +5,6 @@ import { ReducerActionType, StateType } from "./CheckoutFormReducer";
 type PropsType = {
   formState: StateType;
   dispatch: React.Dispatch<ReducerActionType>;
-  addressType: string;
 };
 
 const CreditCard = ({ dispatch, formState }: PropsType) => {
