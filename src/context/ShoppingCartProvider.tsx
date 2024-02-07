@@ -42,7 +42,7 @@ const reducer = (
       const { name, searchName, price, img_id, SKU } = action.payload;
 
       const itemInCart: CartItemType | undefined = state.cart.find(
-        (item) => (item.searchName = searchName)
+        (item) => item.searchName === searchName
       );
       const filteredCart: CartItemType[] = !itemInCart
         ? state.cart
