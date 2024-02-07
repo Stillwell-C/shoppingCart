@@ -1,12 +1,13 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { CartItemType } from "../context/ShoppingCartProvider";
 import useCartContext from "../hooks/useCartContext";
 
 type PropsType = {
   item: CartItemType;
+  setCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const CartDropDownItem = ({ item }: PropsType) => {
+const CartDropDownItem = ({ item, setCartOpen }: PropsType) => {
   const { REDUCER_ACTIONS, dispatch } = useCartContext();
 
   const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_150,c_fill/${item.img_id}`;
@@ -36,9 +37,14 @@ const CartDropDownItem = ({ item }: PropsType) => {
 
   return (
     <li>
-      <p className='dropdown-name' aria-label='item name'>
-        {item.name}
-      </p>
+      <Link
+        to={`/shop/fullcollection/${item.searchName}`}
+        onClick={() => setCartOpen(false)}
+      >
+        <p className='dropdown-name' aria-label='item name'>
+          {item.name}
+        </p>
+      </Link>
       <img src={itemURL} alt={item.name} />
       <div className='dropdown-quantity'>
         <button
