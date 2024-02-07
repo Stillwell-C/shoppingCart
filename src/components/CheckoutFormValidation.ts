@@ -204,6 +204,7 @@ export const formCompletionCheck = (
     const inputValue = formState[key as keyof StateType].value;
     const requiredField =
       !key.endsWith("CompanyName") && !key.endsWith("AddressNumber");
+
     if (
       //Field is required & no input value provided
       requiredField &&
