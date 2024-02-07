@@ -64,8 +64,10 @@ const ItemFullPage = () => {
   const buttonDisable =
     itemQtyExceeded || data?.getProductBySearchName?.stock_level === "OUT";
 
-  const lowStock =
-    !loading && data?.getProductBySearchName?.stock_level === "LOW";
+  const lowStockDisplay = !loading &&
+    data?.getProductBySearchName?.stock_level === "LOW" && (
+      <p>Only a few left. Order soon!</p>
+    );
 
   const outOfStockDisplay = data?.getProductBySearchName?.stock_level ===
     "OUT" && <p>Out of Stock</p>;
@@ -91,7 +93,7 @@ const ItemFullPage = () => {
               In your <Link to='/cart'>Shopping Cart</Link>
             </p>
           )}
-          {lowStock && <p>Only a few left. Order soon!</p>}
+          {lowStockDisplay}
           {outOfStockDisplay}
         </div>
         <div>
