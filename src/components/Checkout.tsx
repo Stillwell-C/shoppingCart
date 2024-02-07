@@ -24,7 +24,7 @@ const Checkout = () => {
     console.log(formState);
   }, [formState]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validation = validateForm(formState);
     if (!validation) return;
