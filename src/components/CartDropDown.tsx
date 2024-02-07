@@ -32,7 +32,11 @@ const CartDropDown = ({ setCartOpen }: PropsType) => {
           )}
           <ul className='dropdown-items'>
             {cart.map((item) => (
-              <CartDropDownItem item={item} key={item.searchName} />
+              <CartDropDownItem
+                item={item}
+                setCartOpen={setCartOpen}
+                key={item.searchName}
+              />
             ))}
           </ul>
           <div className='dropdown-footer'>
