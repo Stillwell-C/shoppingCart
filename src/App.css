@@ -127,6 +127,11 @@ nav a {
   overflow-y: auto;
 }
 
+.shopping-dropdown-content a {
+  text-decoration: none;
+  color: #000;
+}
+
 .dropdown-items {
   display: flex;
   flex-direction: column;
@@ -927,8 +932,18 @@ footer {
   gap: 2rem;
 }
 
+.order-fullpage-container a {
+  text-decoration: none;
+  color: #000;
+}
+
 .order-fullpage-container h2 {
   font-size: 2rem;
+}
+
+.order-cart-error-div {
+  color: red;
+  font-weight: bold;
 }
 
 .order-fullpage-container button {
