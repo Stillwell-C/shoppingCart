@@ -1,14 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCartContext from "../hooks/useCartContext";
 import CartFullPageItem from "./CartFullPageItem";
+import { useEffect, useRef } from "react";
 
 const CartFullPage = () => {
-  const { cart, itemTotal, priceTotal } = useCartContext();
-  console.log(cart);
+  const stockMsgRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const { cart, itemTotal, priceTotal, stockCheck } = useCartContext();
+
+  const outOfStockItem = stockCheck();
+
+  useEffect(() => {
+    if (outOfStockItem) {
+      stockMsgRef?.current?.focus();
+    }
+  }, [outOfStockItem]);
+
+  const handleButtonClick = () => {
+    if (outOfStockItem) {
+      stockMsgRef?.current?.focus();
+      stockMsgRef?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      return;
+    }
+    navigate("/checkout");
+  };
 
   return (
     <div className='order-fullpage-container'>
       <h2>cart</h2>
+      {outOfStockItem && (
+        <div className='order-cart-error-div' ref={stockMsgRef}>
+          <p>Error.</p>
+          <p>One or more items in your cart are out of stock.</p>
+          <p>Please remove before proceeding to checkout.</p>
+        </div>
+      )}
       {itemTotal < 1 && (
         <div className='order-fullpage-empty-container'>
           <p>Your cart is empty.</p>
@@ -35,9 +65,7 @@ const CartFullPage = () => {
       )}
       {itemTotal >= 1 && (
         <div className='order-fullpage-button'>
-          <Link to='/checkout'>
-            <button>Checkout Now</button>
-          </Link>
+          <button onClick={handleButtonClick}>Checkout Now</button>
         </div>
       )}
     </div>
