@@ -86,7 +86,7 @@ const reducer = (
       const { searchName, qty } = action.payload;
 
       const itemInCart: CartItemType | undefined = state.cart.find(
-        (item) => (item.searchName = searchName)
+        (item) => item.searchName === searchName
       );
 
       if (!itemInCart) {
