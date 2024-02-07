@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CartItemType } from "../context/ShoppingCartProvider";
 import useCartContext from "../hooks/useCartContext";
 import useFormatPrice from "../hooks/useFormatPrice";
@@ -36,18 +37,30 @@ const CartFullPageItem = ({ item }: PropsType) => {
 
   const subtotal = useFormatPrice(item.qty * item.price);
 
+  const lowStockDisplay = item.stock_level === "LOW" && (
+    <p>Only a few left. Order soon!</p>
+  );
+
+  const outOfStock = item.stock_level === "OUT";
+
   return (
     <li className='order-fullpage-item-info'>
-      <img src={itemURL} alt={item.name} />
+      <Link to={`/shop/fullcollection/${item.searchName}`}>
+        <img src={itemURL} alt={item.name} />
+      </Link>
       <div>
-        <p className='order-fullpage-font-lg order-fullpage-bold'>
-          {item.name}
-        </p>
+        <Link to={`/shop/fullcollection/${item.searchName}`}>
+          <p className='order-fullpage-font-lg order-fullpage-bold'>
+            {item.name}
+          </p>
+        </Link>
+        {lowStockDisplay}
+        {outOfStock && <p>Sorry, this product is out of stock.</p>}
         <div className='order-fullpage-quantity'>
           <span>Quantity:</span>
           <button
             onClick={handleReduceQuantity}
-            disabled={item.qty <= 1}
+            disabled={item.qty <= 1 || outOfStock}
             aria-label='reduce quantity by one'
           >
             −
@@ -55,7 +68,7 @@ const CartFullPageItem = ({ item }: PropsType) => {
           <span>{item.qty}</span>
           <button
             onClick={handleIncreaseQuantity}
-            disabled={item.qty >= 25}
+            disabled={item.qty >= 25 || outOfStock}
             aria-label='increase quantity by one'
           >
             +
