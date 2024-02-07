@@ -1,12 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { validateInput } from "./CheckoutFormValidation";
+import { ReducerActionType, StateType } from "./CheckoutFormReducer";
 
-const CreditCard = ({ dispatch, formState }) => {
-  const numberErrorRef = useRef();
-  const expiryErrorRef = useRef();
-  const cvcErrorRef = useRef();
+type PropsType = {
+  formState: StateType;
+  dispatch: React.Dispatch<ReducerActionType>;
+  addressType: string;
+};
 
-  const handleCreditCardNum = (input) => {
+const CreditCard = ({ dispatch, formState }: PropsType) => {
+  const numberErrorRef = useRef<HTMLSpanElement>(null);
+  const expiryErrorRef = useRef<HTMLSpanElement>(null);
+  const cvcErrorRef = useRef<HTMLSpanElement>(null);
+
+  const handleCreditCardNum = (input: string) => {
     const regex = /^[0-9]+$/;
     const parsedInput = input.replace(/[\s]/g, "");
     if (regex.test(parsedInput) || input === "") {
@@ -14,7 +21,7 @@ const CreditCard = ({ dispatch, formState }) => {
     }
   };
 
-  const spaceCCNum = (userInput) => {
+  const spaceCCNum = (userInput: string) => {
     let ccNum = "";
     for (let i = 0; i < userInput.length; i++) {
       if (i % 4 === 0 && i > 0) ccNum = ccNum + " ";
@@ -23,7 +30,7 @@ const CreditCard = ({ dispatch, formState }) => {
     return ccNum;
   };
 
-  const handleCreditCardExpiry = (input) => {
+  const handleCreditCardExpiry = (input: string) => {
     const regex = /^[0-9]+$/;
     const parsedInput = input.replace(/[/]/g, "");
     if (parsedInput === "" || regex.test(parsedInput)) {
@@ -32,7 +39,7 @@ const CreditCard = ({ dispatch, formState }) => {
     }
   };
 
-  const formatExpiry = (userInput) => {
+  const formatExpiry = (userInput: string) => {
     let expiry = "";
     for (let i = 0; i < userInput.length; i++) {
       if (i === 2) expiry = expiry + "/";
@@ -41,7 +48,7 @@ const CreditCard = ({ dispatch, formState }) => {
     return expiry;
   };
 
-  const handleCreditCardCVC = (input) => {
+  const handleCreditCardCVC = (input: string) => {
     const regex = /^[0-9]+$/;
     if (input === "" || regex.test(input)) {
       validateInput("creditCardCVC", input, dispatch);
@@ -70,7 +77,7 @@ const CreditCard = ({ dispatch, formState }) => {
             autoComplete='off'
             value={spaceCCNum(formState.creditCardNumber.value)}
             onChange={(e) => handleCreditCardNum(e.target.value)}
-            maxLength='19'
+            maxLength={19}
             aria-invalid={formState.creditCardNumber.hasError}
             aria-describedby='creditcard-number-note'
             aria-label='credit card number'
@@ -102,7 +109,7 @@ const CreditCard = ({ dispatch, formState }) => {
             autoComplete='off'
             value={formState.creditCardExpiry.value}
             onChange={(e) => handleCreditCardExpiry(e.target.value)}
-            maxLength='5'
+            maxLength={5}
             aria-invalid={formState.creditCardExpiry.hasError}
             aria-describedby='creditcard-expiry-note'
             aria-label='credit card expiry'
@@ -119,7 +126,7 @@ const CreditCard = ({ dispatch, formState }) => {
             autoComplete='off'
             value={formState.creditCardCVC.value}
             onChange={(e) => handleCreditCardCVC(e.target.value)}
-            maxLength='4'
+            maxLength={4}
             aria-invalid={formState.creditCardCVC.hasError}
             aria-describedby='creditcard-cvc-note'
             aria-label='credit card cvc'
