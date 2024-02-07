@@ -20,6 +20,7 @@ const GET_ITEMS_BY_SEARCHNAME = gql`
       price
       description
       img_id
+      stock_level
     }
   }
 `;
