@@ -13,6 +13,7 @@ type ItemType = {
   price: number;
   img_id: string;
   SKU: string;
+  stock_level: string;
 };
 
 const ItemFullPage = () => {
@@ -23,6 +24,8 @@ const ItemFullPage = () => {
   const { loading, error, data } = useQuery(GET_ITEMS_BY_SEARCHNAME, {
     variables: { searchName: itemID },
   });
+
+  console.log(data);
 
   const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_500,c_fill/${data?.getProductBySearchName?.img_id}`;
 
@@ -49,6 +52,7 @@ const ItemFullPage = () => {
       price: data.getProductBySearchName.price,
       img_id: data.getProductBySearchName.img_id,
       SKU: data.getProductBySearchName.SKU,
+      stock_level: data.getProductBySearchName.stock_level,
     };
 
     dispatch({
@@ -56,6 +60,15 @@ const ItemFullPage = () => {
       payload: { ...cartItemData, qty: 1 },
     });
   };
+
+  const buttonDisable =
+    itemQtyExceeded || data?.getProductBySearchName?.stock_level === "OUT";
+
+  const lowStock =
+    !loading && data?.getProductBySearchName?.stock_level === "LOW";
+
+  const outOfStockDisplay = data?.getProductBySearchName?.stock_level ===
+    "OUT" && <p>Out of Stock</p>;
 
   return (
     <div className='item-full-page'>
@@ -68,20 +81,24 @@ const ItemFullPage = () => {
           src={itemURL}
           alt={data?.getProductBySearchName?.name}
         />
-        <div>
+        <div className='item-information'>
           <p>{data?.getProductBySearchName?.description}</p>
-          <p>{itemPrice}</p>
+          <p className='item-info-price'>{itemPrice}</p>
         </div>
-        <div>
+        <div className='item-stock-info'>
           {itemInCart && (
             <p>
               In your <Link to='/cart'>Shopping Cart</Link>
             </p>
           )}
+          {lowStock && <p>Only a few left. Order soon!</p>}
+          {outOfStockDisplay}
         </div>
-        <button disabled={itemQtyExceeded} onClick={handleAddToCart}>
-          Add to cart
-        </button>
+        <div>
+          <button disabled={buttonDisable} onClick={handleAddToCart}>
+            Add to cart
+          </button>
+        </div>
       </div>
       <Footer />
     </div>
