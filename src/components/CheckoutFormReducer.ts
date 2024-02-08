@@ -22,6 +22,114 @@ export const initialState = {
   creditCardCVC: { value: "", hasError: false, error: "" },
 };
 
+export interface StateType {
+  shippingFirstName: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingLastName: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingCompanyName: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingAddress: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingAddressNumber: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingCity: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingCountry: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingZip: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  shippingPhone: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingFirstName: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingLastName: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingCompanyName: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingAddress: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingAddressNumber: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingCity: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingCountry: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingZip: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  billingPhone: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  creditCardNumber: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  creditCardExpiry: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+  creditCardCVC: {
+    value: string;
+    hasError: boolean;
+    error: string;
+  };
+}
+
 export const REDUCER_ACTION_TYPE = {
   UPDATE: "UPDATE",
 };
@@ -58,8 +166,6 @@ export type ReducerActionType = {
     error: string;
   };
 };
-
-export type StateType = typeof initialState;
 
 export const CheckoutReducer = (
   state: StateType,
