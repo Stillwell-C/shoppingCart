@@ -3,14 +3,42 @@ import Footer from "./Footer";
 import AddressInfo from "./AddressInfo";
 import CreditCard from "./CreditCard";
 import { Link, useNavigate } from "react-router-dom";
-import { CheckoutReducer, initialState } from "./CheckoutFormReducer";
+import {
+  CheckoutReducer,
+  StateType,
+  initialState,
+} from "./CheckoutFormReducer";
 import { formCompletionCheck, validateForm } from "./CheckoutFormValidation";
 import useCartContext from "../hooks/useCartContext";
 import OrderPreview from "./OrderPreview";
 import OrderProcessing from "./OrderProcessing";
+import { useMutation } from "@apollo/client";
+import { ADD_ORDER } from "../mutations/orderMutations";
+
+type OrderInfo = {
+  searchName: string;
+  qty: number;
+};
+
+type UserInfo = {
+  [key: string]: string;
+};
+
+export type Order = {
+  userInfo: UserInfo;
+  orderInfo: OrderInfo[];
+};
 
 const Checkout = () => {
   const navigate = useNavigate();
+
+  const [addOrder, { data, loading, error }] = useMutation(ADD_ORDER);
+
+  useEffect(() => {
+    if (error) console.log("error: ", error);
+    if (loading) console.log("loading: ", loading);
+    if (data) console.log("data: ", data);
+  }, [error, data, loading]);
 
   const { cart, itemTotal, priceTotal, stockCheck } = useCartContext();
   const [formState, dispatch] = useReducer(CheckoutReducer, initialState);
@@ -32,19 +60,34 @@ const Checkout = () => {
     setFormCompletion(formCompletionCheck(formState, sameBillingAddress));
   }, [formState, sameBillingAddress]);
 
-  useEffect(() => {
-    console.log(formState);
-    console.log(cart);
-  }, [formState]);
+  // useEffect(() => {
+  //   console.log(Object.entries(formState));
+  //   console.log(cart);
+  // }, [formState]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setProccessingOrder(true);
     const validation = validateForm(formState);
     const completion = formCompletionCheck(formState, sameBillingAddress);
     if (!validation || !completion) {
       setProccessingOrder(false);
       return;
     }
+    const orderInfo = cart.map((item) => ({
+      searchName: item.searchName,
+      qty: item.qty,
+    }));
+    const userInfo = Object.entries(formState).map(([key, values]) => ({
+      [key]: values.value,
+    }));
+    const orderObj = {
+      userInfo: { sameBillingAddress, ...userInfo },
+      orderInfo,
+    };
+    const order = addOrder({ variables: orderObj });
+    console.log(order);
+    setProccessingOrder(false);
   };
 
   const CheckoutPage = (
