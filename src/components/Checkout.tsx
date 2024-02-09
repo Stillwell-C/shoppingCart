@@ -40,6 +40,12 @@ const Checkout = () => {
     if (data) console.log("data: ", data);
   }, [error, data, loading]);
 
+  useEffect(() => {
+    if (!error && !loading && data?.addOrder?.success) {
+      navigate("/orderconfirmation");
+    }
+  }, [loading, data, error]);
+
   const { cart, itemTotal, priceTotal, stockCheck } = useCartContext();
   const [formState, dispatch] = useReducer(CheckoutReducer, initialState);
 
