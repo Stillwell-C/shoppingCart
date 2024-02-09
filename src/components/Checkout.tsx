@@ -35,7 +35,7 @@ const Checkout = () => {
   const [addOrder, { data, loading, error }] = useMutation(ADD_ORDER);
 
   useEffect(() => {
-    if (error) console.log("error: ", error);
+    if (error) console.log("error: ", JSON.stringify(error, null, 2));
     if (loading) console.log("loading: ", loading);
     if (data) console.log("data: ", data);
   }, [error, data, loading]);
@@ -71,23 +71,24 @@ const Checkout = () => {
     const validation = validateForm(formState);
     const completion = formCompletionCheck(formState, sameBillingAddress);
     if (!validation || !completion) {
-      setProccessingOrder(false);
       return;
     }
     const orderInfo = cart.map((item) => ({
       searchName: item.searchName,
       qty: item.qty,
     }));
-    const userInfo = Object.entries(formState).map(([key, values]) => ({
-      [key]: values.value,
-    }));
-    const orderObj = {
-      userInfo: { sameBillingAddress, ...userInfo },
-      orderInfo,
-    };
-    const order = addOrder({ variables: orderObj });
+    const userInfoObj: UserInfo = {};
+    const userInfoEntries = Object.entries(formState);
+    for (const [key, values] of userInfoEntries) {
+      userInfoObj[key] = values.value;
+    }
+    const order = addOrder({
+      variables: {
+        userInfo: { sameBillingAddress, ...userInfoObj },
+        orderInfo,
+      },
+    });
     console.log(order);
-    setProccessingOrder(false);
   };
 
   const CheckoutPage = (
@@ -162,7 +163,7 @@ const Checkout = () => {
     </div>
   );
 
-  return proccessingOrder ? <OrderProcessing /> : CheckoutPage;
+  return loading ? <OrderProcessing /> : CheckoutPage;
 };
 
 export default Checkout;
