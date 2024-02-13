@@ -1,11 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useCartContext from "../hooks/useCartContext";
 import CartFullPageItem from "./CartFullPageItem";
 import { useEffect, useRef } from "react";
 
 const CartFullPage = () => {
-  const stockMsgRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const stockMsgRef = useRef<HTMLDivElement>(null);
 
   const { cart, itemTotal, priceTotal, stockCheck } = useCartContext();
 
@@ -29,16 +31,25 @@ const CartFullPage = () => {
     navigate("/checkout");
   };
 
+  const errorItem = location?.state?.errorItem
+    ? `Error with item: ${location?.state?.errorItem}`
+    : "One or more items in your cart are out of stock.";
+
+  const errorMsg =
+    location?.state?.errorMsg || "Please remove before proceeding to checkout.";
+
+  const errorDiv = (
+    <div className='order-cart-error-div' ref={stockMsgRef}>
+      <p>Error.</p>
+      <p>{errorItem}</p>
+      <p>{errorMsg}</p>
+    </div>
+  );
+
   return (
     <div className='order-fullpage-container'>
       <h2>cart</h2>
-      {outOfStockItem && (
-        <div className='order-cart-error-div' ref={stockMsgRef}>
-          <p>Error.</p>
-          <p>One or more items in your cart are out of stock.</p>
-          <p>Please remove before proceeding to checkout.</p>
-        </div>
-      )}
+      {(outOfStockItem || location?.state?.error) && errorDiv}
       {itemTotal < 1 && (
         <div className='order-fullpage-empty-container'>
           <p>Your cart is empty.</p>
