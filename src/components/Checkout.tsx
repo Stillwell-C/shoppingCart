@@ -40,19 +40,19 @@ const Checkout = () => {
     if (data) console.log("data: ", data);
   }, [error, data, loading]);
 
-  useEffect(() => {
-    if (!error && !loading && data?.addOrder?.success) {
-      navigate("/orderconfirmation");
-    }
-  }, [loading, data, error]);
-
-  const { cart, itemTotal, priceTotal, stockCheck } = useCartContext();
+  const {
+    cart,
+    itemTotal,
+    priceTotal,
+    stockCheck,
+    dispatch: cartDispatch,
+    REDUCER_ACTIONS,
+  } = useCartContext();
   const [formState, dispatch] = useReducer(CheckoutReducer, initialState);
 
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
   const [previewOrder, setPreviewOrder] = useState(false);
   const [formCompletion, setFormCompletion] = useState(false);
-  const [proccessingOrder, setProccessingOrder] = useState(false);
 
   const outOfStockItem = stockCheck();
 
@@ -66,14 +66,8 @@ const Checkout = () => {
     setFormCompletion(formCompletionCheck(formState, sameBillingAddress));
   }, [formState, sameBillingAddress]);
 
-  // useEffect(() => {
-  //   console.log(Object.entries(formState));
-  //   console.log(cart);
-  // }, [formState]);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setProccessingOrder(true);
     const validation = validateForm(formState);
     const completion = formCompletionCheck(formState, sameBillingAddress);
     if (!validation || !completion) {
@@ -88,14 +82,34 @@ const Checkout = () => {
     for (const [key, values] of userInfoEntries) {
       userInfoObj[key] = values.value;
     }
-    const order = addOrder({
+    addOrder({
       variables: {
         userInfo: { sameBillingAddress, ...userInfoObj },
         orderInfo,
       },
     });
-    console.log(order);
   };
+
+  useEffect(() => {
+    if (!error && !loading && data?.addOrder?.success) {
+      cartDispatch({ type: REDUCER_ACTIONS.SUBMIT });
+      navigate("/orderconfirmation", {
+        state: { orderNumber: data?.addOrder?.orderNumber },
+      });
+    }
+  }, [loading, data, error]);
+
+  useEffect(() => {
+    if (error && !loading) {
+      navigate("/cart", {
+        state: {
+          error: true,
+          errorItem: data?.addOrder?.errorItem,
+          errorMsg: data?.addOrder?.errorMsg,
+        },
+      });
+    }
+  }, [error, loading]);
 
   const CheckoutPage = (
     <div className='checkout-page'>
