@@ -23,7 +23,8 @@ const Shop = () => {
 
   useEffect(() => {
     if (!loading) console.log(data);
-  }, [data]);
+    if (error) console.log("error: ", JSON.stringify(error, null, 2));
+  }, [data, error]);
 
   const [collectionTitle, setCollectionTitle] = useState<string>("");
 
