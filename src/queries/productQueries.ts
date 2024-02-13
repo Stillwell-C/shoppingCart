@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 const GET_ITEMS_BY_DEPT = gql`
-  query getProductsByDept($dept: AllowedDepartments) {
+  query getProductsByDept($dept: Departments) {
     getProductsByDept(dept: $dept) {
       searchName
       name
