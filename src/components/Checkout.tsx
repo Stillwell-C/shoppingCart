@@ -1,13 +1,9 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import Footer from "./Footer";
 import AddressInfo from "./AddressInfo";
 import CreditCard from "./CreditCard";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  CheckoutReducer,
-  StateType,
-  initialState,
-} from "./CheckoutFormReducer";
+import { useNavigate } from "react-router-dom";
+import { CheckoutReducer, initialState } from "./CheckoutFormReducer";
 import { formCompletionCheck, validateForm } from "./CheckoutFormValidation";
 import useCartContext from "../hooks/useCartContext";
 import OrderPreview from "./OrderPreview";
@@ -31,6 +27,7 @@ export type Order = {
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const errRef = useRef<HTMLDivElement>(null);
 
   const [addOrder, { data, loading, error }] = useMutation(ADD_ORDER);
 
@@ -100,7 +97,7 @@ const Checkout = () => {
   }, [loading, data, error]);
 
   useEffect(() => {
-    if (error && !loading) {
+    if (!loading && data?.addOrder?.error) {
       navigate("/cart", {
         state: {
           error: true,
@@ -109,12 +106,29 @@ const Checkout = () => {
         },
       });
     }
-  }, [error, loading]);
+  }, [data, loading]);
+
+  useEffect(() => {
+    if (error) {
+      errRef?.current?.focus();
+      errRef?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [error]);
 
   const CheckoutPage = (
     <div className='checkout-page'>
       <div className='checkout-container'>
         <h1>checkout</h1>
+        {error && (
+          <div ref={errRef}>
+            <p>An error occurred.</p>
+            {error?.message && <p>{error.message}</p>}
+            <p>Please try again</p>
+          </div>
+        )}
         <form className='checkout-form' onSubmit={handleSubmit} noValidate>
           <div className='checkout-info-input-container'>
             <h2>Ship to</h2>
