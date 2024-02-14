@@ -541,6 +541,45 @@ nav a {
   border-radius: .25rem;
 }
 
+.skeleton-text-line {
+  height: 15px;
+  width: 70px;
+  margin-bottom: 5px;
+}
+
+.skeleton-item-title {
+  height: 35px;
+  width: 150px;
+  align-self: center;
+}
+
+.skeleton-item-img {
+  width: 320px
+}
+
+.skeleton-item-information {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.skeleton-background {
+  background:  linear-gradient(to right, #f1f0f0, #c1c0c0);
+  background-size: 200%;
+  background-position: left;
+  animation: load 1s ease-out 0s infinite normal;
+}
+
+@keyframes load{
+  0%, 100%{
+        background-position: right;
+    }
+  50%{
+      background-position: left;
+  }
+}
+
 .item-info-container {
   width: 200px;
   margin-top: 10px;
