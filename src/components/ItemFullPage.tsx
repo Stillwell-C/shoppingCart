@@ -6,6 +6,7 @@ import useFormatPrice from "../hooks/useFormatPrice";
 import useCartContext from "../hooks/useCartContext";
 import { useQuery } from "@apollo/client";
 import { GET_ITEMS_BY_SEARCHNAME } from "../queries/productQueries";
+import SkeletonItemFullPage from "./SkeletonItemFullPage";
 
 type ItemType = {
   name: string;
@@ -72,36 +73,39 @@ const ItemFullPage = () => {
   const outOfStockDisplay = data?.getProductBySearchName?.stock_level ===
     "OUT" && <p>Out of Stock</p>;
 
+  const pageContent = (
+    <div className='item-full-container'>
+      <h1 className='item-full-title'>{data?.getProductBySearchName?.name}</h1>
+      <img
+        className='item-img-medium'
+        src={itemURL}
+        alt={data?.getProductBySearchName?.name}
+      />
+      <div className='item-information'>
+        <p>{data?.getProductBySearchName?.description}</p>
+        <p className='item-info-price'>{itemPrice}</p>
+      </div>
+      <div className='item-stock-info'>
+        {itemInCart && (
+          <p>
+            In your <Link to='/cart'>Shopping Cart</Link>
+          </p>
+        )}
+        {lowStockDisplay}
+        {outOfStockDisplay}
+      </div>
+      <div>
+        <button disabled={buttonDisable} onClick={handleAddToCart}>
+          Add to cart
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <div className='item-full-page'>
-      <div className='item-full-container'>
-        <h1 className='item-full-title'>
-          {data?.getProductBySearchName?.name}
-        </h1>
-        <img
-          className='item-img-medium'
-          src={itemURL}
-          alt={data?.getProductBySearchName?.name}
-        />
-        <div className='item-information'>
-          <p>{data?.getProductBySearchName?.description}</p>
-          <p className='item-info-price'>{itemPrice}</p>
-        </div>
-        <div className='item-stock-info'>
-          {itemInCart && (
-            <p>
-              In your <Link to='/cart'>Shopping Cart</Link>
-            </p>
-          )}
-          {lowStockDisplay}
-          {outOfStockDisplay}
-        </div>
-        <div>
-          <button disabled={buttonDisable} onClick={handleAddToCart}>
-            Add to cart
-          </button>
-        </div>
-      </div>
+      {loading ? <SkeletonItemFullPage /> : pageContent}
+
       <Footer />
     </div>
   );
