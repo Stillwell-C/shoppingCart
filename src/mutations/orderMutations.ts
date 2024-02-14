@@ -1,9 +1,16 @@
 import { gql } from "@apollo/client";
-import { Order } from "../components/Checkout";
 
 const ADD_ORDER = gql`
-  mutation addOrder($orderInfo: [OrderItem!]!, $userInfo: UserInfo!) {
-    addOrder(orderInfo: $orderInfo, userInfo: $userInfo) {
+  mutation addOrder(
+    $orderInfo: [OrderItem!]!
+    $userInfo: UserInfo!
+    $orderTotal: Float!
+  ) {
+    addOrder(
+      orderInfo: $orderInfo
+      userInfo: $userInfo
+      orderTotal: $orderTotal
+    ) {
       success
       orderNumber
       error
