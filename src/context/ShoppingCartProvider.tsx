@@ -115,6 +115,9 @@ const reducer = (
     }
 
     case REDUCER_ACTION_TYPE.SUBMIT: {
+      //Set local storage to empty
+      localStorage.setItem("mycart", JSON.stringify([]));
+      //Return empty cart
       return { ...state, cart: [] };
     }
 
