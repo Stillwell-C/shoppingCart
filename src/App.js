@@ -10,6 +10,8 @@ import ItemFullPage from "./components/ItemFullPage";
 import OrderConfirmation from "./components/OrderConfirmation";
 import NotFound from "./components/NotFound";
 import CartFullPage from "./components/CartFullPage";
+import Orders from "./components/Orders";
+import OrderCancelConfirmation from "./components/OrderCancelConfirmation";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -106,6 +108,13 @@ function App() {
             element={<Checkout shoppingCart={shoppingCart} />}
           />
           <Route path='/orderconfirmation' element={<OrderConfirmation />} />
+          <Route path='/orders'>
+            <Route index element={<Orders />} />
+            <Route
+              path='cancelconfirmation'
+              element={<OrderCancelConfirmation />}
+            />
+          </Route>
           <Route path='/notfound' element={<NotFound />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
