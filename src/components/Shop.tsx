@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import fullItemList from "../Data/FullItemList";
 import { useQuery } from "@apollo/client";
 import { GET_ITEMS_BY_DEPT } from "../queries/productQueries";
+import SkeletonItem from "./SkeletonItem";
 
 type ItemType = {
   name: string;
@@ -58,6 +59,10 @@ const Shop = () => {
     (collection) => collection !== collectionTitle
   );
 
+  const skeletonProducts = [...new Array(9)].map((element, i) => (
+    <SkeletonItem key={i} />
+  ));
+
   return (
     <div className='shop-page'>
       <div className='shop-container'>
@@ -84,6 +89,7 @@ const Shop = () => {
             data.getProductsByDept?.map((item: ItemType) => (
               <Item item={item} key={item.searchName} />
             ))}
+          {loading && skeletonProducts}
         </div>
       </div>
       <Footer />
