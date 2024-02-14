@@ -61,6 +61,7 @@ const Footer = () => {
           <div>
             <h1>in hands</h1>
             <Link to='/about'>About us</Link>
+            <Link to='/orders'>Orders</Link>
           </div>
           <div>
             <h1>Shop</h1>
