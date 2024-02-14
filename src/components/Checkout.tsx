@@ -181,6 +181,7 @@ const Checkout = () => {
             )}
             <button
               className='preview-order-button'
+              type='button'
               aria-label='open preview of your order'
               onClick={() => {
                 setPreviewOrder((prev) => !prev);
