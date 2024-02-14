@@ -20,4 +20,12 @@ const ADD_ORDER = gql`
   }
 `;
 
-export { ADD_ORDER };
+const DELETE_ORDER = gql`
+  mutation deleteOrder($id: String!) {
+    deleteOrder(id: $id) {
+      id
+    }
+  }
+`;
+
+export { ADD_ORDER, DELETE_ORDER };
