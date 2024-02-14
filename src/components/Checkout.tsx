@@ -73,16 +73,21 @@ const Checkout = () => {
     const orderInfo = cart.map((item) => ({
       searchName: item.searchName,
       qty: item.qty,
+      price: item.price,
     }));
     const userInfoObj: UserInfo = {};
     const userInfoEntries = Object.entries(formState);
     for (const [key, values] of userInfoEntries) {
       userInfoObj[key] = values.value;
     }
+    const cartTotal = cart.reduce((previous, item) => {
+      return previous + item.qty * item.price;
+    }, 0);
     addOrder({
       variables: {
         userInfo: { sameBillingAddress, ...userInfoObj },
         orderInfo,
+        orderTotal: cartTotal,
       },
     });
   };
