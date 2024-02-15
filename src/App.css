@@ -753,6 +753,10 @@ footer {
   color: red;
 }
 
+.footer-form-success {
+  color: green;
+}
+
 .checkout-page {
   width: 100vw;
   display: flex;
