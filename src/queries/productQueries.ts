@@ -11,9 +11,9 @@ const GET_ITEMS_BY_DEPT = gql`
   }
 `;
 
-const GET_ITEMS_BY_SEARCHNAME = gql`
-  query getProductBySearchName($searchName: String!) {
-    getProductBySearchName(searchName: $searchName) {
+const GET_ITEM = gql`
+  query product($searchName: String, $SKU: Int) {
+    product(searchName: $searchName, SKU: $SKU) {
       SKU
       searchName
       name
@@ -25,4 +25,4 @@ const GET_ITEMS_BY_SEARCHNAME = gql`
   }
 `;
 
-export { GET_ITEMS_BY_DEPT, GET_ITEMS_BY_SEARCHNAME };
+export { GET_ITEMS_BY_DEPT, GET_ITEM };
