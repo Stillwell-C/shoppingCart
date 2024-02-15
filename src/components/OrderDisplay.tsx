@@ -44,6 +44,15 @@ const OrderDisplay = ({ order }: PropsType) => {
   const disableToggle =
     order.orderStatus === "SHIPPED" || order.orderStatus === "COMPLETED";
 
+  const parsedDate = new Date(parseInt(order.createdAt));
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    weekday: undefined,
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formattedDate = parsedDate.toLocaleDateString("en-US", dateOptions);
+
   return (
     <div className='order-preview-container'>
       {error && (
@@ -57,6 +66,7 @@ const OrderDisplay = ({ order }: PropsType) => {
           <OrderDisplayItem key={item.searchName} item={item} />
         ))}
       </div>
+      <p>Order Date: {formattedDate}</p>
       <p>Order Status: {order.orderStatus}</p>
       <p>Total Items: {itemTotal}</p>
       <p>Total: {order.orderTotal}</p>
