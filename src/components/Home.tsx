@@ -1,6 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import fullCollectionImg from "../assets/front-shop.jpg";
+import clothingImg from "../assets/front-clothing.jpg";
+import accessoriesImg from "../assets/front-accessories.jpg";
+import interiorImg from "../assets/front-interior.jpg";
+import frontSelfImg from "../assets/person-front.jpg";
+import frontInteriorImg from "../assets/interior-front.jpg";
+import handCraftImg from "../assets/front-crafted.jpg";
+import sustainableImg from "../assets/front-sustain.jpg";
+import passionImg from "../assets/front-passion.jpg";
 
 const Home = () => {
   return (
@@ -16,37 +25,37 @@ const Home = () => {
         <div className='home-shop-links'>
           <h1>Featured Collections</h1>
           <div className='home-shop-navlinks'>
-            <Link to='/shop'>
-              <img src='/img/front-shop.jpg' alt='link to full collection' />
-              <h3>Full Collection</h3>
+            <Link to='/shop' aria-label='move to full collection page'>
+              <img src={fullCollectionImg} alt='' />
+              <span>Full Collection</span>
             </Link>
-            <Link to='/shop/clothing'>
-              <img src='/img/front-clothing.jpg' alt='link to clothing' />
-              <h3>Clothing</h3>
+            <Link to='/shop/clothing' aria-label='move to clothing page'>
+              <img src={clothingImg} alt='' />
+              <span>Clothing</span>
             </Link>
-            <Link to='/shop/accessories'>
-              <img src='/img/front-accessories.jpg' alt='link to accessories' />
-              <h3>Accessories</h3>
+            <Link to={accessoriesImg} aria-label='move to accessories page'>
+              <img src='/img/front-accessories.jpg' alt='' />
+              <span>Accessories</span>
             </Link>
-            <Link to='/shop/interior'>
-              <img
-                src='/img/front-interior.jpg'
-                alt='link to interior products'
-              />
+            <Link
+              to='/shop/interior'
+              aria-label='move to interior collection page'
+            >
+              <img src={interiorImg} alt='' />
               <h3>Interior</h3>
             </Link>
           </div>
         </div>
         <div className='home-bottom-middle'>
           <div className='home-bm-top'>
-            <img src='/img/person-front.jpg' alt='link to clothing' />
+            <img src={frontSelfImg} alt='' />
             <div>
               <h2>Find Your New Self</h2>
               <p>
                 It's time for the new you. Our timeless pieces help you define
                 yourself and show the world what you're truely made of.
               </p>
-              <Link to='/shop'>
+              <Link to='/shop' aria-label='move to full collection page'>
                 <button>Shop Now</button>
               </Link>
             </div>
@@ -59,18 +68,21 @@ const Home = () => {
                 designs help bring the room together so you can work, sleep, and
                 rest easier.
               </p>
-              <Link to='/shop/interior'>
+              <Link
+                to='/shop/interior'
+                aria-label='move to interior collection page'
+              >
                 <button>Shop Interior</button>
               </Link>
             </div>
-            <img src='/img/interior-front.jpg' alt='link to interior' />
+            <img src={frontInteriorImg} alt='' />
           </div>
         </div>
         <div className='home-bottom-bottom'>
           <h2>Why in hands?</h2>
           <div className='why-hands'>
             <div>
-              <img src='/img/front-crafted.jpg' alt='hand crafted products' />
+              <img src={handCraftImg} alt='' />
               <h2>Hand Crafted</h2>
               <p>
                 Each and every one of our pieces is handcrafted by a team of
@@ -79,10 +91,7 @@ const Home = () => {
               </p>
             </div>
             <div>
-              <img
-                src='/img/front-sustain.jpg'
-                alt='sustainable production methods'
-              />
+              <img src={sustainableImg} alt='' />
               <h2>Sustainable Production</h2>
               <p>
                 We ship all products in 100% biodegradable packaging and our
@@ -91,7 +100,7 @@ const Home = () => {
               </p>
             </div>
             <div>
-              <img src='/img/front-passion.jpg' alt='made with passion' />
+              <img src={passionImg} alt='' />
               <h2>Built with Passion</h2>
               <p>
                 Our brand was started by a small team who share your enthusiasm
