@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
 import fullItemList from "../Data/FullItemList";
 import { useQuery } from "@apollo/client";
-import { GET_ITEMS_BY_DEPT } from "../queries/productQueries";
+import { GET_ITEMS } from "../queries/productQueries";
 import SkeletonItem from "./SkeletonItem";
 
 type ItemType = {
@@ -18,12 +18,11 @@ const Shop = () => {
   const { collectionName } = useParams();
   const navigate = useNavigate();
 
-  const { loading, error, data } = useQuery(GET_ITEMS_BY_DEPT, {
+  const { loading, error, data } = useQuery(GET_ITEMS, {
     variables: { dept: collectionName?.toUpperCase() },
   });
 
   useEffect(() => {
-    if (!loading) console.log(data);
     if (error) console.log("error: ", JSON.stringify(error, null, 2));
   }, [data, error]);
 
@@ -86,7 +85,7 @@ const Shop = () => {
         <div className='shop-items'>
           {!loading &&
             !error &&
-            data.getProductsByDept?.map((item: ItemType) => (
+            data.products?.map((item: ItemType) => (
               <Item item={item} key={item.searchName} />
             ))}
           {loading && skeletonProducts}
