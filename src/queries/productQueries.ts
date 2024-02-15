@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-const GET_ITEMS_BY_DEPT = gql`
-  query getProductsByDept($dept: Departments) {
-    getProductsByDept(dept: $dept) {
+const GET_ITEMS = gql`
+  query products($dept: Departments) {
+    products(dept: $dept) {
       searchName
       name
       price
@@ -25,4 +25,4 @@ const GET_ITEM = gql`
   }
 `;
 
-export { GET_ITEMS_BY_DEPT, GET_ITEM };
+export { GET_ITEMS, GET_ITEM };
