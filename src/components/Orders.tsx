@@ -10,9 +10,7 @@ const Orders = () => {
 
   const errorMsgRef = useRef<HTMLDivElement>(null);
 
-  const [getOrder, { loading, error, data }] = useLazyQuery(GET_ORDER, {
-    variables: { orderID },
-  });
+  const [getOrder, { loading, error, data }] = useLazyQuery(GET_ORDER);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +19,9 @@ const Orders = () => {
       setErrorMsg("Please input your Order No.");
       return;
     }
-    getOrder();
+    getOrder({
+      variables: { orderID },
+    });
   };
 
   useEffect(() => {
@@ -30,26 +30,32 @@ const Orders = () => {
   }, [data, error]);
 
   return (
-    <div>
+    <div className='orders-container'>
       <h2>Orders</h2>
-      <form onSubmit={handleSubmit}>
+      <form className='orders-form' onSubmit={handleSubmit}>
         {(error || errorMsg) && (
           <div ref={errorMsgRef}>
             {errorMsg && <p>{errorMsg}</p>}
             {error && <p>{error.message}</p>}
           </div>
         )}
-        <label>Order No:</label>
-        <input
-          type='text'
-          name='orderNo'
-          autoComplete='off'
-          value={orderID}
-          onChange={(e) => setOrderID(e.target.value)}
-          maxLength={150}
-          required
-        />
-        <button type='submit'>Search</button>
+
+        <label htmlFor='orderNo'>
+          Order No:
+          <input
+            id='orderNo'
+            type='text'
+            name='orderNo'
+            autoComplete='off'
+            value={orderID}
+            onChange={(e) => setOrderID(e.target.value)}
+            maxLength={150}
+            required
+          />
+        </label>
+        <div>
+          <button type='submit'>Search</button>
+        </div>
         {loading && <BarLoader height={6} />}
         {!loading && data?.order && <OrderDisplay order={data.order} />}
       </form>
