@@ -3,7 +3,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import { useNavigate } from "react-router";
-import OrderConfirmation from "./OrderConfirmation";
+import OrderConfirmation from "../components/OrderConfirmation";
 
 describe("NotFound", () => {
   it("displays text on initial page load", () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { getByAltText, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
-import Item from "./Item";
+import Item from "../components/Item";
 
 describe("Item", () => {
   it("renders information correctly when props are recieved", () => {

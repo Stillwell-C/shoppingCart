@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
-import CreditCard from "./CreditCard";
+import CreditCard from "../components/CreditCard";
 
 describe("CreditCard", () => {
   describe("inputs display value supplied to input", () => {

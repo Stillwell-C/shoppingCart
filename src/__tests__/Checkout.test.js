@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
-import Checkout from "./Checkout";
+import Checkout from "../components/Checkout";
 
 describe("Checkout", () => {
   const setup = () => {

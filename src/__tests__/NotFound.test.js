@@ -3,7 +3,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import { useNavigate } from "react-router";
-import NotFound from "./NotFound";
+import NotFound from "../components/NotFound";
 
 describe("NotFound", () => {
   it("displays text on initial page load", () => {
