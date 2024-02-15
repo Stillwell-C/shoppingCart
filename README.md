@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Shopping Cart App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository is the frontend for a shopping cart application.
 
-## Available Scripts
+The front end is based off of an old javascript-only project that I mostly converted to TypeScript, and I am working to update and improve many aspects of it. The tests currently do not work for this incarnation of the project, but I hope to update these soon.
 
-In the project directory, you can run:
+I made this project primarily to practice Typescript, NestJS, GraphQL, and Prisma.
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application is not currently live, but I will have it hosted soon.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Backend code
 
-### `npm test`
+View the backend code [here](https://github.com/Stillwell-C/shoppingCartAPI)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
 
-### `npm run build`
+### Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- TypeScript front & back ends
+- NestJS backend
+- GraphQL
+- Apollo Client
+- PostgreSQL database with Prisma ORM
+- Backend validation with Class Validator
+- Add/Delete/Modify products in your cart
+- Complete checkout to make an order
+- View/Cancel orders
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Detailed Description
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This application was made to function as a ecommerce site.
 
-### `npm run eject`
+#### UI
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+CSS was used to style this website. The CSS was made when I was less familiar with CSS & mobile first design, so this is not my best work. Please view other projects to assess my abilities as this does not reflect my current level. I hope to soon update this to a better, mobile-first UI, probably with TailwindCSS.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The main reason I reused this front end project (originally it was only a front end project), was to get practice with backend technologies I had never used. In this case, I was specifically trying to practice using GraphQL with NestJS and get my first experience of Prisma's ORM. This was not my first time developing a backend in TypeScript, but is probably the most complex backend I have made using TypeScript.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Areas Currently Needing Improvement
 
-## Learn More
+##### UI
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This website is not currently responsive. I hope to update this, possibly with TailwindCSS instead of the current CSS.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Accessibility
 
-### Code Splitting
+The frontend was made before I knew much about web accessibility. Therefore, there a many issues that need to be fixed including incorrect used aria-labels and headings.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+##### Back End
 
-### Analyzing the Bundle Size
+This was my first time building my own project with GraphQL or NestJS. I will try to continue to hone and improve this code. Currently I am working on improving error handling.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Possible future features
 
-### Making a Progressive Web App
+##### Login & Cart Saving
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+I am planning on making it possible for users to make accounts and save their carts on the database. There is currently some provisional work on the cart on the backend, but I haven't had much time to invest in this yet.
 
-### Advanced Configuration
+## Built with
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Frontend
 
-### Deployment
+- ReactJS
+- React Router
+- Apollo Client
+- CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Backend
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- NestJS
+- Prisma ORM
+- PostgreSQL
