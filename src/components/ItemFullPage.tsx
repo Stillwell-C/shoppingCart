@@ -5,7 +5,7 @@ import fullItemList from "../Data/FullItemList";
 import useFormatPrice from "../hooks/useFormatPrice";
 import useCartContext from "../hooks/useCartContext";
 import { useQuery } from "@apollo/client";
-import { GET_ITEMS_BY_SEARCHNAME } from "../queries/productQueries";
+import { GET_ITEM } from "../queries/productQueries";
 import SkeletonItemFullPage from "./SkeletonItemFullPage";
 
 type ItemType = {
@@ -22,38 +22,36 @@ const ItemFullPage = () => {
   const navigate = useNavigate();
   const { REDUCER_ACTIONS, dispatch, cart } = useCartContext();
 
-  const { loading, error, data } = useQuery(GET_ITEMS_BY_SEARCHNAME, {
+  const { loading, error, data } = useQuery(GET_ITEM, {
     variables: { searchName: itemID },
   });
 
-  console.log(data);
-
-  const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_500,c_fill/${data?.getProductBySearchName?.img_id}`;
+  const itemURL = `https://res.cloudinary.com/danscxcd2/image/upload/w_500,c_fill/${data?.product?.img_id}`;
 
   const itemInCart = cart.find(
-    (item) => item.searchName === data?.getProductBySearchName?.searchName
+    (item) => item.searchName === data?.product?.searchName
   );
   const itemQtyExceeded = itemInCart && itemInCart.qty >= 25;
 
-  const itemPrice = useFormatPrice(data?.getProductBySearchName?.price);
+  const itemPrice = useFormatPrice(data?.product?.price);
 
   useEffect(() => {
-    if (!loading && !data?.getProductBySearchName?.SKU) {
+    if (!loading && !data?.product?.SKU) {
       navigate("/notfound");
     }
   }, [data, loading]);
 
   const handleAddToCart = () => {
     if (itemQtyExceeded) return;
-    if (loading || error || !data.getProductBySearchName.SKU) return;
+    if (loading || error || !data.product.SKU) return;
 
     const cartItemData: ItemType = {
-      name: data.getProductBySearchName.name,
-      searchName: data.getProductBySearchName.searchName,
-      price: data.getProductBySearchName.price,
-      img_id: data.getProductBySearchName.img_id,
-      SKU: data.getProductBySearchName.SKU,
-      stock_level: data.getProductBySearchName.stock_level,
+      name: data.product.name,
+      searchName: data.product.searchName,
+      price: data.product.price,
+      img_id: data.product.img_id,
+      SKU: data.product.SKU,
+      stock_level: data.product.stock_level,
     };
 
     dispatch({
@@ -62,27 +60,26 @@ const ItemFullPage = () => {
     });
   };
 
-  const buttonDisable =
-    itemQtyExceeded || data?.getProductBySearchName?.stock_level === "OUT";
+  const buttonDisable = itemQtyExceeded || data?.product?.stock_level === "OUT";
 
-  const lowStockDisplay = !loading &&
-    data?.getProductBySearchName?.stock_level === "LOW" && (
-      <p>Only a few left. Order soon!</p>
-    );
+  const lowStockDisplay = !loading && data?.product?.stock_level === "LOW" && (
+    <p>Only a few left. Order soon!</p>
+  );
 
-  const outOfStockDisplay = data?.getProductBySearchName?.stock_level ===
-    "OUT" && <p>Out of Stock</p>;
+  const outOfStockDisplay = data?.product?.stock_level === "OUT" && (
+    <p>Out of Stock</p>
+  );
 
   const pageContent = (
     <div className='item-full-container'>
-      <h1 className='item-full-title'>{data?.getProductBySearchName?.name}</h1>
+      <h1 className='item-full-title'>{data?.product?.name}</h1>
       <img
         className='item-img-medium'
         src={itemURL}
-        alt={data?.getProductBySearchName?.name}
+        alt={data?.product?.name}
       />
       <div className='item-information'>
-        <p>{data?.getProductBySearchName?.description}</p>
+        <p>{data?.product?.description}</p>
         <p className='item-info-price'>{itemPrice}</p>
       </div>
       <div className='item-stock-info'>
