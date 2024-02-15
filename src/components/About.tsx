@@ -1,5 +1,6 @@
-import React from "react";
 import Footer from "./Footer";
+import creatorImg from "../assets/creator.jpg";
+import contactImg from "../assets/hennie-stander-wO8zbE8iAas-unsplash.jpg";
 
 const About = () => {
   return (
@@ -33,7 +34,7 @@ const About = () => {
         <div className='about-creator'>
           <h1>Our Creator</h1>
           <div className='about-creator-info'>
-            <img src='/img/creator.jpg' alt='Elena Cojocaru' />
+            <img src={creatorImg} alt='Elena Cojocaru' />
             <p>
               Hi, My name is Elena. In addition to my work at in hands I enjoy
               crocheting.
@@ -48,10 +49,7 @@ const About = () => {
               design pieces to fit your needs and desires. We are also always
               looking to collaborate with inspiring artisans and designers.
             </p>
-            <img
-              src='/img/hennie-stander-wO8zbE8iAas-unsplash.jpg'
-              alt='contact us'
-            />
+            <img src={contactImg} alt='' />
           </div>
         </div>
       </div>
