@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -14,76 +13,9 @@ import Orders from "./components/Orders";
 import OrderCancelConfirmation from "./components/OrderCancelConfirmation";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([]);
-  const [itemList, setItemList] = useState([
-    {
-      name: "Shirt",
-      price: 700,
-      description: "a black t-shirt",
-      type: "clothing",
-      img: "/img/shirt.jpg",
-      imgSmall: "/img/shirt-small.jpg",
-      id: "item00001",
-    },
-    {
-      name: "Jacket",
-      price: 1700,
-      description: "light brown jacket",
-      type: "clothing",
-      img: "/img/jacket.jpg",
-      imgSmall: "/img/jacket-small.jpg",
-      id: "item00002",
-    },
-    {
-      name: "Handbag",
-      price: 2400,
-      type: "accessories",
-      description: "black handbag made with full grain leather",
-      img: "/img/handbag.jpg",
-      imgSmall: "/img/handbag-small.jpg",
-      id: "item00003",
-    },
-    {
-      name: "Backpack",
-      price: 1800,
-      type: "accessories",
-      description: "hand-stiched small black backpack.",
-      img: "/img/backpack.jpg",
-      imgSmall: "/img/backpack-small.jpg",
-      id: "item00004",
-    },
-    {
-      name: "Tote",
-      price: 700,
-      type: "accessories",
-      description: "a black tote bag",
-      img: "/img/totebag.jpg",
-      imgSmall: "/img/totebag-small.jpg",
-      id: "item00005",
-    },
-    {
-      name: "Decorative Stick",
-      price: 700,
-      type: "interior",
-      description: "liven up your room with this stick",
-      img: "/img/decorative-stick.jpg",
-      imgSmall: "/img/decorative-stick-small.jpg",
-      id: "item00006",
-    },
-    {
-      name: "Houseplant",
-      price: 800,
-      type: "interior",
-      description: "a plant",
-      img: "/img/houseplant.jpg",
-      imgSmall: "/img/houseplant-small.jpg",
-      id: "item00007",
-    },
-  ]);
-
   return (
     <div>
-      <Navbar shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
+      <Navbar />
       <div className='body-container'>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -91,22 +23,10 @@ function App() {
           <Route path='/shop'>
             <Route index element={<Shop />} />
             <Route path=':collectionName' element={<Shop />} />
-            <Route
-              path='fullcollection/:itemID'
-              element={
-                <ItemFullPage
-                  itemList={itemList}
-                  setShoppingCart={setShoppingCart}
-                  shoppingCart={shoppingCart}
-                />
-              }
-            />
+            <Route path='fullcollection/:itemID' element={<ItemFullPage />} />
           </Route>
           <Route path='/cart' element={<CartFullPage />} />
-          <Route
-            path='/checkout'
-            element={<Checkout shoppingCart={shoppingCart} />}
-          />
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/orderconfirmation' element={<OrderConfirmation />} />
           <Route path='/orders'>
             <Route index element={<Orders />} />
