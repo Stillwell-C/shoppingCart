@@ -1056,3 +1056,31 @@ footer {
   padding: 7px 15px;
   cursor: pointer;
 }
+
+.orders-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.orders-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.orders-form input {
+  width: 250px;
+  border: 1px solid #c1c0c0;
+  margin-left: .25rem;
+}
+
+.orders-form button {
+  padding: 3px 5px;
+  cursor: pointer;
+}
