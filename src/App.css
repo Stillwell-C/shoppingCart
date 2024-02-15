@@ -230,7 +230,7 @@ nav a {
 .home-container {
   width: 100vw;
   height: 100vh;
-  background-image: url(../public/img/home-background.jpg);
+  background-image: url(./assets/home-background.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -394,7 +394,7 @@ nav a {
 .about-container {
   width: 100vw;
   height: 100vh;;
-  background-image: url(../public/img/no-revisions-kWVImL5QxJI-unsplash.jpg);
+  background-image: url(./assets/no-revisions-kWVImL5QxJI-unsplash.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
