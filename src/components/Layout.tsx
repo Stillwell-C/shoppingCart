@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className='body-wrapper'>
+    <div className='font-quicksand'>
       <Navbar />
       <div className='body-container'>
         <Outlet />
