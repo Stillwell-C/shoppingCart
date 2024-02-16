@@ -36,21 +36,22 @@ const CartDropDownItem = ({ item, setCartOpen }: PropsType) => {
   };
 
   return (
-    <li>
+    <li className='flex flex-col gap-1'>
       <Link
         to={`/shop/fullcollection/${item.searchName}`}
         onClick={() => setCartOpen(false)}
       >
-        <p className='dropdown-name' aria-label='item name'>
+        <p className='text-lg' aria-label='item name'>
           {item.name}
         </p>
       </Link>
-      <img src={itemURL} alt={item.name} />
-      <div className='dropdown-quantity'>
+      <img className=' h-36 w-28 object-cover' src={itemURL} alt={item.name} />
+      <div className='flex justify-start items-center gap-3'>
         <button
           onClick={handleReduceQuantity}
           disabled={item.qty <= 1}
           aria-label='reduce quantity by one'
+          className='grey-button'
         >
           −
         </button>
@@ -59,17 +60,20 @@ const CartDropDownItem = ({ item, setCartOpen }: PropsType) => {
           onClick={handleIncreaseQuantity}
           disabled={item.qty >= 25}
           aria-label='increase quantity by one'
+          className='grey-button'
         >
           +
         </button>
       </div>
-      <button
-        onClick={handleDeleteItem}
-        className='dropdown-delete'
-        aria-label='delete item'
-      >
-        Delete
-      </button>
+      <div>
+        <button
+          onClick={handleDeleteItem}
+          className='grey-button'
+          aria-label='delete item'
+        >
+          Delete
+        </button>
+      </div>
     </li>
   );
 };
