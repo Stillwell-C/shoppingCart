@@ -33,8 +33,8 @@ const Home = () => {
               <img src={clothingImg} alt='' />
               <span>Clothing</span>
             </Link>
-            <Link to={accessoriesImg} aria-label='move to accessories page'>
-              <img src='/img/front-accessories.jpg' alt='' />
+            <Link to='/shop/accessories' aria-label='move to accessories page'>
+              <img src={accessoriesImg} alt='' />
               <span>Accessories</span>
             </Link>
             <Link
@@ -42,7 +42,7 @@ const Home = () => {
               aria-label='move to interior collection page'
             >
               <img src={interiorImg} alt='' />
-              <h3>Interior</h3>
+              <span>Interior</span>
             </Link>
           </div>
         </div>
