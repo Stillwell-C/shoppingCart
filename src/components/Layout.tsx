@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className='font-quicksand'>
       <Navbar />
-      <div className='body-container'>
+      <div className='min-h-screen h-full w-full flex'>
         <Outlet />
       </div>
       <Footer />
