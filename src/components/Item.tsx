@@ -20,11 +20,15 @@ const Item = ({ item }: PropsType) => {
 
   return (
     <Link
-      className='item-container'
+      className='w-72 h-[450px] shadow-lg rounded-lg flex flex-col justify-center items-center transition-all ease-in-out hover:scale-[1.01]'
       to={`/shop/fullcollection/${item.searchName}`}
     >
-      <img className='item-img' src={itemURL} alt={item.name} />
-      <div className='item-info-container'>
+      <img
+        className='h-[300px] w-[210px] object-cover rounded'
+        src={itemURL}
+        alt={item.name}
+      />
+      <div className='w-[200px] mt-3'>
         <p>{item.name}</p>
         <p aria-label='item price'>{itemPrice}</p>
       </div>
