@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className=' h-24 p-6 z-10 fixed w-full top-0 left-0 bg-white border-solid border-b border-[#f1f1f1] '>
+    <header className='h-24 p-6 z-10 fixed w-full top-0 left-0 bg-white border-solid border-b border-[#f1f1f1] '>
       <div className='w-full h-full flex justify-between content-center '>
         <div className='h-full flex justify-center content-center'>
           <Link
@@ -39,7 +39,7 @@ const Navbar = () => {
         </div>
         <nav className='flex items-center gap-4'>
           <NavLink
-            className={`text-xl ${aboutActive ? "font-bold" : ""}`}
+            className={`text-xl ${aboutActive ? "font-semibold" : ""}`}
             to='/about'
             aria-label='move to about page'
             onClick={handleClose}
@@ -47,7 +47,7 @@ const Navbar = () => {
             About
           </NavLink>
           <NavLink
-            className={`text-xl ${shopActive ? "font-bold" : ""}`}
+            className={`text-xl ${shopActive ? "font-semibold" : ""}`}
             to='/shop'
             aria-label='move to shop page'
             onClick={handleClose}
