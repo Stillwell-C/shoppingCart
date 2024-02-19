@@ -60,23 +60,44 @@ const EmailForm = () => {
 
   return (
     <div>
-      <form noValidate onSubmit={handleSubmit}>
-        <input
-          type='email'
-          value={email}
-          onChange={handleInput}
-          placeholder='Enter your email address'
-          autoComplete='false'
-          aria-label='Sign up for updates'
-        />
-        <button type='submit'>Sign Up</button>
-        {loading && <BarLoader height={6} />}
+      <form noValidate onSubmit={handleSubmit} className='flex flex-col gap-4'>
+        <h2 className='text-3xl '>Get Updates from in hands</h2>
+        <p className='text-lg'>
+          Get information on discounts and sales delivered straight to your
+          inbox
+        </p>
+        <div>
+          <input
+            type='email'
+            value={email}
+            onChange={handleInput}
+            placeholder='Enter your email address'
+            autoComplete='false'
+            aria-label='Sign up for updates'
+            className='py-2 px-3 border border-solid border-[#333] rounded-tl rounded-bl outline-none'
+          />
+          <button
+            type='submit'
+            className='py-2 px-3 bg-[#333] text-white border border-solid border-[#333] rounded-tr rounded-br hover:bg-white hover:text-[#333]'
+          >
+            Sign Up
+          </button>
+        </div>
+        {loading && (
+          <div className='ml-2 -mt-2'>
+            <BarLoader height={6} />
+          </div>
+        )}
       </form>
       {formMessage && (
         <div>
           <span
             ref={errRef}
-            className={`footer-form-msg footer-form-${formMessageClass}`}
+            className={`ml-1 font-semibold ${
+              formMessageClass === "success"
+                ? "text-green-600"
+                : "text-rose-600"
+            }`}
           >
             {formMessage}
           </span>

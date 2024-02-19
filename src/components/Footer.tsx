@@ -3,32 +3,27 @@ import EmailForm from "./EmailForm";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className='footer-container'>
-        <div className='footer-top'>
-          <div className='footer-header'>
-            <h1>Get Updates from in hands</h1>
-            <p>
-              Get information on discounts and sales delivered straight to your
-              inbox
-            </p>
+    <footer className='w-full py-20 flex flex-col items-center justify-center bg-gray-200'>
+      <div className='w-4/5 xl:w-[1024px]'>
+        <div className='w-full flex justify-around'>
+          <div className='max-w-80 '>
             <EmailForm />
           </div>
-          <div>
-            <h1>in hands</h1>
+          <div className='flex flex-col gap-4'>
+            <h2>in hands</h2>
             <Link to='/about'>About us</Link>
             <Link to='/orders'>Orders</Link>
           </div>
-          <div>
-            <h1>Shop</h1>
+          <div className='flex flex-col gap-4'>
+            <h2>Shop</h2>
             <Link to='/shop'>Full Collection</Link>
             <Link to='/shop/clothing'>Clothing</Link>
             <Link to='/shop/accessories'>Accessories</Link>
             <Link to='/shop/interior'>Interior</Link>
           </div>
-          <div>
-            <h1>Contact Us</h1>
-            <p>customersupport@inhands.com.md</p>
+          <div className='flex flex-col gap-4'>
+            <h2>Contact Us</h2>
+            <a href='mailto: customersupport@inhands.com.md'>Email</a>
           </div>
         </div>
         <div className='footer-bottom'></div>
