@@ -1,16 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import Footer from "./Footer";
 import { BarLoader } from "react-spinners";
 
 const NotFound = () => {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => navigate("/"), 2500);
+  useEffect(() => {
+    const timer = setTimeout(() => navigate("/"), 2500);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className='mt-24 w-full flex flex-col items-center gap-3'>
