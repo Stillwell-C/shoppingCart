@@ -223,7 +223,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </span>
       </div>
       <div className='flex items-center justify-start gap-4 w-[650px]'>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg form-long'>
+        <div className='relative h-[50px] w-[650px] overflow-hidden text-lg'>
           <input
             type='text'
             name='company-name'
@@ -339,8 +339,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           id='address-note'
           className={
             formState[propertyNames.address].hasError
-              ? "text-rose-600 font-semibold text-lg w-[300px] form-long"
-              : "text-rose-600 font-semibold text-lg w-[300px] absolute -left-[9999px] form-long"
+              ? "text-rose-600 font-semibold text-lg w-[650px]"
+              : "text-rose-600 font-semibold text-lg w-[650px] absolute -left-[9999px]"
           }
           ref={addressRef}
         >
