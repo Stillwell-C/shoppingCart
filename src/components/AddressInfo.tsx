@@ -132,7 +132,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
   return (
     <>
       <div className='flex items-center justify-start gap-4 w-[650px]'>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg checkout-input-div'>
+        <div className='relative h-[50px] w-[325px] overflow-hidden text-lg checkout-input-div'>
           <input
             type='text'
             name='firstname'
@@ -149,11 +149,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='firstname'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.firstName].value.length ||
                 firstNameFocus
                   ? "-translate-y-[130%] text-sm"
@@ -164,7 +164,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             </span>
           </label>
         </div>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[325px] overflow-hidden text-lg'>
           <input
             type='text'
             name='lastname'
@@ -181,11 +181,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='lastname'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.lastName].value.length || lastNameFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -197,13 +197,13 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex gap-4'>
-        <div className='text-rose-600 font-semibold text-lg w-[300px]'>
+        <div className='text-rose-600 font-semibold text-lg w-[325px]'>
           <span
             id='firstname-note'
             className={
               formState[propertyNames.firstName].hasError
-                ? "text-rose-600 font-semibold text-lg w-[300px]"
-                : "text-rose-600 font-semibold text-lg w-[300px] absolute -left-[9999px]"
+                ? "text-rose-600 font-semibold text-lg w-[325px]"
+                : "text-rose-600 font-semibold text-lg w-[325px] absolute -left-[9999px]"
             }
             ref={firstNameRef}
           >
@@ -214,8 +214,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           id='lastname-note'
           className={
             formState[propertyNames.lastName].hasError
-              ? "text-rose-600 font-semibold text-lg w-[300px]"
-              : "text-rose-600 font-semibold text-lg w-[300px] absolute -left-[9999px]"
+              ? "text-rose-600 font-semibold text-lg w-[325px]"
+              : "text-rose-600 font-semibold text-lg w-[325px] absolute -left-[9999px]"
           }
           ref={lastNameRef}
         >
@@ -240,11 +240,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='company-name'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.companyName].value.length ||
                 companyNameFocus
                   ? "-translate-y-[130%] text-sm"
@@ -257,13 +257,13 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex gap-4'>
-        <div className='text-rose-600 font-semibold text-lg w-[300px]'>
+        <div className='text-rose-600 font-semibold text-lg w-[325px]'>
           <span
             id='companyname-note'
             className={
               formState[propertyNames.companyName].hasError
-                ? "text-rose-600 font-semibold text-lg w-[300px]"
-                : "text-rose-600 font-semibold text-lg w-[300px] absolute -left-[9999px]"
+                ? "text-rose-600 font-semibold text-lg w-[325px]"
+                : "text-rose-600 font-semibold text-lg w-[325px] absolute -left-[9999px]"
             }
             ref={companyNameRef}
           >
@@ -272,7 +272,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex items-center justify-start gap-4 w-[650px]'>
-        <div className='relative h-[50px] w-[400px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[425px] overflow-hidden text-lg'>
           <input
             type='text'
             name='address'
@@ -289,11 +289,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='address'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.address].value.length || addressFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -303,7 +303,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             </span>
           </label>
         </div>
-        <div className='relative h-[50px] w-[200px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[225px] overflow-hidden text-lg'>
           <input
             type='text'
             name='address-extra-info'
@@ -318,11 +318,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='address-extra-info'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.addressNumber].value.length ||
                 addressNumberFocus
                   ? "-translate-y-[130%] text-sm"
@@ -349,7 +349,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
       </div>
 
       <div className='flex items-center justify-start gap-4 w-[650px]'>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[325px] overflow-hidden text-lg'>
           <input
             type='text'
             name='city'
@@ -366,11 +366,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='state'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.city].value.length || cityFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -380,7 +380,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             </span>
           </label>
         </div>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[325px] overflow-hidden text-lg'>
           <input
             type='text'
             name='country'
@@ -397,11 +397,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='country'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.country].value.length || countryFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -413,13 +413,13 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex gap-4'>
-        <div className='text-rose-600 font-semibold text-lg w-[300px]'>
+        <div className='text-rose-600 font-semibold text-lg w-[325px]'>
           <span
             id='city-note'
             className={
               formState[propertyNames.city].hasError
-                ? "text-rose-600 font-semibold text-lg w-[300px]"
-                : "text-rose-600 font-semibold text-lg w-[300px] absolute -left-[9999px]"
+                ? "text-rose-600 font-semibold text-lg w-[325px]"
+                : "text-rose-600 font-semibold text-lg w-[325px] absolute -left-[9999px]"
             }
             ref={cityRef}
           >
@@ -430,8 +430,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           id='country-note'
           className={
             formState[propertyNames.country].hasError
-              ? "text-rose-600 font-semibold text-lg w-[300px]"
-              : "text-rose-600 font-semibold text-lg w-[300px] absolute -left-[9999px]"
+              ? "text-rose-600 font-semibold text-lg w-[325px]"
+              : "text-rose-600 font-semibold text-lg w-[325px] absolute -left-[9999px]"
           }
           ref={countryRef}
         >
@@ -439,7 +439,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </span>
       </div>
       <div className='flex items-center justify-start gap-4 w-[650px]'>
-        <div className='relative h-[50px] w-[200px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[225px] overflow-hidden text-lg'>
           <input
             type='text'
             name='zip-code'
@@ -456,11 +456,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='zip-code'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.zip].value.length || zipFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -470,7 +470,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             </span>
           </label>
         </div>
-        <div className='relative h-[50px] w-[400px] overflow-hidden text-lg'>
+        <div className='relative h-[50px] w-[425px] overflow-hidden text-lg'>
           <input
             type='text'
             name='phone-number'
@@ -487,11 +487,11 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='phone-number'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all duration-500 ease ${
                 formState[propertyNames.phone].value.length || phoneFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -503,7 +503,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex gap-4'>
-        <div className='w-[200px]'>
+        <div className='w-[225px]'>
           <span
             id='zip-note'
             className={
@@ -520,8 +520,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           id='phone-note'
           className={
             formState[propertyNames.phone].hasError
-              ? "text-rose-600 font-semibold text-lg w-[400px]"
-              : "text-rose-600 font-semibold text-lg w-[400px] absolute -left-[9999px]"
+              ? "text-rose-600 font-semibold text-lg w-[425px]"
+              : "text-rose-600 font-semibold text-lg w-[425px] absolute -left-[9999px]"
           }
           ref={phoneRef}
         >

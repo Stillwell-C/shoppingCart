@@ -90,11 +90,11 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='creditCardNumber'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all ease duration-500 ${
                 formState.creditCardNumber.value.length || cardNumberFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -117,7 +117,7 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
         </span>
       </div>
       <div className='flex items-center justify-start gap-4 w-[650px]'>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg checkout-input-div'>
+        <div className='relative h-[50px] w-[325px] overflow-hidden text-lg checkout-input-div'>
           <input
             type='text'
             name='creditCardExpiry'
@@ -134,11 +134,11 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='creditCardExpiry'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all ease duration-500 ${
                 formState.creditCardExpiry.value.length || cardExpiryFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
@@ -148,7 +148,7 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
             </span>
           </label>
         </div>
-        <div className='relative h-[50px] w-[300px] overflow-hidden text-lg checkout-input-div'>
+        <div className='relative h-[50px] w-[325px] overflow-hidden text-lg checkout-input-div'>
           <input
             type='text'
             name='creditCardCVC'
@@ -165,11 +165,11 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
             required
           />
           <label
-            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[100%] after:transition-all after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
+            className='absolute bottom-0 left-[0%] w-full h-full pointer-events-none border-b border-solid border-black after:content-[" "] after:absolute after:h-full after:w-full after:left-0 -after:bottom-[1px] after:border-b-[2px] after:border-solid after:border-black after:-translate-x-[105%] after:transition-all after:duration-300 after:ease peer-focus:after:translate-x-[0%] peer-valid:after:translate-x-[0%]'
             htmlFor='creditCardCVC'
           >
             <span
-              className={`absolute bottom-1 left-0 transition-all ease ${
+              className={`absolute bottom-1 left-0 transition-all ease duration-500 ${
                 formState.creditCardCVC.value.length || cardCVCFocus
                   ? "-translate-y-[130%] text-sm"
                   : " "
