@@ -71,41 +71,42 @@ const ItemFullPage = () => {
   );
 
   const pageContent = (
-    <div className='item-full-container'>
-      <h1 className='item-full-title'>{data?.product?.name}</h1>
+    <div className='mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
+      <h1 className='text-center text-4xl mb-8'>{data?.product?.name}</h1>
       <img
-        className='item-img-medium'
+        className='cover h-[500px] rounded'
         src={itemURL}
         alt={data?.product?.name}
       />
-      <div className='item-information'>
+      <div className='flex flex-col gap-4'>
         <p>{data?.product?.description}</p>
         <p className='item-info-price'>{itemPrice}</p>
       </div>
-      <div className='item-stock-info'>
+      <div className='flex flex-col gap-1 mb-2'>
         {itemInCart && (
           <p>
-            In your <Link to='/cart'>Shopping Cart</Link>
+            In your{" "}
+            <Link className='underline' to='/cart'>
+              Shopping Cart
+            </Link>
           </p>
         )}
         {lowStockDisplay}
         {outOfStockDisplay}
       </div>
       <div>
-        <button disabled={buttonDisable} onClick={handleAddToCart}>
+        <button
+          className='grey-button py-2 px-3'
+          disabled={buttonDisable}
+          onClick={handleAddToCart}
+        >
           Add to cart
         </button>
       </div>
     </div>
   );
 
-  return (
-    <div className='item-full-page'>
-      {loading ? <SkeletonItemFullPage /> : pageContent}
-
-      <Footer />
-    </div>
-  );
+  return loading ? <SkeletonItemFullPage /> : pageContent;
 };
 
 export default ItemFullPage;
