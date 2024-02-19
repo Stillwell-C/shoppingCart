@@ -3,7 +3,7 @@ import EmailForm from "./EmailForm";
 
 const Footer = () => {
   return (
-    <footer className='w-full py-20 flex flex-col items-center justify-center bg-gray-200'>
+    <footer className='w-full py-20 flex flex-col items-center justify-center bg-[#f1f1f1]'>
       <div className='w-4/5 xl:w-[1024px]'>
         <div className='w-full flex justify-around'>
           <div className='max-w-80 '>
