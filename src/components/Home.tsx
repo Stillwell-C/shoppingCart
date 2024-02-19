@@ -13,105 +13,153 @@ import passionImg from "../assets/front-passion.jpg";
 
 const Home = () => {
   return (
-    <div className='home-container'>
-      <div className='top-home-text'>
-        <h1>Revolutionary Designs</h1>
-        <h2>Find your new aesthetic today</h2>
-        <Link to='/shop'>
-          <button>Shop now</button>
+    <div className='w-full bg-home-background bg-fixed bg-no-repeat bg-cover'>
+      <div className='mt-[45vh] mb-[45vh] ml-[45vw] text-white'>
+        <p className='text-5xl font-semibold '>Revolutionary Designs</p>
+        <p className='text-3xl'>Find your new aesthetic today</p>
+        <Link to='/shop' aria-label='move to shop page'>
+          <button className='cursor-pointer mt-3 py-2 px-5 bg-white text-3xl border border-solid border-white rounded-lg text-black hover:text-white hover:bg-[rgba(0,0,0,0.2)] '>
+            Shop now
+          </button>
         </Link>
       </div>
-      <div className='home-bottom'>
-        <div className='home-shop-links'>
-          <h1>Featured Collections</h1>
-          <div className='home-shop-navlinks'>
-            <Link to='/shop' aria-label='move to full collection page'>
-              <img src={fullCollectionImg} alt='' />
-              <span>Full Collection</span>
-            </Link>
-            <Link to='/shop/clothing' aria-label='move to clothing page'>
-              <img src={clothingImg} alt='' />
-              <span>Clothing</span>
-            </Link>
-            <Link to='/shop/accessories' aria-label='move to accessories page'>
-              <img src={accessoriesImg} alt='' />
-              <span>Accessories</span>
-            </Link>
-            <Link
-              to='/shop/interior'
-              aria-label='move to interior collection page'
-            >
-              <img src={interiorImg} alt='' />
-              <span>Interior</span>
-            </Link>
-          </div>
-        </div>
-        <div className='home-bottom-middle'>
-          <div className='home-bm-top'>
-            <img src={frontSelfImg} alt='' />
-            <div>
-              <h2>Find Your New Self</h2>
-              <p>
-                It's time for the new you. Our timeless pieces help you define
-                yourself and show the world what you're truely made of.
-              </p>
-              <Link to='/shop' aria-label='move to full collection page'>
-                <button>Shop Now</button>
+      <div className='flex flex-col items-center justify-center bg-white'>
+        <div className='max-w-5xl'>
+          <div>
+            <h2 className='text-4xl my-8'>Featured Collections</h2>
+            <div className='flex justify-center items-center gap-6 mb-12'>
+              <Link
+                to='/shop'
+                aria-label='move to full collection page'
+                className='text-2xl transition-all ease-in-out hover:scale-[1.02]'
+              >
+                <img
+                  className='w-64 mb-4 shadow-md rounded-sm'
+                  src={fullCollectionImg}
+                  alt=''
+                />
+                <span>Full Collection</span>
               </Link>
-            </div>
-          </div>
-          <div className='home-bm-bottom'>
-            <div>
-              <h2>New Interior. New You.</h2>
-              <p>
-                Interior design should be a top priority. Our unique interior
-                designs help bring the room together so you can work, sleep, and
-                rest easier.
-              </p>
+              <Link
+                to='/shop/clothing'
+                aria-label='move to clothing page'
+                className='text-2xl transition-all ease-in-out hover:scale-[1.02]'
+              >
+                <img
+                  className='w-64 mb-4 shadow-md rounded-sm'
+                  src={clothingImg}
+                  alt=''
+                />
+                <span>Clothing</span>
+              </Link>
+              <Link
+                to='/shop/accessories'
+                aria-label='move to accessories page'
+                className='text-2xl transition-all ease-in-out hover:scale-[1.02]'
+              >
+                <img
+                  className='w-64 mb-4 shadow-md rounded-sm'
+                  src={accessoriesImg}
+                  alt=''
+                />
+                <span>Accessories</span>
+              </Link>
               <Link
                 to='/shop/interior'
                 aria-label='move to interior collection page'
+                className='text-2xl transition-all ease-in-out hover:scale-[1.02]'
               >
-                <button>Shop Interior</button>
+                <img
+                  className='w-64 mb-4 shadow-md rounded-sm'
+                  src={interiorImg}
+                  alt=''
+                />
+                <span>Interior</span>
               </Link>
             </div>
-            <img src={frontInteriorImg} alt='' />
           </div>
-        </div>
-        <div className='home-bottom-bottom'>
-          <h2>Why in hands?</h2>
-          <div className='why-hands'>
-            <div>
-              <img src={handCraftImg} alt='' />
-              <h2>Hand Crafted</h2>
-              <p>
-                Each and every one of our pieces is handcrafted by a team of
-                local artisans that is personally trained and supervised by our
-                founder.
-              </p>
+          <div>
+            <div className='flex my-12 gap-12'>
+              <img className='w-1/2 rounded-sm' src={frontSelfImg} alt='' />
+              <div className='min-h-full flex flex-col justify-center'>
+                <h2 className='text-3xl'>Find Your New Self</h2>
+                <p>
+                  It's time for the new you. Our timeless pieces help you define
+                  yourself and show the world what you're truely made of.
+                </p>
+                <Link to='/shop' aria-label='move to full collection page'>
+                  <button className='grey-button py-4 px-6 mt-4 rounded-lg'>
+                    Shop Now
+                  </button>
+                </Link>
+              </div>
             </div>
-            <div>
-              <img src={sustainableImg} alt='' />
-              <h2>Sustainable Production</h2>
-              <p>
-                We ship all products in 100% biodegradable packaging and our
-                small size allows us to minimize waste in the production
-                process.
-              </p>
+            <div className='flex my-12 gap-12'>
+              <div className='min-h-full flex flex-col justify-center'>
+                <h2 className='text-3xl'>New Interior. New You.</h2>
+                <p>
+                  Interior design should be a top priority. Our unique interior
+                  designs help bring the room together so you can work, sleep,
+                  and rest easier.
+                </p>
+                <Link
+                  to='/shop/interior'
+                  aria-label='move to interior collection page'
+                >
+                  <button className='grey-button py-4 px-6 mt-4 rounded-lg'>
+                    Shop Interior
+                  </button>
+                </Link>
+              </div>
+              <img className='w-1/2 rounded-sm' src={frontInteriorImg} alt='' />
             </div>
-            <div>
-              <img src={passionImg} alt='' />
-              <h2>Built with Passion</h2>
-              <p>
-                Our brand was started by a small team who share your enthusiasm
-                for fashion. We offer a generous return policy if you are not
-                fully satisfied with your order.
-              </p>
+          </div>
+          <div className='mt-32'>
+            <h2 className='text-6xl text-center mb-16'>Why in hands?</h2>
+            <div className=' why-hands flex justify-center mb-12'>
+              <div>
+                <img
+                  className='w-[300px] h-[300px] rounded-full overflow-hidden object-cover'
+                  src={handCraftImg}
+                  alt=''
+                />
+                <h3 className='mt-6 text-2xl'>Hand Crafted</h3>
+                <p>
+                  Each and every one of our pieces is handcrafted by a team of
+                  local artisans that is personally trained and supervised by
+                  our founder.
+                </p>
+              </div>
+              <div>
+                <img
+                  className='w-[300px] h-[300px] rounded-full overflow-hidden object-cover'
+                  src={sustainableImg}
+                  alt=''
+                />
+                <h3 className='mt-6 text-2xl'>Sustainable Production</h3>
+                <p>
+                  We ship all products in 100% biodegradable packaging and our
+                  small size allows us to minimize waste in the production
+                  process.
+                </p>
+              </div>
+              <div>
+                <img
+                  className='w-[300px] h-[300px] rounded-full overflow-hidden object-cover'
+                  src={passionImg}
+                  alt=''
+                />
+                <h3 className='mt-6 text-2xl'>Built with Passion</h3>
+                <p>
+                  Our brand was started by a small team who share your
+                  enthusiasm for fashion. We offer a generous return policy if
+                  you are not fully satisfied with your order.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
