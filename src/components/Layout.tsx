@@ -6,9 +6,9 @@ const Layout = () => {
   return (
     <div className='font-quicksand'>
       <Navbar />
-      <div className='min-h-screen h-full w-full flex'>
+      <main className='min-h-screen h-full w-full flex'>
         <Outlet />
-      </div>
+      </main>
       <Footer />
     </div>
   );
