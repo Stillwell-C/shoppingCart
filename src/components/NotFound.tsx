@@ -6,18 +6,20 @@ import { BarLoader } from "react-spinners";
 const NotFound = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => navigate("/"), 2500);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => navigate("/"), 2500);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
-    <div className='redirect-div'>
-      <h1>Error. Could not find page.</h1>
-      <h2>Redirecting...</h2>
-      <BarLoader height={6} />
-      <Footer />
+    <div className='mt-24 w-full flex flex-col items-center gap-3'>
+      <div className='flex flex-col w-full items-center'>
+        <h2 className='mt-12 text-4xl mb-1'>Error.</h2>
+        <p className='text-2xl'>Page not found.</p>
+      </div>
+      <p className='text-xl'>Redirecting...</p>
+      <BarLoader width={175} height={6} />
     </div>
   );
 };
