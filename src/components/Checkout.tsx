@@ -124,19 +124,23 @@ const Checkout = () => {
   }, [error]);
 
   const CheckoutPage = (
-    <div className='checkout-page'>
-      <div className='checkout-container'>
-        <h1>checkout</h1>
+    <div className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
+      <div className='flex flex-col items-center mt-10'>
+        <h2 className='text-5xl'>checkout</h2>
         {error && (
-          <div ref={errRef}>
+          <div className='text-rose-600 font-semibold' ref={errRef}>
             <p>An error occurred.</p>
             {error?.message && <p>{error.message}</p>}
             <p>Please try again</p>
           </div>
         )}
-        <form className='checkout-form' onSubmit={handleSubmit} noValidate>
-          <div className='checkout-info-input-container'>
-            <h2>Ship to</h2>
+        <form
+          className='flex flex-col items-center gap-8'
+          onSubmit={handleSubmit}
+          noValidate
+        >
+          <div className='flex flex-col justify-center items-start w-[650px]'>
+            <h3 className='text-2xl'>Ship to</h3>
             <AddressInfo
               formState={formState}
               dispatch={dispatch}
@@ -144,25 +148,29 @@ const Checkout = () => {
             />
           </div>
 
-          <div className='checkout-info-input-container'>
-            <h2>Billing</h2>
+          <div className='flex flex-col justify-center items-start w-[650px]'>
+            <h3 className='text-2xl'>Billing</h3>
             <CreditCard formState={formState} dispatch={dispatch} />
-            <div className='billing-address-check'>
-              <input
-                type='checkbox'
-                id='billing-shipping-address-same'
-                name='billing-shipping-address-same'
-                defaultChecked
-                aria-label='billing address is the same as shipping address'
-                onClick={() => setSameBillingAddress(!sameBillingAddress)}
-              />
-              <label htmlFor='billing-shipping-address-same'>
-                Billing address same as shipping address
-              </label>
-            </div>
+          </div>
+
+          <div className='billing-address-check self-start'>
+            <input
+              type='checkbox'
+              id='billing-shipping-address-same'
+              name='billing-shipping-address-same'
+              defaultChecked
+              aria-label='billing address is the same as shipping address'
+              onClick={() => setSameBillingAddress(!sameBillingAddress)}
+            />
+            <label htmlFor='billing-shipping-address-same'>
+              Billing address same as shipping address
+            </label>
+          </div>
+
+          <div className='flex flex-col justify-center items-start w-[650px]'>
             {!sameBillingAddress && (
               <div>
-                <h2>Billing Address</h2>
+                <h3 className='text-2xl'>Billing Address</h3>
                 <AddressInfo
                   formState={formState}
                   dispatch={dispatch}
@@ -171,6 +179,7 @@ const Checkout = () => {
               </div>
             )}
           </div>
+
           <div className='order-preview'>
             {previewOrder && (
               <OrderPreview
@@ -199,7 +208,6 @@ const Checkout = () => {
           </button>
         </form>
       </div>
-      <Footer />
     </div>
   );
 
