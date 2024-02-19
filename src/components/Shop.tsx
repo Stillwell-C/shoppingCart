@@ -63,35 +63,34 @@ const Shop = () => {
   ));
 
   return (
-    <div className='shop-page'>
-      <div className='shop-container'>
-        <div className='shop-top'>
-          <h1>{collectionTitle}</h1>
-          <div className='shop-navbar'>
-            {displayButtons.map((collection) => (
-              <Link
-                key={collection}
-                to={
-                  collection === "Full Collection"
-                    ? "/shop"
-                    : `/shop/${collection.toLowerCase()}`
-                }
-              >
-                <button>{collection}</button>
-              </Link>
-            ))}
-          </div>
-        </div>
-        <div className='shop-items'>
-          {!loading &&
-            !error &&
-            data.products?.map((item: ItemType) => (
-              <Item item={item} key={item.searchName} />
-            ))}
-          {loading && skeletonProducts}
+    <div className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen'>
+      <div className='pt-12 mb-8 w-full flex flex-col items-center'>
+        <h2 className='text-3xl mb-6'>{collectionTitle}</h2>
+        <div className='flex gap-5'>
+          {displayButtons.map((collection) => (
+            <Link
+              key={collection}
+              to={
+                collection === "Full Collection"
+                  ? "/shop"
+                  : `/shop/${collection.toLowerCase()}`
+              }
+            >
+              <button className='grey-button py-3 min-w-36 rounded-xl'>
+                {collection}
+              </button>
+            </Link>
+          ))}
         </div>
       </div>
-      <Footer />
+      <div className='flex justify-center flex-wrap gap-6'>
+        {!loading &&
+          !error &&
+          data.products?.map((item: ItemType) => (
+            <Item item={item} key={item.searchName} />
+          ))}
+        {loading && skeletonProducts}
+      </div>
     </div>
   );
 };
