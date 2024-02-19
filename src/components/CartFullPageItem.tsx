@@ -44,22 +44,25 @@ const CartFullPageItem = ({ item }: PropsType) => {
   const outOfStock = item.stock_level === "OUT";
 
   return (
-    <li className='order-fullpage-item-info'>
+    <li className='flex gap-4'>
       <Link to={`/shop/fullcollection/${item.searchName}`}>
-        <img src={itemURL} alt={item.name} />
+        <img
+          className='w-[200px] h-[250px] object-cover rounded-sm'
+          src={itemURL}
+          alt={item.name}
+        />
       </Link>
-      <div>
+      <div className='h-full flex flex-col gap-2 justify-end'>
         <Link to={`/shop/fullcollection/${item.searchName}`}>
-          <p className='order-fullpage-font-lg order-fullpage-bold'>
-            {item.name}
-          </p>
+          <p className='text-xl font-semibold'>{item.name}</p>
         </Link>
         {lowStockDisplay}
         {outOfStock && <p>Sorry, this product is out of stock.</p>}
-        <div className='order-fullpage-quantity'>
+        <div className='flex gap-3 items-center'>
           <span>Quantity:</span>
           <button
             onClick={handleReduceQuantity}
+            className='grey-button py-0'
             disabled={item.qty <= 1 || outOfStock}
             aria-label='reduce quantity by one'
           >
@@ -68,20 +71,23 @@ const CartFullPageItem = ({ item }: PropsType) => {
           <span>{item.qty}</span>
           <button
             onClick={handleIncreaseQuantity}
+            className='grey-button py-0'
             disabled={item.qty >= 25 || outOfStock}
             aria-label='increase quantity by one'
           >
             +
           </button>
         </div>
-        <p className='order-fullpage-bold'>Subtotal: {subtotal}</p>
-        <button
-          onClick={handleDeleteItem}
-          className='dropdown-delete'
-          aria-label='delete item'
-        >
-          Delete
-        </button>
+        <p className='font-semibold'>Subtotal: {subtotal}</p>
+        <div>
+          <button
+            onClick={handleDeleteItem}
+            className='grey-button py-1 px-3'
+            aria-label='delete item'
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </li>
   );

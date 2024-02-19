@@ -39,7 +39,7 @@ const CartFullPage = () => {
     location?.state?.errorMsg || "Please remove before proceeding to checkout.";
 
   const errorDiv = (
-    <div className='order-cart-error-div' ref={stockMsgRef}>
+    <div className='text-rose-600 font-semibold' ref={stockMsgRef}>
       <p>Error.</p>
       <p>{errorItem}</p>
       <p>{errorMsg}</p>
@@ -47,38 +47,39 @@ const CartFullPage = () => {
   );
 
   return (
-    <div className='order-fullpage-container'>
-      <h2>cart</h2>
-      {(outOfStockItem || location?.state?.error) && errorDiv}
-      {itemTotal < 1 && (
-        <div className='order-fullpage-empty-container'>
-          <p>Your cart is empty.</p>
-          <Link to='/shop'>
-            <button>Shop Now</button>
-          </Link>
+    <div className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
+      <div className='flex flex-col'>
+        <h2 className='text-3xl my-6 font-semibold self-center'>cart</h2>
+        {(outOfStockItem || location?.state?.error) && errorDiv}
+        {itemTotal < 1 && (
+          <div className='flex flex-col gap-4'>
+            <p>Your cart is empty.</p>
+            <Link to='/shop'>
+              <button className='grey-button py-2 px-3'>Shop Now</button>
+            </Link>
+          </div>
+        )}
+        <ul className='flex flex-col justify-start items-start gap-4 list-none'>
+          {cart.map((item) => (
+            <CartFullPageItem key={item.searchName} item={item} />
+          ))}
+        </ul>
+        <div className='flex flex-col gap-2 mt-4 mb-1'>
+          <p className='font-semibold'>Total Items: {itemTotal}</p>
+          <p className='text-xl font-semibold'>Total: {priceTotal}</p>
         </div>
-      )}
-      <ul className='order-fullpage-items'>
-        {cart.map((item) => (
-          <CartFullPageItem key={item.searchName} item={item} />
-        ))}
-      </ul>
-      <div className='order-fullpage-info'>
-        <p className='order-fullpage-bold'>Total Items: {itemTotal}</p>
-        <p className='order-fullpage-bold order-fullpage-font-lg'>
-          Total: {priceTotal}
-        </p>
+        {itemTotal >= 1 && (
+          <div>
+            <button
+              className='grey-button px-3'
+              disabled={itemTotal < 1}
+              onClick={handleButtonClick}
+            >
+              Checkout Now
+            </button>
+          </div>
+        )}
       </div>
-      {itemTotal < 1 && (
-        <div className='order-fullpage-button'>
-          <button disabled>Checkout Now</button>
-        </div>
-      )}
-      {itemTotal >= 1 && (
-        <div className='order-fullpage-button'>
-          <button onClick={handleButtonClick}>Checkout Now</button>
-        </div>
-      )}
     </div>
   );
 };
