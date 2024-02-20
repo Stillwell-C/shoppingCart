@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Item from "./Item";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import Footer from "./Footer";
-import fullItemList from "../Data/FullItemList";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_ITEMS } from "../queries/productQueries";
 import SkeletonItem from "./SkeletonItem";
@@ -16,7 +14,6 @@ type ItemType = {
 
 const Shop = () => {
   const { collectionName } = useParams();
-  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_ITEMS, {
     variables: { dept: collectionName?.toUpperCase() },
@@ -28,10 +25,6 @@ const Shop = () => {
 
   const [collectionTitle, setCollectionTitle] = useState<string>("");
 
-  const items = !collectionName
-    ? fullItemList
-    : fullItemList.filter((item) => item.dept === collectionName);
-
   const capitalizeFirstLetter = (text: string): string => {
     return text.slice(0, 1).toUpperCase() + text.slice(1);
   };
@@ -42,10 +35,6 @@ const Shop = () => {
       return;
     }
     setCollectionTitle(capitalizeFirstLetter(collectionName));
-  }, [collectionName]);
-
-  useEffect(() => {
-    if (collectionName && !items.length) navigate("/notfound");
   }, [collectionName]);
 
   const collectionsList = [
@@ -90,6 +79,7 @@ const Shop = () => {
             <Item item={item} key={item.searchName} />
           ))}
         {loading && skeletonProducts}
+        {error && <p>{"An error occurred. Please try again."}</p>}
       </div>
     </div>
   );
