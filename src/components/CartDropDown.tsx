@@ -1,7 +1,6 @@
 import useCartContext from "../hooks/useCartContext";
 import { Link } from "react-router-dom";
 import CartDropDownItem from "./CartDropDownItem";
-import FocusTrap from "focus-trap-react";
 import { useEffect } from "react";
 
 type PropsType = {
