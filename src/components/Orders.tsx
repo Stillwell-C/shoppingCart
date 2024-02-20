@@ -1,5 +1,5 @@
-import { useLazyQuery, useQuery } from "@apollo/client";
-import React, { useEffect, useRef, useState } from "react";
+import { useLazyQuery } from "@apollo/client";
+import React, { useRef, useState } from "react";
 import { GET_ORDER } from "../queries/orderQueries";
 import { BarLoader } from "react-spinners";
 import OrderDisplay from "./OrderDisplay";
@@ -23,11 +23,6 @@ const Orders = () => {
       variables: { orderID },
     });
   };
-
-  useEffect(() => {
-    if (data) console.log(data);
-    if (error) console.log("error: ", JSON.stringify(error, null, 2));
-  }, [data, error]);
 
   return (
     <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex flex-col items-center justify-start gap-8'>
