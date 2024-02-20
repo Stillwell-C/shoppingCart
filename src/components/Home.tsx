@@ -116,8 +116,8 @@ const Home = () => {
           </div>
           <div className='mt-32'>
             <h2 className='text-6xl text-center mb-16'>Why in hands?</h2>
-            <div className=' why-hands flex justify-center mb-12'>
-              <div>
+            <div className='why-hands flex gap-4 justify-center mb-12'>
+              <div className='flex flex-col items-center'>
                 <img
                   className='w-[300px] h-[300px] rounded-full overflow-hidden object-cover'
                   src={handCraftImg}
@@ -130,7 +130,7 @@ const Home = () => {
                   our founder.
                 </p>
               </div>
-              <div>
+              <div className='flex flex-col items-center'>
                 <img
                   className='w-[300px] h-[300px] rounded-full overflow-hidden object-cover'
                   src={sustainableImg}
@@ -143,7 +143,7 @@ const Home = () => {
                   process.
                 </p>
               </div>
-              <div>
+              <div className='flex flex-col items-center'>
                 <img
                   className='w-[300px] h-[300px] rounded-full overflow-hidden object-cover'
                   src={passionImg}
