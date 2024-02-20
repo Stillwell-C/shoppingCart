@@ -8,7 +8,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import ScrollToTop from "./utils/ScrollToTop";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3500/graphql",
+  uri: "https://shoppingcartapi-production.up.railway.app/graphql",
   cache: new InMemoryCache(),
 });
 
