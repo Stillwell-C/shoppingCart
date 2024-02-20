@@ -503,7 +503,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex gap-4'>
-        <div className='w-[225px]'>
+        <div className='w-[220px]'>
           <span
             id='zip-note'
             className={
@@ -516,17 +516,19 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             {formState[propertyNames.zip].error}
           </span>
         </div>
-        <span
-          id='phone-note'
-          className={
-            formState[propertyNames.phone].hasError
-              ? "text-rose-600 font-semibold text-lg w-[425px]"
-              : "text-rose-600 font-semibold text-lg w-[425px] absolute -left-[9999px]"
-          }
-          ref={phoneRef}
-        >
-          {formState[propertyNames.phone].error}
-        </span>
+        <div className='w-[425px]'>
+          <span
+            id='phone-note'
+            className={
+              formState[propertyNames.phone].hasError
+                ? "text-rose-600 font-semibold text-lg w-[425px]"
+                : "text-rose-600 font-semibold text-lg w-[425px] absolute -left-[9999px]"
+            }
+            ref={phoneRef}
+          >
+            {formState[propertyNames.phone].error}
+          </span>
+        </div>
       </div>
     </>
   );
