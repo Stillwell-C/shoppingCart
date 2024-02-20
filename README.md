@@ -34,7 +34,7 @@ View the backend code [here](https://github.com/Stillwell-C/shoppingCartAPI)
 
 This application was made to function as a basic e-commerce site.
 
-#### UI
+##### UI
 
 I converted the CSS from the original project to TailwindCSS and partially updated the original design. This website is still not responsive. I hope to find the time to create a more responsive, mobile-first UI for this front end soon. To see responsive UIs that are more reflective of my abilities, please look at the following full-stack projects:
 
@@ -42,13 +42,13 @@ I converted the CSS from the original project to TailwindCSS and partially updat
 - [Blogging application](https://github.com/Stillwell-C/blog-frontend)
 - [Photo tagging game](https://github.com/Stillwell-C/photoTag)
 
-#### Backend
+##### Back End
 
-The primary reason I updated this front end project (originally it was only a front end project), was to get practice with new backend frameworks. In this case, I was specifically trying to practice using GraphQL with NestJS and get my first experience with an ORM. This was not my first time developing a backend in TypeScript, but is probably the most complex backend I have made using TypeScript. I enjoyed developing with these frameworks and will continue to hone and improve this code as I learn more about them. Currently, I am working on improving error handling.
+The primary reason I updated this front end project (originally it was front end only), was to get practice with new back end frameworks. In this case, I was specifically trying to practice using GraphQL with NestJS and get my first experience with an ORM. This was not my first time developing a backend in TypeScript, but is probably the most complex backend I have made using TypeScript. I enjoyed developing with these frameworks and will continue to hone and improve this code as I learn more about them. Currently, I am working on improving error handling.
 
 ##### Accessibility
 
-The original frontend was made before I knew much about web accessibility. I have tried to update this to improve accessibility; however, there may still be areas for improvement.
+The original front end was made before I knew much about web accessibility. I have tried to update this to improve accessibility; however, there may still be areas for improvement.
 
 ##### Cart
 
@@ -84,7 +84,7 @@ Currently, data such as the credit card information is not being encrypted befor
 
 ### Frontend
 
-- ReactJS
+- React
 - React Router
 - Apollo Client
 - TailwindCSS
