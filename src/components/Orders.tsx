@@ -30,7 +30,7 @@ const Orders = () => {
   }, [data, error]);
 
   return (
-    <div className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex flex-col items-center justify-start gap-8'>
+    <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex flex-col items-center justify-start gap-8'>
       <h2 className='mt-10 text-2xl font-semibold'>Orders</h2>
       <form
         className='flex flex-col items-center gap-4'
@@ -67,7 +67,7 @@ const Orders = () => {
         </div>
         {!loading && data?.order && <OrderDisplay order={data.order} />}
       </form>
-    </div>
+    </section>
   );
 };
 

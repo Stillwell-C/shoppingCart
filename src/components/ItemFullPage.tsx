@@ -71,7 +71,7 @@ const ItemFullPage = () => {
   );
 
   const pageContent = (
-    <div className='w-[350px] mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
+    <section className='w-[350px] mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
       <h1 className='text-center text-4xl mb-8'>{data?.product?.name}</h1>
       <img
         className='object-cover h-[500px] rounded'
@@ -103,7 +103,7 @@ const ItemFullPage = () => {
           Add to cart
         </button>
       </div>
-    </div>
+    </section>
   );
 
   return loading ? <SkeletonItemFullPage /> : pageContent;

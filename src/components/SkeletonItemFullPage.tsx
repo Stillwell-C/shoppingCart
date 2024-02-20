@@ -1,8 +1,6 @@
-import React from "react";
-
 const SkeletonItemFullPage = () => {
   return (
-    <div className='mt-32 mb-32 mx-auto min-h-screen flex flex-col animate-pulse'>
+    <section className='mt-32 mb-32 mx-auto min-h-screen flex flex-col animate-pulse'>
       <div className='h-10 w-32 mb-8 bg-gray-300 self-center'></div>
       <div className='cover w-[350px] h-[500px] rounded bg-gray-300'></div>
       <div className='flex flex-col mt-4 mb-2 gap-1'>
@@ -14,7 +12,7 @@ const SkeletonItemFullPage = () => {
           Add to cart
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

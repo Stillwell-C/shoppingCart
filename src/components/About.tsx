@@ -3,7 +3,7 @@ import contactImg from "../assets/hennie-stander-wO8zbE8iAas-unsplash.jpg";
 
 const About = () => {
   return (
-    <div className='w-full bg-about-background bg-fixed bg-no-repeat bg-cover'>
+    <section className='w-full bg-about-background bg-fixed bg-no-repeat bg-cover'>
       <div className='min-h-screen'>
         <div className='mt-[55vh] text-right mr-[10vw] text-white text-7xl font-semibold'>
           Who are we?
@@ -75,7 +75,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

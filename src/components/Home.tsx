@@ -13,7 +13,7 @@ import passionImg from "../assets/front-passion.jpg";
 
 const Home = () => {
   return (
-    <div className='w-full bg-home-background bg-fixed bg-no-repeat bg-cover'>
+    <section className='w-full bg-home-background bg-fixed bg-no-repeat bg-cover'>
       <div className='mt-[45vh] mb-[45vh] ml-[45vw] text-white'>
         <p className='text-5xl font-semibold '>Revolutionary Designs</p>
         <p className='text-3xl'>Find your new aesthetic today</p>
@@ -160,7 +160,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

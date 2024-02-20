@@ -52,7 +52,7 @@ const Shop = () => {
   ));
 
   return (
-    <div className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen'>
+    <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen'>
       <div className='pt-12 mb-8 w-full flex flex-col items-center'>
         <h2 className='text-3xl mb-6'>{collectionTitle}</h2>
         <div className='flex gap-5'>
@@ -81,7 +81,7 @@ const Shop = () => {
         {loading && skeletonProducts}
         {error && <p>{"An error occurred. Please try again."}</p>}
       </div>
-    </div>
+    </section>
   );
 };
 
