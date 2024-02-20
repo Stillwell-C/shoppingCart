@@ -503,7 +503,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
         </div>
       </div>
       <div className='flex gap-4'>
-        <div className='w-[220px]'>
+        <div className='w-[225px]'>
           <span
             id='zip-note'
             className={
