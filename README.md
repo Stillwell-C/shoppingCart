@@ -37,9 +37,10 @@ This application was made to function as a basic e-commerce site.
 #### UI
 
 I converted the CSS from the original project to TailwindCSS and partially updated the original design. This website is still not responsive. I hope to find the time to create a more responsive, mobile-first UI for this front end soon. To see responsive UIs that are more reflective of my abilities, please look at the following full-stack projects:
-[Instagram-like social media application](https://github.com/Stillwell-C/gram-copy)
-[Blogging application](https://github.com/Stillwell-C/blog-frontend)
-[Photo tagging game](https://github.com/Stillwell-C/photoTag)
+
+- [Instagram-like social media application](https://github.com/Stillwell-C/gram-copy)
+- [Blogging application](https://github.com/Stillwell-C/blog-frontend)
+- [Photo tagging game](https://github.com/Stillwell-C/photoTag)
 
 #### Backend
 
