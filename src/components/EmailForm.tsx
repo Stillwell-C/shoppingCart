@@ -40,7 +40,6 @@ const EmailForm = () => {
 
   useEffect(() => {
     if (error) {
-      console.log("error: ", JSON.stringify(error, null, 2));
       setFormMessage(error.message || "An error occurred. Please try again");
       setFormMessageClass("failure");
       errRef?.current?.focus();
