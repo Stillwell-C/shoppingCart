@@ -94,3 +94,72 @@ Currently, data such as the credit card information is not being encrypted befor
 - NestJS
 - Prisma ORM
 - PostgreSQL
+
+## ScreenShots
+
+### Desktop
+
+#### Home Page
+
+![home page top](./ProjectImages/HomePage.png)
+![home page links](./ProjectImages/HomePageLinks.png)
+
+#### About Page
+
+![about page top](./ProjectImages/AboutPage.png)
+
+#### Shop Page Full Collection
+
+![shop page full collection](./ProjectImages/ShopFull.png)
+
+#### Shop Page Accessories
+
+![shop page accessories](./ProjectImages/ShopAccessories.png)
+
+#### Shop Page Clothing
+
+![shop page clothing](./ProjectImages/ShopClothing.png)
+
+#### Shop Page Loading
+
+![shop page loading](./ProjectImages/ShopLoading.png)
+
+#### Item Page - Item In Cart
+
+![item page with item in cart](./ProjectImages/ItemInCart.png)
+
+#### Item Page - Item Low in Stock
+
+![item page with item low in stock](./ProjectImages/ItemLowStock.png)
+
+#### Item Page - Item Out of Stock
+
+![item page with item out of stock](./ProjectImages/ItemOutofStock.png)
+
+#### Cart Drop Down Menu
+
+![cart drop down menu](./ProjectImages/CartDropDown.png)
+
+#### Cart Full Page
+
+![cart full page](./ProjectImages/CartFull.png)
+
+#### Checkout Page
+
+![checkout page](./ProjectImages/Checkout.png)
+
+#### Checkout Page Form Error Messages
+
+![checkout page form error messages](./ProjectImages/CheckoutError.png)
+
+#### Order Confirmation Page
+
+![order confirmation page](./ProjectImages/OrderSuccess.png)
+
+#### Check Order Page
+
+![check order page](./ProjectImages/OrderConfirmation.png)
+
+#### Cancel Order Confirmation Page
+
+![cancel order confirmation page](./ProjectImages/OrderCancel.png)
