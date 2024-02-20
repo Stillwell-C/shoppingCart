@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
-import Footer from "./Footer";
 import AddressInfo from "./AddressInfo";
 import CreditCard from "./CreditCard";
 import { useNavigate } from "react-router-dom";
@@ -30,12 +29,6 @@ const Checkout = () => {
   const errRef = useRef<HTMLDivElement>(null);
 
   const [addOrder, { data, loading, error }] = useMutation(ADD_ORDER);
-
-  useEffect(() => {
-    if (error) console.log("error: ", JSON.stringify(error, null, 2));
-    if (loading) console.log("loading: ", loading);
-    if (data) console.log("data: ", data);
-  }, [error, data, loading]);
 
   const {
     cart,
