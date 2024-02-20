@@ -8,7 +8,7 @@ I made this project primarily to practice Typescript, NestJS, GraphQL, and Prism
 
 ## Demo
 
-The application is not currently live, but I will have it hosted soon.
+The application is live [here](https://shopping-cart-henna-zeta.vercel.app/).
 
 ## Backend code
 
@@ -63,7 +63,7 @@ Create an order by adding at least one item to the cart and completing the check
 
 If an order is successfully recieved, the front end will display your order number.
 
-To view your order, go to the orders page (by following the link [here]() or clicking on the 'Orders' link in the footer) and enter the order number you recieved into the input. This will display information including the contents of your order, the total price, order status, and date of order. This will also allow you to cancel your order. Users are not able to cancel orders if the order status is "SHIPPED" or "COMPLETED" (There is currently no mechanism in place to alter this an order's status except by accessing the database directly. All orders are "PENDING" by default, so you should be able to cancel any order made.). If a user successfully cancels their order, stock levels for the products they ordered will be adjusted in the database and the order (and all related data) will be removed from the database.
+To view your order, go to the orders page (by following the link [here](https://shopping-cart-henna-zeta.vercel.app/orders) or clicking on the 'Orders' link in the footer) and enter the order number you recieved into the input. This will display information including the contents of your order, the total price, order status, and date of order. This will also allow you to cancel your order. Users are not able to cancel orders if the order status is "SHIPPED" or "COMPLETED" (There is currently no mechanism in place to alter this an order's status except by accessing the database directly. All orders are "PENDING" by default, so you should be able to cancel any order made.). If a user successfully cancels their order, stock levels for the products they ordered will be adjusted in the database and the order (and all related data) will be removed from the database.
 
 ##### Email
 
