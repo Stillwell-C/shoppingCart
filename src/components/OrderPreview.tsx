@@ -3,20 +3,16 @@ import OrderPreviewItem from "./OrderPreviewItem";
 
 type PropsType = {
   cart: CartItemType[];
-  itemTotal: number;
-  priceTotal: string;
 };
 
-const OrderPreview = ({ cart, itemTotal, priceTotal }: PropsType) => {
+const OrderPreview = ({ cart }: PropsType) => {
   return (
-    <div className='order-preview-container'>
-      <div className='order-preview-items'>
+    <div className='mb-4'>
+      <div className='flex flex-col gap-4'>
         {cart.map((item) => (
           <OrderPreviewItem key={item.searchName} item={item} />
         ))}
       </div>
-      <p>Total Items: {itemTotal}</p>
-      <p>Total: {priceTotal}</p>
     </div>
   );
 };
