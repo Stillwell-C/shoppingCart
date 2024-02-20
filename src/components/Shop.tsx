@@ -19,10 +19,6 @@ const Shop = () => {
     variables: { dept: collectionName?.toUpperCase() },
   });
 
-  useEffect(() => {
-    if (error) console.log("error: ", JSON.stringify(error, null, 2));
-  }, [data, error]);
-
   const [collectionTitle, setCollectionTitle] = useState<string>("");
 
   const capitalizeFirstLetter = (text: string): string => {
