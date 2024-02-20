@@ -22,6 +22,7 @@ const Item = ({ item }: PropsType) => {
     <Link
       className='w-72 h-[450px] shadow-lg rounded-lg flex flex-col justify-center items-center transition-all ease-in-out hover:scale-[1.01]'
       to={`/shop/fullcollection/${item.searchName}`}
+      aria-label={`move to ${item.name} page`}
     >
       <img
         className='h-[300px] w-[210px] object-cover rounded'
