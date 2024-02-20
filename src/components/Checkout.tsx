@@ -153,43 +153,35 @@ const Checkout = () => {
             <CreditCard formState={formState} dispatch={dispatch} />
           </div>
 
-          <div className='billing-address-check self-start'>
-            <input
-              type='checkbox'
-              id='billing-shipping-address-same'
-              name='billing-shipping-address-same'
-              defaultChecked
-              aria-label='billing address is the same as shipping address'
-              onClick={() => setSameBillingAddress(!sameBillingAddress)}
-            />
+          <div className='self-start'>
             <label htmlFor='billing-shipping-address-same'>
-              Billing address same as shipping address
+              <input
+                type='checkbox'
+                id='billing-shipping-address-same'
+                name='billing-shipping-address-same'
+                defaultChecked
+                aria-label='billing address is the same as shipping address'
+                onClick={() => setSameBillingAddress(!sameBillingAddress)}
+              />
+              <span>Billing address same as shipping address</span>
             </label>
           </div>
 
-          <div className='flex flex-col justify-center items-start w-[650px]'>
-            {!sameBillingAddress && (
-              <div>
-                <h3 className='text-2xl'>Billing Address</h3>
-                <AddressInfo
-                  formState={formState}
-                  dispatch={dispatch}
-                  addressType={"billing"}
-                />
-              </div>
-            )}
-          </div>
-
-          <div className='order-preview'>
-            {previewOrder && (
-              <OrderPreview
-                cart={cart}
-                itemTotal={itemTotal}
-                priceTotal={priceTotal}
+          {!sameBillingAddress && (
+            <div className='flex flex-col justify-center items-start w-[650px]'>
+              <h3 className='text-2xl'>Billing Address</h3>
+              <AddressInfo
+                formState={formState}
+                dispatch={dispatch}
+                addressType={"billing"}
               />
-            )}
+            </div>
+          )}
+
+          <div className='w-[650px]'>
+            {previewOrder && <OrderPreview cart={cart} />}
             <button
-              className='preview-order-button'
+              className='grey-button'
               type='button'
               aria-label='open preview of your order'
               onClick={() => {
@@ -198,9 +190,13 @@ const Checkout = () => {
             >
               {previewOrder ? "Close" : "Preview your order"}
             </button>
+            <div className='mt-2'>
+              <p>Total Items: {itemTotal}</p>
+              <p className='font-semibold'>Total: {priceTotal}</p>
+            </div>
           </div>
           <button
-            className='place-order-button'
+            className='grey-button py-3 px-8 rounded-lg'
             type='submit'
             disabled={!formCompletion}
           >
