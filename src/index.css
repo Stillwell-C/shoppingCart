@@ -9,8 +9,8 @@
     padding: 3px 7px;
     cursor: pointer;
     border-radius: .25rem;
-    background-color: var(--light-grey-button);
-    border: 1px solid var(--light-grey-button);
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
   }
   
   .grey-button:hover {
