@@ -12,9 +12,13 @@ const OrderPreviewItem = ({ item }: PropsType) => {
   const subtotal = useFormatPrice(item.qty * item.price);
 
   return (
-    <div>
-      <img src={itemURL} alt={item.name} />
-      <div className='order-preview-info'>
+    <div className='flex gap-2'>
+      <img
+        className='w-[140px] h-[200px] object-cover'
+        src={itemURL}
+        alt={item.name}
+      />
+      <div className='h-full flex flex-col justify-end'>
         <p>{item.name}</p>
         <p>Quantity: {item.qty}</p>
         <p>Subtotal: {subtotal}</p>
