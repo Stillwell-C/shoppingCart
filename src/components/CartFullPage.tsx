@@ -49,7 +49,7 @@ const CartFullPage = () => {
   return (
     <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
       <div className='flex flex-col'>
-        <h2 className='text-3xl my-6 font-semibold self-center'>cart</h2>
+        <h2 className='text-4xl my-6 self-center'>cart</h2>
         {(outOfStockItem || location?.state?.error) && errorDiv}
         {itemTotal < 1 && (
           <div className='flex flex-col gap-4'>
