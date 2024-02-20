@@ -71,10 +71,10 @@ const ItemFullPage = () => {
   );
 
   const pageContent = (
-    <div className='mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
+    <div className='w-[350px] mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
       <h1 className='text-center text-4xl mb-8'>{data?.product?.name}</h1>
       <img
-        className='cover h-[500px] rounded'
+        className='object-cover h-[500px] rounded'
         src={itemURL}
         alt={data?.product?.name}
       />
