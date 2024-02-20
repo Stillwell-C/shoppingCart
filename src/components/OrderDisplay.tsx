@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { DELETE_ORDER } from "../mutations/orderMutations";
 import { BarLoader } from "react-spinners";
 import { Link, useNavigate } from "react-router-dom";
+import useFormatPrice from "../hooks/useFormatPrice";
 
 type PropsType = {
   order: {
@@ -51,27 +52,33 @@ const OrderDisplay = ({ order }: PropsType) => {
     month: "long",
     day: "numeric",
   };
+
   const formattedDate = parsedDate.toLocaleDateString("en-US", dateOptions);
 
+  const formattedTotal = useFormatPrice(order.orderTotal);
+
   return (
-    <div className='order-preview-container'>
+    <div className='w-full flex flex-col items-start gap-4'>
       {error && (
         <div>
           <h3>An error occurred</h3>
           <p>{error.message || "Please try again"}</p>
         </div>
       )}
-      <div className='order-preview-items'>
+      <div className='flex flex-col gap-4'>
         {order.orderItems.map((item) => (
           <OrderDisplayItem key={item.searchName} item={item} />
         ))}
       </div>
-      <p>Order Date: {formattedDate}</p>
-      <p>Order Status: {order.orderStatus}</p>
-      <p>Total Items: {itemTotal}</p>
-      <p>Total: {order.orderTotal}</p>
+      <div>
+        <p>Order Date: {formattedDate}</p>
+        <p>Order Status: {order.orderStatus}</p>
+        <p>Total Items: {itemTotal}</p>
+        <p className='font-semibold'>Total: {formattedTotal}</p>
+      </div>
       {!loading && (
         <button
+          className='grey-button'
           disabled={disableToggle}
           onClick={() => deleteOrder({ variables: { id: order?.id } })}
         >
