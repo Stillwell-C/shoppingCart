@@ -16,4 +16,16 @@
   .grey-button:hover {
     background-color: #fff;
   }
+
+  .grey-button:disabled {
+    cursor: not-allowed;
+    color: rgb(0, 0, 0, 0.5);
+    background-color: rgba(241,241,241, 0.5);
+  }
+
+  .grey-button:disabled:hover {
+    background-color: rgba(241,241,241, 0.5);
+  }
+
+
 }
