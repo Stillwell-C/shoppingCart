@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Footer from "./Footer";
-import fullItemList from "../Data/FullItemList";
 import useFormatPrice from "../hooks/useFormatPrice";
 import useCartContext from "../hooks/useCartContext";
 import { useQuery } from "@apollo/client";
