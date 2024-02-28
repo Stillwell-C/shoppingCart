@@ -47,9 +47,9 @@ const CartFullPage = () => {
   );
 
   return (
-    <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
+    <section className='mt-24 mb-32 mx-auto w-[90%] sm:w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
       <div className='flex flex-col'>
-        <h2 className='text-4xl my-6 self-center'>cart</h2>
+        <h2 className='text-4xl my-8 self-center'>cart</h2>
         {(outOfStockItem || location?.state?.error) && errorDiv}
         {itemTotal < 1 && (
           <div className='flex flex-col gap-4'>
@@ -59,7 +59,7 @@ const CartFullPage = () => {
             </Link>
           </div>
         )}
-        <ul className='flex flex-col justify-start items-start gap-4 list-none'>
+        <ul className='flex flex-col justify-start items-start gap-12 smallMobile:gap-4 list-none'>
           {cart.map((item) => (
             <CartFullPageItem key={item.searchName} item={item} />
           ))}
@@ -71,7 +71,7 @@ const CartFullPage = () => {
         {itemTotal >= 1 && (
           <div>
             <button
-              className='grey-button px-3'
+              className='grey-button px-3 py-2'
               disabled={itemTotal < 1}
               onClick={handleButtonClick}
             >
