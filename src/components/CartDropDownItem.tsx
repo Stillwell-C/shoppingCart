@@ -36,7 +36,7 @@ const CartDropDownItem = ({ item, setCartOpen }: PropsType) => {
   };
 
   return (
-    <li className='flex flex-col gap-1'>
+    <li className='flex flex-col gap-1 px-4'>
       <Link
         to={`/shop/fullcollection/${item.searchName}`}
         onClick={() => setCartOpen(false)}
