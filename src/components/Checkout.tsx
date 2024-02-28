@@ -117,7 +117,7 @@ const Checkout = () => {
   }, [error]);
 
   const CheckoutPage = (
-    <section className='mt-24 mb-32 mx-auto sm:w-[min(350px,90%)] w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
+    <section className='mt-24 mb-32 px-4 mx-auto w-11/12 sm:w-[max(350px,90%)] md:w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
       <div className='flex flex-col items-center mt-10'>
         <h2 className='text-5xl'>checkout</h2>
         {error && (
