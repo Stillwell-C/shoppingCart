@@ -71,9 +71,9 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
   }, [formState.creditCardCVC.hasError]);
 
   return (
-    <div>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[650px]'>
+    <div className='w-full'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full md:w-[650px]'>
           <div className='relative h-[50px] overflow-hidden text-lg checkout-input-div'>
             <input
               type='text'
@@ -101,7 +101,7 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
                     : " "
                 }`}
               >
-                Credit / Debit Card Number*
+                Credit Card Number*
               </span>
             </label>
           </div>
@@ -118,8 +118,8 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
           </span>
         </div>
       </div>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[325px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg checkout-input-div'>
             <input
               type='text'
@@ -163,7 +163,7 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
             {formState.creditCardExpiry.error}
           </span>
         </div>
-        <div className='md:w-[325px]'>
+        <div className='w-full md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg checkout-input-div'>
             <input
               type='text'

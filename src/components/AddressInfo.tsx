@@ -131,8 +131,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
 
   return (
     <>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[325px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg checkout-input-div'>
             <input
               type='text'
@@ -177,7 +177,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             {formState[propertyNames.firstName].error}
           </span>
         </div>
-        <div className='md:w-[325px]'>
+        <div className='w-full md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -223,8 +223,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           </span>
         </div>
       </div>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[650px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full md:w-[650px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -270,8 +270,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           </span>
         </div>
       </div>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[425px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full md:w-[425px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -315,7 +315,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             {formState[propertyNames.address].error}
           </span>
         </div>
-        <div className='md:w-[225px]'>
+        <div className='w-full sm:w-2/4 md:w-[225px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -348,8 +348,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           </div>
         </div>
       </div>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[325px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -393,7 +393,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             {formState[propertyNames.city].error}
           </span>
         </div>
-        <div className='md:w-[325px]'>
+        <div className='w-full md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -438,8 +438,8 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
           </span>
         </div>
       </div>
-      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
-        <div className='md:w-[225px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center sm:items-start gap-4 w-full md:w-[650px]'>
+        <div className='w-full sm:w-2/4 md:w-[225px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
@@ -483,7 +483,7 @@ const AddressInfo = ({ formState, dispatch, addressType }: PropsType) => {
             {formState[propertyNames.zip].error}
           </span>
         </div>
-        <div className='md:w-[425px]'>
+        <div className='w-full md:w-[425px]'>
           <div className='relative h-[50px] overflow-hidden text-lg'>
             <input
               type='text'
