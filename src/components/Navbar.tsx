@@ -37,27 +37,29 @@ const Navbar = () => {
             <p className='text-xs sm:text-base'>lifestyle & boutique</p>
           </Link>
         </div>
-        <nav className='flex items-center gap-4'>
-          <NavLink
-            className={`text-lg sm:text-xl ${
-              aboutActive ? "font-semibold" : ""
-            }`}
-            to='/about'
-            aria-label='move to about page'
-            onClick={handleClose}
-          >
-            About
-          </NavLink>
-          <NavLink
-            className={`text-lg sm:text-xl ${
-              shopActive ? "font-semibold" : ""
-            }`}
-            to='/shop'
-            aria-label='move to shop page'
-            onClick={handleClose}
-          >
-            Shop
-          </NavLink>
+        <div className='flex items-center gap-4'>
+          <nav className='flex items-center gap-4'>
+            <NavLink
+              className={`text-lg sm:text-xl ${
+                aboutActive ? "font-semibold" : ""
+              }`}
+              to='/about'
+              aria-label='move to about page'
+              onClick={handleClose}
+            >
+              About
+            </NavLink>
+            <NavLink
+              className={`text-lg sm:text-xl ${
+                shopActive ? "font-semibold" : ""
+              }`}
+              to='/shop'
+              aria-label='move to shop page'
+              onClick={handleClose}
+            >
+              Shop
+            </NavLink>
+          </nav>
           <div className='flex items-center gap-1'>
             <button
               onClick={handleShoppingBag}
@@ -71,9 +73,9 @@ const Navbar = () => {
               />
             </button>
           </div>
-        </nav>
+        </div>
       </div>
-      {cartOpen && <CartDropDown setCartOpen={setCartOpen} />}
+      <CartDropDown cartOpen={cartOpen} setCartOpen={setCartOpen} />
     </header>
   );
 };
