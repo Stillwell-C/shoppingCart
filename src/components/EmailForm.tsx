@@ -63,21 +63,25 @@ const EmailForm = () => {
         <h2 className='text-3xl '>Get Updates from in hands</h2>
         <p className='text-lg'>
           Get information on discounts and sales delivered straight to your
-          inbox
+          inbox.
         </p>
-        <div>
+        <div className='flex max-w-full'>
+          <label htmlFor='mailinglist-email' className='absolute -left-full'>
+            email
+          </label>
           <input
             type='email'
+            id='mailinglist-email'
             value={email}
             onChange={handleInput}
-            placeholder='Enter your email address'
+            placeholder='Enter your email'
             autoComplete='false'
             aria-label='Sign up for updates'
-            className='py-2 px-3 border border-solid border-[#333] rounded-tl rounded-bl outline-none'
+            className='py-2 px-3 shrink border w-full border-solid border-[#333] rounded-tl rounded-bl outline-none'
           />
           <button
             type='submit'
-            className='py-2 px-3 bg-[#333] text-white border border-solid border-[#333] rounded-tr rounded-br hover:bg-white hover:text-[#333]'
+            className='py-2 px-3 shrink-0 flex bg-[#333] text-white border border-solid border-[#333] rounded-tr rounded-br hover:bg-white hover:text-[#333]'
           >
             Sign Up
           </button>
