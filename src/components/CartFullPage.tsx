@@ -64,7 +64,7 @@ const CartFullPage = () => {
             <CartFullPageItem key={item.searchName} item={item} />
           ))}
         </ul>
-        <div className='flex flex-col gap-2 mt-4 mb-1'>
+        <div className='flex flex-col gap-2 mt-12 smallMobile:mt-4 mb-1'>
           <p className='font-semibold'>Total Items: {itemTotal}</p>
           <p className='text-xl font-semibold'>Total: {priceTotal}</p>
         </div>
