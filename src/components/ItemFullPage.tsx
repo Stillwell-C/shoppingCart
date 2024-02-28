@@ -69,10 +69,10 @@ const ItemFullPage = () => {
   );
 
   const pageContent = (
-    <section className='w-[350px] mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
+    <section className='max-w-[min(350px,90%)] sm:max-w-[350px] mt-32 mb-32 mx-auto min-h-screen flex flex-col'>
       <h1 className='text-center text-4xl mb-8'>{data?.product?.name}</h1>
       <img
-        className='object-cover h-[500px] rounded'
+        className='object-cover self-center sm:h-[500px] rounded'
         src={itemURL}
         alt={data?.product?.name}
       />
