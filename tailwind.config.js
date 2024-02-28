@@ -12,6 +12,9 @@ module.exports = {
     fontFamily: {
       quicksand: ["Quicksand", "sans-serif"],
     },
+    screens: {
+      smallMobile: "350px",
+    },
   },
   plugins: [],
 };
