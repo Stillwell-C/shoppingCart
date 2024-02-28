@@ -31,10 +31,10 @@ const Navbar = () => {
             aria-label='move to home page'
             onClick={handleClose}
           >
-            <h1 className='font-light text-xl sm:text-3xl lg:text-5xl tracking-[.5rem] underline'>
+            <h1 className='font-light text-xl sm:text-3xl lg:text-5xl tracking-[.25rem] sm:tracking-[.5rem] underline'>
               in hands
             </h1>
-            <p className='text-sm sm:text-base'>lifestyle & boutique</p>
+            <p className='text-xs sm:text-base'>lifestyle & boutique</p>
           </Link>
         </div>
         <nav className='flex items-center gap-4'>
@@ -59,7 +59,6 @@ const Navbar = () => {
             Shop
           </NavLink>
           <div className='flex items-center gap-1'>
-            <span aria-label='number of items in cart'>{itemTotal}</span>
             <button
               onClick={handleShoppingBag}
               aria-label='open shopping cart menu'
