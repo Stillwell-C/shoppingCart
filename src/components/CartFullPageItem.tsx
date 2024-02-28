@@ -44,7 +44,7 @@ const CartFullPageItem = ({ item }: PropsType) => {
   const outOfStock = item.stock_level === "OUT";
 
   return (
-    <li className='flex gap-4'>
+    <li className='flex flex-col smallMobile:flex-row gap-2 smallMobile:gap-4'>
       <Link to={`/shop/fullcollection/${item.searchName}`}>
         <img
           className='w-[200px] h-[250px] object-cover rounded-sm'
@@ -52,7 +52,7 @@ const CartFullPageItem = ({ item }: PropsType) => {
           alt={item.name}
         />
       </Link>
-      <div className='h-full flex flex-col gap-2 justify-end'>
+      <div className='h-full flex flex-col gap-2 smallMobile:justify-end'>
         <Link to={`/shop/fullcollection/${item.searchName}`}>
           <p className='text-xl font-semibold'>{item.name}</p>
         </Link>
