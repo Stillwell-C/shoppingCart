@@ -117,7 +117,7 @@ const Checkout = () => {
   }, [error]);
 
   const CheckoutPage = (
-    <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
+    <section className='mt-24 mb-32 mx-auto sm:w-[min(350px,90%)] w-4/5 xl:w-[1024px] min-h-screen flex justify-center'>
       <div className='flex flex-col items-center mt-10'>
         <h2 className='text-5xl'>checkout</h2>
         {error && (
@@ -132,7 +132,7 @@ const Checkout = () => {
           onSubmit={handleSubmit}
           noValidate
         >
-          <div className='flex flex-col justify-center items-start w-[650px]'>
+          <div className='flex flex-col justify-center items-center md:items-start w-full gap-4'>
             <h3 className='text-2xl'>Ship to</h3>
             <AddressInfo
               formState={formState}
@@ -141,7 +141,7 @@ const Checkout = () => {
             />
           </div>
 
-          <div className='flex flex-col justify-center items-start w-[650px]'>
+          <div className='flex flex-col justify-center items-center md:items-start w-full gap-4'>
             <h3 className='text-2xl'>Billing</h3>
             <CreditCard formState={formState} dispatch={dispatch} />
           </div>
@@ -161,7 +161,7 @@ const Checkout = () => {
           </div>
 
           {!sameBillingAddress && (
-            <div className='flex flex-col justify-center items-start w-[650px]'>
+            <div className='flex flex-col justify-center items-center md:items-start w-full gap-4'>
               <h3 className='text-2xl'>Billing Address</h3>
               <AddressInfo
                 formState={formState}
@@ -171,7 +171,7 @@ const Checkout = () => {
             </div>
           )}
 
-          <div className='w-[650px]'>
+          <div>
             {previewOrder && <OrderPreview cart={cart} />}
             <button
               className='grey-button'
