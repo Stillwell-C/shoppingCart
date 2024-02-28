@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import { BarLoader } from "react-spinners";
 
 const OrderProcessing = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex flex-col items-center'>
       <h2 className='mt-10 text-3xl'>Order Processing</h2>
