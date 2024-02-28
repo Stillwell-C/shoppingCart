@@ -72,7 +72,7 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
 
   return (
     <div>
-      <div className='flex flex-col sm:flex-row justify-start items-start gap-4 md:w-[650px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
         <div className='md:w-[650px]'>
           <div className='relative h-[50px] overflow-hidden text-lg checkout-input-div'>
             <input
@@ -118,7 +118,7 @@ const CreditCard = ({ dispatch, formState }: PropsType) => {
           </span>
         </div>
       </div>
-      <div className='flex flex-col sm:flex-row justify-start items-start gap-4 md:w-[650px]'>
+      <div className='flex flex-col sm:flex-row justify-start items-center md:items-start gap-4 w-full md:w-[650px]'>
         <div className='md:w-[325px]'>
           <div className='relative h-[50px] overflow-hidden text-lg checkout-input-div'>
             <input
