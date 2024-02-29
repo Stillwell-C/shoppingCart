@@ -1,9 +1,17 @@
+import aboutBackground from "../assets/no-revisions-kWVImL5QxJI-unsplash.jpg";
 import creatorImg from "../assets/creator.jpg";
 import contactImg from "../assets/hennie-stander-wO8zbE8iAas-unsplash.jpg";
 
 const About = () => {
   return (
-    <section className='w-full bg-about-background bg-fixed bg-no-repeat bg-cover'>
+    <section className='w-full'>
+      <div>
+        <img
+          src={aboutBackground}
+          className='h-screen w-auto object-cover -z-10 fixed top-0 left-0'
+          alt=''
+        />
+      </div>
       <div className='min-h-screen'>
         <div className='absolute max-md:bottom-[10%] md:top-[60%] max-md:left-4 md:right-4 text-white text-6xl sm:text-7xl font-semibold'>
           Who are we?
