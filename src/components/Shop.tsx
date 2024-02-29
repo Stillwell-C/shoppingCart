@@ -62,7 +62,7 @@ const Shop = () => {
               }
             >
               <button className='grey-button py-3 w-24 sm:min-w-36 rounded-xl'>
-                <span className='text-sm sm:text-base'>{collection}</span>
+                <span className='text-xs sm:text-base'>{collection}</span>
               </button>
             </Link>
           ))}
