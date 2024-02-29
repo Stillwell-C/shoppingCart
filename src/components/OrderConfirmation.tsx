@@ -4,8 +4,8 @@ const OrderConfirmation = () => {
   const location = useLocation();
 
   return (
-    <section className='mt-24 w-full flex flex-col items-center gap-3'>
-      <div className='flex flex-col w-full items-center'>
+    <section className='mt-24 px-8 w-full flex flex-col items-center gap-3'>
+      <div className='flex flex-col w-full items-center text-center'>
         <h2 className='mt-12 text-4xl'>Success!</h2>
         <p className='text-2xl'>Your order has been recieved.</p>
       </div>
