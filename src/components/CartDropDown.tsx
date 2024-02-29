@@ -44,7 +44,7 @@ const CartDropDown = ({ setCartOpen, cartOpen }: PropsType) => {
           cartOpen
             ? "max-h-screen sm:max-h-[calc(90vh-96px)]"
             : "invisible max-h-0"
-        } absolute w-screen max-sm:h-screen sm:w-72 top-24 right-0 z-20 overflow-hidden bg-white border border-solid border-[#f4f4f4] rounded transition-max-height duration-700 ease-in-out flex flex-col flex-1`}
+        } absolute w-screen max-sm:h-screen sm:w-72 top-24 right-0 z-20 overflow-hidden bg-white border border-solid border-[#f4f4f4] sm:rounded transition-max-height duration-700 ease-in-out flex flex-col flex-1`}
       >
         <div
           role='dialog'
