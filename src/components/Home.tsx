@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+import homeBackground from "../assets/home-background.jpg";
 import fullCollectionImg from "../assets/front-shop.jpg";
 import clothingImg from "../assets/front-clothing.jpg";
 import accessoriesImg from "../assets/front-accessories.jpg";
@@ -13,7 +12,14 @@ import passionImg from "../assets/front-passion.jpg";
 
 const Home = () => {
   return (
-    <section className='w-full bg-home-background bg-fixed bg-no-repeat lg:bg-cover bg-[length:auto_100%]'>
+    <section className='w-full'>
+      <div>
+        <img
+          src={homeBackground}
+          className='h-screen w-auto object-cover object-left-top -z-10 fixed top-0 left-0'
+          alt=''
+        />
+      </div>
       <div className='min-h-screen text-white'>
         <div className='absolute max-md:bottom-[10%] md:top-1/2 max-md:left-4 md:right-4'>
           <p className='text-3xl smallMobile:text-4xl sm:text-5xl font-semibold '>
