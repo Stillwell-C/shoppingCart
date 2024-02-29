@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import shoppingbag from "../assets/shopping-cart.svg";
-import useCartContext from "../hooks/useCartContext";
 import CartDropDown from "./CartDropDown";
 
 const Navbar = () => {
@@ -11,7 +10,6 @@ const Navbar = () => {
   const aboutActive = pathname.match(/^\/about/i);
 
   const [cartOpen, setCartOpen] = useState(false);
-  const { itemTotal } = useCartContext();
 
   const handleShoppingBag = () => {
     setCartOpen((prev) => !prev);
