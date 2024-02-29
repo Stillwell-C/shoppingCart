@@ -25,10 +25,10 @@ const Orders = () => {
   };
 
   return (
-    <section className='mt-24 mb-32 mx-auto w-4/5 xl:w-[1024px] min-h-screen flex flex-col items-center justify-start gap-8'>
+    <section className='mt-24 mb-32 px-4 mx-auto w-11/12 sm:w-4/5 xl:w-[1024px] min-h-screen flex flex-col items-center justify-start gap-8'>
       <h2 className='mt-10 text-2xl font-semibold'>Orders</h2>
       <form
-        className='flex flex-col items-center gap-4'
+        className='w-full max-w-[350px] md:max-w-[500px] flex flex-col items-center gap-4'
         onSubmit={handleSubmit}
       >
         {(error || errorMsg) && (
@@ -38,10 +38,10 @@ const Orders = () => {
           </div>
         )}
 
-        <label htmlFor='orderNo'>
+        <label htmlFor='orderNo' className='flex w-full flex-col'>
           Order No:
           <input
-            className='w-[250px] rounded border border-solid border-[#c1c0c0] ml-1'
+            className='w-full rounded border border-solid border-[#c1c0c0] ml-1'
             id='orderNo'
             type='text'
             name='orderNo'
