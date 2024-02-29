@@ -77,7 +77,7 @@ const EmailForm = () => {
             placeholder='Enter your email'
             autoComplete='false'
             aria-label='Sign up for updates'
-            className='py-2 px-3 shrink border w-full border-solid border-[#333] rounded-tl rounded-bl outline-none'
+            className='py-2 px-3 shrink border w-full border-solid border-[#333] rounded-tl rounded-bl rounded-tr-none rounded-br-none outline-none'
           />
           <button
             type='submit'
