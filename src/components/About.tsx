@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section className='w-full bg-about-background bg-fixed bg-no-repeat bg-cover'>
       <div className='min-h-screen'>
-        <div className='mt-[55vh] text-right mr-[10vw] text-white text-7xl font-semibold'>
+        <div className='absolute max-md:bottom-[10%] md:top-[60%] max-md:left-4 md:right-4 text-white text-6xl sm:text-7xl font-semibold'>
           Who are we?
         </div>
       </div>
@@ -39,13 +39,13 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className='my-12'>
+          <div className='my-12 md:max-w-full mx-auto'>
             <h2 className='text-4xl font-light mb-8 text-center'>
               Our Creator
             </h2>
-            <div className='flex items-center gap-8'>
+            <div className='flex flex-col md:flex-row items-center gap-8'>
               <img
-                className='w-3/5 lg:w-[600px] rounded-sm'
+                className=' w-10/12 md:w-3/5 max-w-[600px] rounded-sm'
                 src={creatorImg}
                 alt='Elena Cojocaru'
               />
@@ -55,19 +55,18 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className='my-12'>
+          <div className='my-12 md:max-w-full mx-auto'>
             <h2 className='text-4xl font-light mb-8 text-center'>
               Get in Contact!
             </h2>
-            <div className='flex items-center gap-8'>
-              {" "}
+            <div className='flex flex-col-reverse md:flex-row items-center gap-8'>
               <p className='text-lg'>
                 Questions, comments, concerns? in hands is able to create custom
                 design pieces to fit your needs and desires. We are also always
                 looking to collaborate with inspiring artisans and designers.
               </p>
               <img
-                className='w-3/5 lg:w-[600px] rounded-sm'
+                className=' w-10/12 md:w-3/5 max-w-[600px] rounded-sm'
                 src={contactImg}
                 alt=''
               />
