@@ -13,7 +13,7 @@ import passionImg from "../assets/front-passion.jpg";
 
 const Home = () => {
   return (
-    <section className='w-full before:fixed before:h-screen before:w-screen before:content-[" "] before:bg-home-background before:bg-fixed before:bg-no-repeat before:lg:bg-cover before:bg-[length:auto_100vh] before:-z-10'>
+    <section className='w-full before:pointer-events-none before:fixed before:h-screen before:w-screen before:content-[" "] before:bg-home-background before:bg-fixed before:bg-no-repeat before:lg:bg-cover before:bg-[length:auto_100vh] before:-z-10'>
       <div className='min-h-screen text-white'>
         <div className='absolute max-md:bottom-[10%] md:top-1/2 max-md:left-4 md:right-4'>
           <p className='text-3xl smallMobile:text-4xl sm:text-5xl font-semibold '>
