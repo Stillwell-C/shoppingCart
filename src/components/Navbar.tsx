@@ -29,16 +29,18 @@ const Navbar = () => {
             aria-label='move to home page'
             onClick={handleClose}
           >
-            <h1 className='font-light text-xl sm:text-3xl lg:text-5xl tracking-[.25rem] sm:tracking-[.5rem] underline'>
+            <h1 className='font-light text-xl sm:text-3xl lg:text-5xl smallMobile:tracking-[.25rem] sm:tracking-[.5rem] underline'>
               in hands
             </h1>
-            <p className='text-xs sm:text-base'>lifestyle & boutique</p>
+            <p className='hidden smallMobile:block smallMobile:text-xs sm:text-base'>
+              lifestyle & boutique
+            </p>
           </Link>
         </div>
         <div className='flex items-center gap-4'>
           <nav className='flex items-center gap-4'>
             <NavLink
-              className={`text-lg sm:text-xl ${
+              className={`text-sm smallMobile:text-lg sm:text-xl ${
                 aboutActive ? "font-semibold" : ""
               }`}
               to='/about'
@@ -48,7 +50,7 @@ const Navbar = () => {
               About
             </NavLink>
             <NavLink
-              className={`text-lg sm:text-xl ${
+              className={`text-sm smallMobile:text-lg sm:text-xl ${
                 shopActive ? "font-semibold" : ""
               }`}
               to='/shop'
