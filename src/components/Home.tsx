@@ -16,7 +16,7 @@ const Home = () => {
       <div className='w-full bg-black -z-10 fixed top-0 left-0'>
         <img
           src={homeBackground}
-          className='h-screen w-auto object-cover object-center mx-auto xl:w-screen xl:h-auto'
+          className='h-auto w-auto min-h-screen min-w-screen object-cover object-center mx-auto'
           alt=''
         />
       </div>
