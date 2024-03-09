@@ -5,10 +5,10 @@ import contactImg from "../assets/hennie-stander-wO8zbE8iAas-unsplash.jpg";
 const About = () => {
   return (
     <section className='w-full'>
-      <div>
+      <div className='w-full bg-black -z-10 fixed top-0 left-0'>
         <img
           src={aboutBackground}
-          className='h-screen w-auto object-cover -z-10 fixed top-0 left-0'
+          className='h-screen w-auto object-cover object-center mx-auto'
           alt=''
         />
       </div>

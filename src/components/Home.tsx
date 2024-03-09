@@ -13,10 +13,10 @@ import passionImg from "../assets/front-passion.jpg";
 const Home = () => {
   return (
     <section className='w-full'>
-      <div>
+      <div className='w-full bg-black -z-10 fixed top-0 left-0'>
         <img
           src={homeBackground}
-          className='h-screen w-auto object-cover object-left-top -z-10 fixed top-0 left-0'
+          className='h-screen w-auto object-cover object-center mx-auto'
           alt=''
         />
       </div>
